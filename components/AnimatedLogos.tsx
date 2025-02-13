@@ -87,7 +87,7 @@ export const Logos03 = ({
       {title}
     </Text> */}
     <JumboTitle order={2} fz="xs" ta="center" style={{ textWrap: 'balance' }} mb="sm">
-    Access Loans From Over NUMBER Lenders
+    Helping finance SOME CLIENTS
     </JumboTitle>
     <Marquee items={items} gap="calc(var(--mantine-spacing-lg) * 2)" duration={15} />
   </Container>

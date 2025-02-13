@@ -21,8 +21,7 @@ export function Welcome() {
         </Title>
       </Flex>
       <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
-        This starter Next.js project includes a minimal setup for server-side rendering. 
-        If you want to learn more on Mantine + Next.js integration follow{' '}
+        Finance your website
       </Text>
     </>
   );
