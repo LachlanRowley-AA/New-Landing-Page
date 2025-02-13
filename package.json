@@ -26,7 +26,7 @@
     "@next/bundle-analyzer": "^15.1.5",
     "@tabler/icons-react": "^3.28.1",
     "motion": "^12.4.2",
-    "next": "15.1.5",
+    "next": "^15.1.5",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
@@ -61,7 +61,8 @@
     "stylelint-config-standard-scss": "^14.0.0",
     "ts-jest": "^29.2.5",
     "typescript": "5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "typescript-eslint": "^8.20.0",
+    "webpack": "^5.97.1"
   },
   "packageManager": "yarn@4.6.0"
 }
