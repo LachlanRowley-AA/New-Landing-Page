@@ -4,6 +4,7 @@ import { JumboTitle } from './JumboTitle'
 //import { InlineCodeHighlight } from '@mantine/code-highlight';
 import { Anchor, BackgroundImage, Box, Container, Flex, Stack, Text } from '@mantine/core';
 import { ReactNode } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
 
 type Faq = {
   value: string;
@@ -91,15 +92,18 @@ const FaqCell = ({ question, answer }: Faq) => (
   </Box>
 );
 
-export const Faq01 = () => (
-<BackgroundImage
-  src="/meeting.jpg"
-  sx={(theme) => ({
-    backgroundImage: 'none', // Default (no background)
-    [`@media (min-width: ${theme.breakpoints.lg})`]: {
-      backgroundImage: 'url(/meeting.jpg)', // Only show on large screens
-    },
-  })}
+export const Faq01 = () => {
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+  <BackgroundImage
+  src={isDesktop ? "/meeting.jpg" : ""} // Load image only on desktop
+  style={{
+    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Always keep the dark overlay
+    backgroundImage: isDesktop
+      ? 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/meeting.jpg)'
+      : 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8))',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
   >
     <Container
       py={{
@@ -126,4 +130,4 @@ export const Faq01 = () => (
       </Container>
     </Container>
   </BackgroundImage>
-);
+};
