@@ -1,3 +1,5 @@
+'use client';
+
 import { JumboTitle } from './JumboTitle'
 //import { InlineCodeHighlight } from '@mantine/code-highlight';
 import { Anchor, BackgroundImage, Box, Container, Flex, Stack, Text } from '@mantine/core';
@@ -90,8 +92,14 @@ const FaqCell = ({ question, answer }: Faq) => (
 );
 
 export const Faq01 = () => (
-  <BackgroundImage
-    src="/meeting.jpg"
+<BackgroundImage
+  src="/meeting.jpg"
+  sx={(theme) => ({
+    backgroundImage: 'none', // Default (no background)
+    [`@media (min-width: ${theme.breakpoints.lg})`]: {
+      backgroundImage: 'url(/meeting.jpg)', // Only show on large screens
+    },
+  })}
   >
     <Container
       py={{
