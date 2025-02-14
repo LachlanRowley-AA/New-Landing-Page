@@ -62,10 +62,10 @@ assets within the business)'</>
       'Defer payments for 120 days, with no payments required in the first four months',
   },
   {
-    value: 'responsive-design',
-    question: 'How does Mantine handle responsive design?',
+    value: 'setup',
+    question: 'No Setup Cost',
     answer:
-      'Mantine provides responsive props on all components and a MediaQuery component for conditional rendering. You can also use predefined breakpoints or define custom ones through the theme configuration.',
+      'No setup cost or ongoing fees',
   },
 ];
 
