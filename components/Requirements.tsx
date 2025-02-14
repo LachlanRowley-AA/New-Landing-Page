@@ -78,7 +78,7 @@ export const Hero02 = ({
         w="100%"
         h="100%"
         bg="var(--mantine-color-body)"
-        style={{ zIndex: -1, opacity: 0.85 }} // Push it back so it doesn't cover content
+        style={{ zIndex: -1, opacity: 0.0 }} // Push it back so it doesn't cover content
         hiddenFrom="md"
       />
       <Flex         
