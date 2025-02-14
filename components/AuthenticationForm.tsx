@@ -66,7 +66,7 @@ export function AuthenticationForm({
   };
 
   return (
-    <Container size="xs" px="md" style={{ height:'vh:100px'}}>
+    <Container size="xs" px="md" style={{ height:'vh:100px'}} mt="calc(var(--mantine-spacing-xl) * 1)">
             <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm">
             Contact Us Now
             </JumboTitle>

@@ -4,6 +4,7 @@ import { Faq01 } from '@/components/Faq';
 import { Calculator } from '@/components/Calculator';
 import { AuthenticationForm } from '@/components/AuthenticationForm';
 import { ColorSchemeButton } from '@/components/ColorScheme';
+import { Hero02 } from '@/components/Requirements';
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Welcome />
       <Calculator/>
       <Faq01/>
+      <Hero02/>
       {/* <Logos03/> */}
       <AuthenticationForm/>
     </>

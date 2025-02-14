@@ -62,7 +62,7 @@ export const Calculator = () => {
             viewport={{ once: true }}
           >
             <JumboTitle order={2} fz="xs" ta="center" style={{ textWrap: 'balance' }}>
-              Calculate your weekly repayment
+              Calculate your estimated weekly repayment
             </JumboTitle>
           </motion.div>
         </Stack>
