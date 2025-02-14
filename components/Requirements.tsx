@@ -56,49 +56,53 @@ type Hero02Props = ContainerProps & {
   ratingLabel?: string;
 };
 
-
 export const Hero02 = ({
   title = 'Customer Requirements',
   ...containerProps
 }: Hero02Props) => {
   return(
   <Container bg="var(--mantine-color-body)" px={0} style={{ overflow: 'hidden' }} fluid>
-    <Container component="section" h="100vh" mah={400} pos="relative" size="xl" {...containerProps}>
+    <Container
+      component="section"
+      mih={400} // Min height instead of max height
+      style={{ position: 'relative', padding: '2rem 1rem' }} // Adjust padding
+      size="xl"
+      {...containerProps}
+    >
       <Box
         pos="absolute"
         top={0}
         left={0}
         right={0}
         bottom={0}
-        h="100%"
         w="100%"
+        h="100%"
         bg="var(--mantine-color-body)"
-        style={{ zIndex: 1 }}
-        opacity={0.85}
+        style={{ zIndex: -1, opacity: 0.85 }} // Push it back so it doesn't cover content
         hiddenFrom="md"
       />
       <Flex         
         justify="space-between"
         gap="calc(var(--mantine-spacing-lg) * 3)"
         p={{
-          base: 0,
+          base: '1rem',
           sm: 'calc(var(--mantine-spacing-lg) * 2)',
         }}
         wrap={{
           base: 'wrap',
           lg: 'nowrap',
         }}
-        maw="100%">
-            <JumboTitle c="#01E194" order={1} fz="lg" style={{ textWrap: 'balance' }}>
-              {title}
-            </JumboTitle>
-            <Stack>
-              <Cell description='2-year ABN Running'/>
-              <Cell description='Good credit'/>
-              <Cell description='Business monthly turn over to equate to the invoice amount'/>
-          </Stack>
+        style={{ maxWidth: '100%' }}
+      >
+        <JumboTitle c="#01E194" order={1} fz="lg" style={{ textWrap: 'balance' }}>
+          {title}
+        </JumboTitle>
+        <Stack>
+          <Cell description='2-year ABN Running'/>
+          <Cell description='Good credit'/>
+          <Cell description='Business monthly turn over to equate to the invoice amount'/>
+        </Stack>
       </Flex>
-      <Grid/>
     </Container>
   </Container>
 )};
