@@ -23,7 +23,6 @@ import { HTMLMotionProps, motion } from 'motion/react';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 import classes from './Requirements.module.css';
-import { useMediaQuery } from '@mantine/hooks';
 
 const Cell = ({ description, ...props }: { description: string; } & HTMLMotionProps<'div'>) => (
   <motion.div
@@ -62,7 +61,6 @@ export const Hero02 = ({
   title = 'Customer Requirements',
   ...containerProps
 }: Hero02Props) => {
-  const isDesktop = useMediaQuery('min-width: 768px');
   return(
   <Container bg="var(--mantine-color-body)" px={0} style={{ overflow: 'hidden' }} fluid>
     <Container component="section" h="100vh" mah={400} pos="relative" size="xl" {...containerProps}>
@@ -91,28 +89,14 @@ export const Hero02 = ({
           lg: 'nowrap',
         }}
         maw="100%">
-          <motion.div
-            initial={isDesktop ? { opacity: 0, y: 40 } : {}}
-            whileInView={isDesktop ? { opacity: 1, y: 0 } : {}}
-            transition={isDesktop ? { duration: 0.8, ease: 'easeInOut' } : {}}
-            viewport={isDesktop ? { once: true } : {}}
-            >
             <JumboTitle c="#01E194" order={1} fz="lg" style={{ textWrap: 'balance' }}>
               {title}
             </JumboTitle>
-            </motion.div>
-            <motion.div
-            initial={isDesktop ? { opacity: 0, y: 40 } : {}}
-            whileInView={isDesktop ? { opacity: 1, y: 0 } : {}}
-            transition={isDesktop ? { duration: 0.8, ease: 'easeInOut' } : {}}
-            viewport={isDesktop ? { once: true } : {}}
-          >
             <Stack>
               <Cell description='2-year ABN Running'/>
               <Cell description='Good credit'/>
               <Cell description='Business monthly turn over to equate to the invoice amount'/>
           </Stack>
-          </motion.div>
       </Flex>
       <Grid/>
     </Container>
