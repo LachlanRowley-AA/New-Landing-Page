@@ -94,6 +94,8 @@ const FaqCell = ({ question, answer }: Faq) => (
 
 export const Faq01 = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
+
+  return (
   <BackgroundImage
   src={isDesktop ? "/meeting.jpg" : ""} // Load image only on desktop
   style={{
@@ -130,4 +132,5 @@ export const Faq01 = () => {
       </Container>
     </Container>
   </BackgroundImage>
+  );
 };
