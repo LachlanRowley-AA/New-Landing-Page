@@ -96,21 +96,23 @@ export const Hero02 = ({
             whileInView={isDesktop ? { opacity: 1, y: 0 } : {}}
             transition={isDesktop ? { duration: 0.8, ease: 'easeInOut' } : {}}
             viewport={isDesktop ? { once: true } : {}}
-          />
+            >
             <JumboTitle c="#01E194" order={1} fz="lg" style={{ textWrap: 'balance' }}>
               {title}
             </JumboTitle>
+            </motion.div>
             <motion.div
             initial={isDesktop ? { opacity: 0, y: 40 } : {}}
             whileInView={isDesktop ? { opacity: 1, y: 0 } : {}}
             transition={isDesktop ? { duration: 0.8, ease: 'easeInOut' } : {}}
             viewport={isDesktop ? { once: true } : {}}
-          />
-          <Stack>
-            <Cell description='2-year ABN Running'/>
-            <Cell description='Good credit'/>
-            <Cell description='Business monthly turn over to equate to the invoice amount'/>
+          >
+            <Stack>
+              <Cell description='2-year ABN Running'/>
+              <Cell description='Good credit'/>
+              <Cell description='Business monthly turn over to equate to the invoice amount'/>
           </Stack>
+          </motion.div>
       </Flex>
       <Grid/>
     </Container>
