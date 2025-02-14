@@ -2,9 +2,11 @@
 
 import { JumboTitle } from './JumboTitle'
 //import { InlineCodeHighlight } from '@mantine/code-highlight';
-import { Anchor, BackgroundImage, Box, Container, Flex, Stack, Text } from '@mantine/core';
+import { Anchor, BackgroundImage, Box, Container, Flex, Stack, Text, Image } from '@mantine/core';
 import { ReactNode } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
+import NextImage from 'next/image'
+import image from "../assets/Asset Alley Brandmark_ColourScreenUse.svg"
 
 type Faq = {
   value: string;
@@ -83,9 +85,17 @@ const FaqCell = ({ question, answer }: Faq) => (
       lg: '33.333%',
     }}
   >
-    <Text fz="xl" fw="bold" component="blockquote" mb={4} c="#01E194">
-      {question}
-    </Text>
+    <Flex justify="left" align="left" direction="row" wrap="nowrap">
+        <Image
+        component={NextImage}
+        src={image}
+        alt="Logo"
+        style={{ width: '2em', height: '2em', marginRight: '0.5em' }}
+          />
+      <Text fz="xl" fw="bold" component="blockquote" mb={4} c="#01E194">
+        {question}
+      </Text>
+    </Flex>
     <Text fz="xl" component="blockquote" c="white">
       {answer}
     </Text>

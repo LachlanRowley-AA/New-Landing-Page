@@ -57,7 +57,7 @@ type Hero02Props = ContainerProps & {
 };
 
 export const Hero02 = ({
-  title = 'Requirements',
+  title = 'Customer Requirements',
   ...containerProps
 }: Hero02Props) => (
   <Container bg="var(--mantine-color-body)" px={0} style={{ overflow: 'hidden' }} fluid>
