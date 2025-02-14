@@ -12,7 +12,7 @@ export default function HomePage() {
       <Welcome />
       <Calculator/>
       <Faq01/>
-      <Logos03/>
+      {/* <Logos03/> */}
       <AuthenticationForm/>
     </>
   );

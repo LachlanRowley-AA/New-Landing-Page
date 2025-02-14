@@ -76,16 +76,7 @@ export const Logos03 = ({
     size="xl"
     {...containerProps}
   >
-    {/* <Text
-      fz="lg"
-      ta="center"
-      mb="calc(var(--mantine-spacing-lg) * 2)"
-      fw={600}
-      c="dimmed"
-      {...titleProps}
-    >
-      {title}
-    </Text> */}
+
     <JumboTitle order={2} fz="xs" ta="center" style={{ textWrap: 'balance' }} mb="sm">
     Helping finance SOME CLIENTS
     </JumboTitle>
