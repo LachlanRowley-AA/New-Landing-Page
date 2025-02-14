@@ -23,6 +23,7 @@ import { HTMLMotionProps, motion } from 'motion/react';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 import classes from './Requirements.module.css';
+import { useMediaQuery } from '@mantine/hooks';
 
 const Cell = ({ description, ...props }: { description: string; } & HTMLMotionProps<'div'>) => (
   <motion.div
@@ -56,10 +57,13 @@ type Hero02Props = ContainerProps & {
   ratingLabel?: string;
 };
 
+
 export const Hero02 = ({
   title = 'Customer Requirements',
   ...containerProps
-}: Hero02Props) => (
+}: Hero02Props) => {
+  const isDesktop = useMediaQuery('min-width: 768px');
+  return(
   <Container bg="var(--mantine-color-body)" px={0} style={{ overflow: 'hidden' }} fluid>
     <Container component="section" h="100vh" mah={400} pos="relative" size="xl" {...containerProps}>
       <Box
@@ -88,20 +92,19 @@ export const Hero02 = ({
         }}
         maw="100%">
           <motion.div
-            initial={{ opacity: 0.0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
-            viewport={{ once: true }}
-          >
+            initial={isDesktop ? { opacity: 0, y: 40 } : {}}
+            whileInView={isDesktop ? { opacity: 1, y: 0 } : {}}
+            transition={isDesktop ? { duration: 0.8, ease: 'easeInOut' } : {}}
+            viewport={isDesktop ? { once: true } : {}}
+          />
             <JumboTitle c="#01E194" order={1} fz="lg" style={{ textWrap: 'balance' }}>
               {title}
             </JumboTitle>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0.0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: 'easeInOut' }}
-            viewport={{ once: true }}
+            <motion.div
+            initial={isDesktop ? { opacity: 0, y: 40 } : {}}
+            whileInView={isDesktop ? { opacity: 1, y: 0 } : {}}
+            transition={isDesktop ? { duration: 0.8, ease: 'easeInOut' } : {}}
+            viewport={isDesktop ? { once: true } : {}}
           />
           <Stack>
             <Cell description='2-year ABN Running'/>
@@ -112,4 +115,4 @@ export const Hero02 = ({
       <Grid/>
     </Container>
   </Container>
-);
+)};
