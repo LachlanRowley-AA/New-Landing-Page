@@ -2,6 +2,7 @@ import { Text, Title, Image, Flex } from '@mantine/core';
 import classes from './Welcome.module.css';
 import image from '../../assets/Asset Alley Brandmark_ColourScreenUse.svg';
 import NextImage from 'next/image';
+import { JumboTitle } from '../JumboTitle';
 
 export function Welcome() {
   return (
@@ -16,13 +17,13 @@ export function Welcome() {
         <Title className={classes.title} ta="center" mr={20}>
           asset 
           <Text inherit component="span" style={{ fontWeight: 400}}>
-              {' '}alley
+              {' '}alley
           </Text>
         </Title>
       </Flex>
-      <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
+      <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl">
         Finance your website
-      </Text>
+      </JumboTitle>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { JumboTitle } from './JumboTitle'
 //import { InlineCodeHighlight } from '@mantine/code-highlight';
-import { Anchor, Box, Container, Flex, Stack, Text } from '@mantine/core';
+import { Anchor, BackgroundImage, Box, Container, Flex, Stack, Text } from '@mantine/core';
 import { ReactNode } from 'react';
 
 type Faq = {
@@ -11,57 +11,55 @@ type Faq = {
 
 const FAQ: Faq[] = [
   {
-    value: 'what-is-mantine',
-    question: 'What is Mantine?',
+    value: 'outlay',
+    question: 'No Outlay',
     answer:
-      'Mantine is a React components library with native dark theme support and a focus on usability, accessibility and developer experience.',
+      'No need to outlay the total amount upfront',
   },
   {
-    value: 'installation',
-    question: 'How do I install Mantine?',
-    answer: (
-      <>
-        Install Mantine using npm or yarn: code="npm install @mantine/core" {' '}
-        or code="yarn add @mantine/core" . You'll also need to install its
-        peer dependencies.
-      </>
-    ),
+    value: 'repayment-time',
+    question: 'Repayment TIme',
+    answer: 'Repayments are calculated over 5 years'
   },
   {
-    value: 'typescript-support',
-    question: 'Does Mantine support TypeScript?',
+    value: 'extra-repayment',
+    question: 'Optional Extra Repayments',
     answer:
-      'Yes, Mantine is written in TypeScript and provides full type support out of the box, with no additional configuration required.',
+      'Make extra repayments towards facility to lower monthly repayments',
   },
   {
-    value: 'theme-customization',
-    question: "Can I customize Mantine's theme?",
+    value: 'penalty',
+    question: "Repay Anytime Without Penalty",
     answer:
-      'Yes, Mantine offers a flexible theming system. You can modify colors, spacing, breakpoints, and other design tokens through the MantineProvider component.',
+    <>
+      'Repay anytime without penalties and reuse the
+facility for business costs that traditional lenders won’t
+finance (materials, inventory, software, fit-out, etc.)'</>
   },
   {
-    value: 'nextjs-compatibility',
-    question: 'Is Mantine compatible with Next.js?',
+    value: 'charge',
+    question: 'Only Charge on Use',
     answer:
-      'Yes, Mantine works seamlessly with Next.js. We provide official integration packages and documentation for server-side rendering setup.',
+      'No charge if setup but not used',
   },
   {
-    value: 'accessibility',
-    question: 'Are Mantine components accessible?',
+    value: 'security',
+    question: 'No Additional Security Needed',
     answer:
-      'All Mantine components follow WAI-ARIA standards and are tested with screen readers. They support keyboard navigation and provide ARIA attributes by default.',
+    <>  'No additional security required (personal property or
+assets within the business)'</>
   },
   {
-    value: 'dark-mode',
-    question: 'How does dark mode work in Mantine?',
+    value: 'cost',
+    question: 'Cost',
     answer:
-      'Mantine includes built-in dark mode support. You can toggle between light and dark themes using the ColorSchemeProvider and access the current theme through hooks.',
+      'Only pay 1.1 - 1.5% interest per month',
   },
   {
-    value: 'component-styling',
-    question: 'How can I style Mantine components?',
+    value: 'defer',
+    question: 'Defer Payments',
     answer:
-      'Mantine components can be styled using the built-in styles API, CSS modules, or emotion styled components. You can also use the createStyles function for a type-safe styling experience.',
+      'Defer payments for 120 days, with no payments required in the first four months',
   },
   {
     value: 'responsive-design',
@@ -82,45 +80,42 @@ const FaqCell = ({ question, answer }: Faq) => (
       lg: '33.333%',
     }}
   >
-    <Text fz="lg" fw="bold" component="blockquote" mb={4}>
+    <Text fz="xl" fw="bold" component="blockquote" mb={4} c="#01E194">
       {question}
     </Text>
-    <Text fz="md" component="blockquote">
+    <Text fz="xl" component="blockquote" c="white">
       {answer}
     </Text>
   </Box>
 );
 
 export const Faq01 = () => (
-  <Container
-    bg="var(--mantine-color-body)"
-    py={{
-      base: 'calc(var(--mantine-spacing-lg))',
-      xs: 'calc(var(--mantine-spacing-lg))',
-      lg: 'calc(var(--mantine-spacing-lg))',
-    }}
-    fluid
+  <BackgroundImage
+    src="/meeting.jpg"
   >
-    <Container size="md">
-      <Stack gap="xs" align="center">
-        <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm">
-          Why Get a Website Loan?
-        </JumboTitle>
-        {/* <Text c="dimmed" ta="center" fz="lg" style={{ textWrap: 'balance' }}>
-          Can't find what you're looking for? Drop us an{' '}
-          <Anchor href="#" underline="always" c="dimmed" inherit>
-            email
-          </Anchor>{' '}
-          and our support team will assist you promptly.
-        </Text> */}
-      </Stack>
+    <Container
+      py={{
+        base: 'calc(var(--mantine-spacing-lg))',
+        xs: 'calc(var(--mantine-spacing-lg))',
+        lg: 'calc(var(--mantine-spacing-lg))',
+      }}
+      fluid
+      style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', borderRadius: '8px' }} // Optional: Adds contrast for readability
+    >
+      <Container size="md" style={{zIndex:1}}>
+        <Stack gap="xs" align="center">
+          <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm" c="#01E194">
+            Why Get a Website Loan?
+          </JumboTitle>
+        </Stack>
+      </Container>
+      <Container size="xl">
+        <Flex mt="calc(var(--mantine-spacing-lg) * 3)" wrap="wrap" justify="center">
+          {FAQ.map((faq) => (
+            <FaqCell key={faq.value} {...faq} />
+          ))}
+        </Flex>
+      </Container>
     </Container>
-    <Container size="xl">
-      <Flex mt="calc(var(--mantine-spacing-lg) * 3)" wrap="wrap" justify="center">
-        {FAQ.map((faq) => (
-          <FaqCell key={faq.value} {...faq} />
-        ))}
-      </Flex>
-    </Container>
-  </Container>
+  </BackgroundImage>
 );
