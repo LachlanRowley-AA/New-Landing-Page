@@ -12,8 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en" {...mantineHtmlProps}>
-      <head>
-        <ColorSchemeScript defaultColorScheme='dark'/>
+      <head data-mantine-color-scheme="dark">
+        <ColorSchemeScript forceColorScheme='dark'/>
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="viewport"
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider forceColorScheme='dark'>{children}</MantineProvider>
       </body>
     </html>
   );

@@ -5,17 +5,19 @@ import { Calculator } from '@/components/Calculator';
 import { AuthenticationForm } from '@/components/AuthenticationForm';
 import { ColorSchemeButton } from '@/components/ColorScheme';
 import { Hero02 } from '@/components/Requirements';
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 
 export default function HomePage() {
-  return (
+    return (
     <>
-      <ColorSchemeButton/>
+      <ColorSchemeScript forceColorScheme="dark" />
+      <MantineProvider forceColorScheme="dark">
       <Welcome />
-      <Calculator/>
-      <Faq01/>
-      <Hero02/>
-      {/* <Logos03/> */}
-      <AuthenticationForm/>
+      <Calculator />
+      <Faq01 />
+      <Hero02 />
+      <AuthenticationForm />
+      </MantineProvider>
     </>
   );
 }

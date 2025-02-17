@@ -21,7 +21,7 @@ export const ColorSchemeButton = ({
   ...buttonProps
 }: ColorSchemeButtonProps) => {
   const { setColorScheme } = useMantineColorScheme();
-  const computedColorScheme = useComputedColorScheme('light', {
+  const computedColorScheme = useComputedColorScheme('dark', {
     getInitialValueInEffect: true,
   });
 
