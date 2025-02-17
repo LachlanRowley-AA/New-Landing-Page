@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { IconAt, IconHash } from '@tabler/icons-react';
 import {
   Button,
@@ -19,7 +19,6 @@ import { createClient } from '@supabase/supabase-js';
 import validator from 'validator';
 
 const supabase = createClient("https://hfsysehrdshrbtmjsgcx.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhmc3lzZWhyZHNocmJ0bWpzZ2N4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk0MjMyMzIsImV4cCI6MjA1NDk5OTIzMn0.S2q4Oza4s70afQlODHW-G3OUWIGWxOJ2nOxIzZJ8IIk")
-// const windowUrl = window.location.search;
 
 export interface AuthenticationFormProps {
   noShadow?: boolean;
@@ -45,9 +44,16 @@ export function AuthenticationForm({
       email: '',
       phone: '',
       contact: false,
-      ref: ''
     },
   });
+
+  const [ref, setReferral] = useState<string | null>(null);
+
+  useEffect(() => {
+    const windowUrl = window.location.search;
+    const params = new URLSearchParams(windowUrl);
+    setReferral(params.get('ref')); // Update state with referral param
+  }, []);
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -91,24 +97,13 @@ export function AuthenticationForm({
   };
   
   async function submitFormAPI () {
-    // if(typeof window !== "undefined") {
-    //   const params = new URLSearchParams(windowUrl);
-    //   const { error } = await supabase
-    //   .from('enquiries')
-    //   .insert({first_name: form.values.firstName,
-    //           last_name: form.values.lastName,
-    //           phone: form.values.phone,
-    //           email: form.values.email,
-    //           referral: params.get('ref')
-    //   });
-    // }
-    //   else {
-      const { error } = await supabase
-      .from('enquiries')
-      .insert({first_name: form.values.firstName,
-              last_name: form.values.lastName,
-              phone: form.values.phone,
-              email: form.values.email
+    const { error } = await supabase
+    .from('enquiries')
+    .insert({first_name: form.values.firstName,
+            last_name: form.values.lastName,
+            phone: form.values.phone,
+            email: form.values.email,
+            referral: ref
     });
   }
 
