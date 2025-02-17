@@ -20,7 +20,6 @@ import validator from 'validator';
 
 const supabase = createClient("https://hfsysehrdshrbtmjsgcx.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhmc3lzZWhyZHNocmJ0bWpzZ2N4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk0MjMyMzIsImV4cCI6MjA1NDk5OTIzMn0.S2q4Oza4s70afQlODHW-G3OUWIGWxOJ2nOxIzZJ8IIk")
 const windowUrl = window.location.search;
-const params = new URLSearchParams(windowUrl);
 
 export interface AuthenticationFormProps {
   noShadow?: boolean;
@@ -92,14 +91,26 @@ export function AuthenticationForm({
   };
   
   async function submitFormAPI () {
-    const { error } = await supabase
-    .from('enquiries')
-    .insert({first_name: form.values.firstName,
-            last_name: form.values.lastName,
-            phone: form.values.phone,
-            email: form.values.email,
-            referral: params.get('ref')
-    });
+    if(typeof window !== "undefined") {
+      const params = new URLSearchParams(windowUrl);
+      const { error } = await supabase
+      .from('enquiries')
+      .insert({first_name: form.values.firstName,
+              last_name: form.values.lastName,
+              phone: form.values.phone,
+              email: form.values.email,
+              referral: params.get('ref')
+      });
+    }
+      else {
+        const { error } = await supabase
+        .from('enquiries')
+        .insert({first_name: form.values.firstName,
+                last_name: form.values.lastName,
+                phone: form.values.phone,
+                email: form.values.email
+      });
+    }    
   }
 
   return (
