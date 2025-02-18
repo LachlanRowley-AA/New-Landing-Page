@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { IconAt, IconHash } from '@tabler/icons-react';
+import { IconAt, IconHash, IconCircleCheckFilled } from '@tabler/icons-react';
 import {
   Button,
   Checkbox,
@@ -35,7 +35,7 @@ export function AuthenticationForm({
 }: AuthenticationFormProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+  const [submitted, setSubmitted] = useState(false);
 
   const form = useForm({
     initialValues: {
@@ -60,7 +60,7 @@ export function AuthenticationForm({
     setError(null);
   
     let hasError = false;
-    if(form.values.contact === false) {
+    if (form.values.contact === false) {
       form.setFieldError('contact', 'Please agree');
       hasError = true;
     }
@@ -84,8 +84,6 @@ export function AuthenticationForm({
       form.setFieldError('phone', 'Invalid Australian phone number');
       hasError = true;
     }
-
-
   
     if (hasError) {
       setLoading(false);
@@ -94,93 +92,105 @@ export function AuthenticationForm({
   
     await submitFormAPI();
     setLoading(false);
+    setSubmitted(true);
   };
   
-  async function submitFormAPI () {
-    const { error } = await supabase
-    .from('enquiries')
-    .insert({first_name: form.values.firstName,
-            last_name: form.values.lastName,
-            phone: form.values.phone,
-            email: form.values.email,
-            referral: ref
-    });
+  async function submitFormAPI() {
+    await supabase
+      .from('enquiries')
+      .insert({
+        first_name: form.values.firstName,
+        last_name: form.values.lastName,
+        phone: form.values.phone,
+        email: form.values.email,
+        referral: ref,
+      });
   }
 
   return (
-    <Container size="xs" px="md" style={{ height:'vh:100px'}} mt="calc(var(--mantine-spacing-xl) * 1)">
-            <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm">
-            Contact Us Now
-            </JumboTitle>
-            <JumboTitle order={2} fz="xxs" ta="center" style={{ textWrap: 'balance' }} mb="sm">
-            For a free enquiry with no impact to your credit score
-            </JumboTitle>
-        <Flex justify="center" align="center">
-            <Paper
-                p={noPadding ? 0 : 'lg'}
-                shadow={noShadow ? 'none' : 'sm'}
-                style={{
-                    ...style,
-                    position: 'relative',
-                    backgroundColor: 'var(--mantine-color-body)',
-                }}
-                >
+    <Container size="xs" px="md" style={{ height: 'vh:100px' }} mt="calc(var(--mantine-spacing-xl) * 1)">
+      <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm">
+        Contact Us Now
+      </JumboTitle>
+      <JumboTitle order={2} fz="xxs" ta="center" style={{ textWrap: 'balance' }} mb="sm">
+        For a free enquiry with no impact to your credit score
+      </JumboTitle>
+      <Flex justify="center" align="center">
+        <Paper
+          p={noPadding ? 0 : 'lg'}
+          shadow={noShadow ? 'none' : 'sm'}
+          style={{
+            ...style,
+            position: 'relative',
+            backgroundColor: 'var(--mantine-color-body)',
+          }}
+        >
+          {submitted ? (
+            <Flex justify="center" align="center" direction="column" py="xl">
+              <IconCircleCheckFilled size={48} color="green" />
+              <Text mt="md" size="lg" c="green">
+                Thank you.
+                We'll be in touch soon!
+              </Text>
+            </Flex>
+          ) : (
             <form onSubmit={form.onSubmit(handleSubmit)}>
-                <LoadingOverlay visible={loading} />
-                <Group grow>
-                    <TextInput
-                    data-autofocus
-                    required
-                    placeholder="Your first name"
-                    label="First name"
-                    {...form.getInputProps('firstName')}
-                    />
-
-                    <TextInput
-                    required
-                    placeholder="Your last name"
-                    label="Last name"
-                    {...form.getInputProps('lastName')}
-                    />
-                </Group>
+              <LoadingOverlay visible={loading} />
+              <Group grow>
                 <TextInput
+                  data-autofocus
+                  required
+                  placeholder="Your first name"
+                  label="First name"
+                  {...form.getInputProps('firstName')}
+                />
+
+                <TextInput
+                  required
+                  placeholder="Your last name"
+                  label="Last name"
+                  {...form.getInputProps('lastName')}
+                />
+              </Group>
+              <TextInput
                 mt="md"
                 required
                 placeholder="Your phone Number"
                 label="Phone"
                 leftSection={<IconHash size={16} stroke={1.5} />}
                 {...form.getInputProps('phone')}
-                />
-                <TextInput
+              />
+              <TextInput
                 mt="md"
                 required
                 placeholder="Your email"
                 label="Email"
                 leftSection={<IconAt size={16} stroke={1.5} />}
                 {...form.getInputProps('email')}
-                />
-                <Checkbox
-                    mt="xl"
-                    label="I agree to be contacted by a member of Asset Alley"
-                    {...form.getInputProps('contact', { type: 'checkbox' })}
-                />
+              />
+              <Checkbox
+                mt="xl"
+                label="I agree to be contacted by a member of Asset Alley"
+                {...form.getInputProps('contact', { type: 'checkbox' })}
+              />
 
-                {error && (
+              {error && (
                 <Text c="red" size="sm" mt="sm">
-                    {error}
+                  {error}
                 </Text>
-                )}
+              )}
 
-                {!noSubmit && (
+              {!noSubmit && (
                 <Group justify="center" mt="xl">
-                    <Button color="#01E194" type="submit">
-                      Submit
-                    </Button>
+                  <Button color="#01E194" type="submit">
+                    Submit
+                  </Button>
                 </Group>
-                )}
+              )}
             </form>
-            </Paper>
-        </Flex>
+          )}
+        </Paper>
+      </Flex>
     </Container>
   );
 }
