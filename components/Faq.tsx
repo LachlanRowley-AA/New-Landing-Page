@@ -129,7 +129,7 @@ export const Faq01 = () => {
       <Container size="md" style={{zIndex:1}}>
         <Stack gap="xs" align="center">
           <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm" c="#01E194">
-            Why Get a Website Loan?
+            Why Get a Website or App Loan?
           </JumboTitle>
         </Stack>
       </Container>

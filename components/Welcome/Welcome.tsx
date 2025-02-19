@@ -22,7 +22,7 @@ export function Welcome() {
         </Title>
       </Flex>
       <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl">
-        Finance your website
+        Finance your websites and apps
       </JumboTitle>
     </>
   );
