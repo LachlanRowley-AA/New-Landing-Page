@@ -87,7 +87,7 @@ export const Calculator = () => {
           <Slider
             label="Loan Amount"
             min={0}
-            max={100000}
+            max={200000}
             step={1000}
             value={baseValue}
             onChange={(value) => setBaseValue(Math.max(0, value))}
