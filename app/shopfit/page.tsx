@@ -1,5 +1,3 @@
-'use client';
-
 import { Logos03 } from '@/components/AnimatedLogos';
 import { ShopWelcome } from '@/components/Welcome/ShopWelcome';
 import { ShopFaq01 } from '@/components/ShopFaq';
