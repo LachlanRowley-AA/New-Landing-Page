@@ -102,7 +102,7 @@ const FaqCell = ({ question, answer }: Faq) => (
   </Box>
 );
 
-export const Faq01 = () => {
+export const ShopFaq01 = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
@@ -129,7 +129,7 @@ export const Faq01 = () => {
       <Container size="md" style={{zIndex:1}}>
         <Stack gap="xs" align="center">
           <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm" c="#01E194">
-            Why Get a Loan For Your Website or App?
+            Why Get a Loan For Your Fitout?
           </JumboTitle>
         </Stack>
       </Container>

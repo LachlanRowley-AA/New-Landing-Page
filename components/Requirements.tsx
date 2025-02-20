@@ -61,7 +61,7 @@ export const Hero02 = ({
   ...containerProps
 }: Hero02Props) => {
   return(
-  <Container bg="var(--mantine-color-body)" px={0} style={{ overflow: 'hidden' }} fluid>
+  <Container bg="var(--mantine-color-body)" px={0} style={{ overflow: 'hidden' }} fluid bd={1}>
     <Container
       component="section"
       mih={400} // Min height instead of max height

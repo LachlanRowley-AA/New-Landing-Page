@@ -1,13 +1,14 @@
+'use client'
+
 import { Logos03 } from '@/components/AnimatedLogos';
-import { Welcome } from '../components/Welcome/Welcome';
+import { Welcome } from './Welcome/Welcome';
 import { Faq01 } from '@/components/Faq';
 import { Calculator } from '@/components/Calculator';
 import { AuthenticationForm } from '@/components/AuthenticationForm';
 import { ColorSchemeButton } from '@/components/ColorScheme';
 import { Hero02 } from '@/components/Requirements';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-
-export default function Shopfit() {
+export const Website = () => {
     return (
     <>
       <ColorSchemeScript forceColorScheme="dark" />
