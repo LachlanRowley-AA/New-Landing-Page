@@ -61,12 +61,6 @@ assets within the business)'</>
       'Only pay 1.1 - 1.5% interest per month',
   },
   {
-    value: 'defer',
-    question: 'Defer Payments',
-    answer:
-      'Defer payments for 120 days, with no payments required in the first four months',
-  },
-  {
     value: 'setup',
     question: 'No Setup Cost',
     answer:
