@@ -6,7 +6,7 @@ import { theme } from '../theme';
 
 export const metadata = {
   title: 'Asset Alley',
-  description: 'Financing your software',
+  description: 'Financing your business',
 };
 
 export default function RootLayout({ children }: { children: any }) {
