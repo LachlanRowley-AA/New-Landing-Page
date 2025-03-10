@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: any }) {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                gtag('config', 'G-DRKNK91FMY', {
                   page_path: window.location.pathname
                 });
               `,
