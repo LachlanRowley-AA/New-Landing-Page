@@ -1,4 +1,4 @@
-'use effect';
+'use client';
 
 import { Logos03 } from '@/components/AnimatedLogos';
 import { Welcome } from '../components/Welcome/Welcome';
