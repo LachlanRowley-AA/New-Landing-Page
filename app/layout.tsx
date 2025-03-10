@@ -9,10 +9,25 @@ export const metadata = {
   description: 'Financing your business',
 };
 
+const gtag = `https://www.googletagmanager.com/gtag/js?id=G-DRKNK91FMY`;
+
 export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head data-mantine-color-scheme="dark">
+      <script async src={gtag} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                  page_path: window.location.pathname
+                });
+              `,
+            }}
+          />
         <ColorSchemeScript forceColorScheme='dark'/>
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
