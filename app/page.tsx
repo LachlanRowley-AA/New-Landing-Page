@@ -1,3 +1,5 @@
+'use effect';
+
 import { Logos03 } from '@/components/AnimatedLogos';
 import { Welcome } from '../components/Welcome/Welcome';
 import { Faq01 } from '@/components/Faq';
