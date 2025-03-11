@@ -11,7 +11,6 @@ export const metadata = {
   description: 'Financing your business',
 };
 
-const gtag = `https://www.googletagmanager.com/gtag/js?id=G-DRKNK91FMY`;
 
 export default function RootLayout({ children }: { children: any }) {
   return (

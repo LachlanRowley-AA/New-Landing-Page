@@ -1,5 +1,3 @@
-'use client';
-
 import { Logos03 } from '@/components/AnimatedLogos';
 import { Welcome } from '../components/Welcome/Welcome';
 import { Faq01 } from '@/components/Faq';
@@ -8,16 +6,10 @@ import { AuthenticationForm } from '@/components/AuthenticationForm';
 import { ColorSchemeButton } from '@/components/ColorScheme';
 import { Hero02 } from '@/components/Requirements';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import ReactGa from 'react-ga4';
 import { useEffect } from 'react';
 
 
 export default function Shopfit() {
-
-    useEffect(() => {
-      ReactGa.initialize('G-DRKNK91FMY')
-    })
-
     return (
     <>
       <ColorSchemeScript forceColorScheme="dark" />
