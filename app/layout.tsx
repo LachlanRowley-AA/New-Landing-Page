@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <MantineProvider forceColorScheme='dark'>{children}</MantineProvider>
       </body>
-      <GoogleAnalytics gaId='G-DRKNK91FMY'/>
+      <GoogleAnalytics gaId='G-LBQ2VF2K5Q'/>
     </html>
   );
 }
