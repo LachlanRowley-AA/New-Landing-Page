@@ -4,13 +4,13 @@ import lightLogo from '../../public/AA_Light_Logo.svg';
 import NextImage from 'next/image';
 import { JumboTitle } from '../JumboTitle';
 
-export function Welcome({ darkMode }: { darkMode: string | null }) {
+export function Welcome({ darkMode }: { darkMode: boolean | null }) {
   const theme = useMantineTheme();
   return (
     <div style={{ backgroundColor: theme.colors.background[0] }}>
       <Flex justify="center" align="center" direction="row" wrap="nowrap" bg={theme.colors.background[0]}>
       <NextImage
-          src={darkMode==='true' ? darkLogo : lightLogo}
+          src={darkMode===true ? darkLogo : lightLogo}
           alt="Logo"
           style={{ height: '100%', width: 'auto'}}
         />
