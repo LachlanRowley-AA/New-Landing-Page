@@ -10,9 +10,21 @@ import { Hero02 } from '@/components/EmbedComponents/ERequirements';
 import { colorsTuple, createTheme, MantineProvider } from '@mantine/core';
 import { useState, useEffect } from 'react';
 
+// Define the type for the URL parameters state
+type Params = {
+  mode: string;
+  darkMode: boolean;
+  backgroundColor: string;
+  headerTextColor: string;
+  smallTextColor: string;
+  tertiaryTextColor: string;
+  buttonColor: string;
+  unfilledBarColor: string;
+};
+
 export default function Main() {
-  // State to store URL parameters
-  const [params, setParams] = useState({
+  // State to store URL parameters with type definition
+  const [params, setParams] = useState<Params>({
     mode: 'default',
     darkMode: false,
     backgroundColor: '#242424',
@@ -25,9 +37,19 @@ export default function Main() {
 
   // useEffect to fetch and update URL parameters when the component mounts
   useEffect(() => {
-    // Utility function to fetch URL parameters
-    function getUrlParams() {
-      if (typeof window === 'undefined') return {}; // Prevent SSR errors
+    // Utility function to fetch URL parameters with defaults
+    function getUrlParams(): Params {
+      if (typeof window === 'undefined') {return {
+        mode: 'default',
+        darkMode: false,
+        backgroundColor: '#242424',
+        headerTextColor: '#DDDDDD',
+        smallTextColor: '#FFFFFF',
+        tertiaryTextColor: '#000000',
+        buttonColor: '#FFFFFF',
+        unfilledBarColor: '#848484',
+      }; // return default values for SSR
+      }
 
       const params = new URLSearchParams(window.location.search || {});
       return {
@@ -44,7 +66,6 @@ export default function Main() {
 
     // Set the URL parameters to state
     const fetchedParams = getUrlParams();
-    console.warn('fetchedParams', fetchedParams);
     setParams(fetchedParams);
   }, []); // Empty dependency array ensures this runs only on mount
 
@@ -79,7 +100,6 @@ export default function Main() {
   });
 
   return (
-    console.warn({theme}),
     <MantineProvider theme={theme}>
       <Welcome darkMode={params.darkMode} />
       <Calculator />
