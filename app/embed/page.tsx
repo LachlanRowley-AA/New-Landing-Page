@@ -8,70 +8,82 @@ import { AuthenticationForm } from '@/components/EmbedComponents/EAuthentication
 import { ColorSchemeButton } from '@/components/ColorScheme';
 import { Hero02 } from '@/components/EmbedComponents/ERequirements';
 import { colorsTuple, createTheme, MantineProvider } from '@mantine/core';
-import { useEffect } from 'react';
-
-// Utility function to fetch URL parameters with defaults
-function useUrlParams() {
-  const params = new URLSearchParams(window.assetAlleyConfig || {});
-  return {
-    mode: params.get('mode') || 'default',
-    darkMode: params.get('darkMode') === 'true',
-    backgroundColor: params.get('bgColor') || '#242424',
-    headerTextColor: params.get('headerColor') || '#DDDDDD',
-    smallTextColor: params.get('smallTextColor') || '#FFFFFF',
-    tertiaryTextColor: params.get('tertiaryTextColor') || '#000000',
-    buttonColor: params.get('buttonColor') || '#FFFFFF',
-    unfilledBarColor: params.get('unfilledBarColor') || '#848484',
-  };
-}
-
-const { 
-  mode, 
-  darkMode, 
-  backgroundColor, 
-  headerTextColor, 
-  smallTextColor, 
-  tertiaryTextColor, 
-  buttonColor, 
-  unfilledBarColor 
-} = useUrlParams();
-
-// Create theme dynamically based on parameters
-const theme = createTheme({
-  colors: {
-    green: colorsTuple('#01E194'),
-    dark: colorsTuple('#FFFFFF'), // Dark mode color
-    light: colorsTuple(backgroundColor), // Light mode color
-    header: colorsTuple(headerTextColor), // Header text color
-    secondary: colorsTuple(smallTextColor), // Small text color
-    tertiary: colorsTuple(tertiaryTextColor),
-    button: colorsTuple(buttonColor),
-    background: colorsTuple(backgroundColor),
-    unfilledBar: colorsTuple(unfilledBarColor),
-  },
-  primaryColor: 'green',
-  defaultRadius: 'md',
-  components: {
-    Button: {
-      defaultProps: {
-        color: 'dark', // Apply to buttons by default
-      },
-      styles: (theme : any) => ({
-        root: {
-          backgroundColor: theme.colors.green[6],
-          '&:hover': { backgroundColor: theme.colors.green[7] },
-        },
-      }),
-    },
-  },
-});
+import { useState, useEffect } from 'react';
 
 export default function Main() {
+  // State to store URL parameters
+  const [params, setParams] = useState({
+    mode: 'default',
+    darkMode: false,
+    backgroundColor: '#242424',
+    headerTextColor: '#DDDDDD',
+    smallTextColor: '#FFFFFF',
+    tertiaryTextColor: '#000000',
+    buttonColor: '#FFFFFF',
+    unfilledBarColor: '#848484',
+  });
+
+  // useEffect to fetch and update URL parameters when the component mounts
+  useEffect(() => {
+    // Utility function to fetch URL parameters
+    function getUrlParams() {
+      if (typeof window === 'undefined') return {}; // Prevent SSR errors
+
+      const params = new URLSearchParams(window.location.search || {});
+      return {
+        mode: params.get('mode') || 'default',
+        darkMode: params.get('darkMode') === 'true',
+        backgroundColor: params.get('bgColor') || '#242424',
+        headerTextColor: params.get('headerColor') || '#DDDDDD',
+        smallTextColor: params.get('smallTextColor') || '#FFFFFF',
+        tertiaryTextColor: params.get('tertiaryTextColor') || '#000000',
+        buttonColor: params.get('buttonColor') || '#FFFFFF',
+        unfilledBarColor: params.get('unfilledBarColor') || '#848484',
+      };
+    }
+
+    // Set the URL parameters to state
+    const fetchedParams = getUrlParams();
+    console.warn('fetchedParams', fetchedParams);
+    setParams(fetchedParams);
+  }, []); // Empty dependency array ensures this runs only on mount
+
+  // Create theme dynamically based on parameters
+  const theme = createTheme({
+    colors: {
+      green: colorsTuple('#01E194'),
+      dark: colorsTuple('#FFFFFF'), // Dark mode color
+      light: colorsTuple(params.backgroundColor), // Light mode color
+      header: colorsTuple(params.headerTextColor), // Header text color
+      secondary: colorsTuple(params.smallTextColor), // Small text color
+      tertiary: colorsTuple(params.tertiaryTextColor),
+      button: colorsTuple(params.buttonColor),
+      background: colorsTuple(params.backgroundColor),
+      unfilledBar: colorsTuple(params.unfilledBarColor),
+    },
+    primaryColor: 'green',
+    defaultRadius: 'md',
+    components: {
+      Button: {
+        defaultProps: {
+          color: 'dark', // Apply to buttons by default
+        },
+        styles: (theme: any) => ({
+          root: {
+            backgroundColor: theme.colors.green[6],
+            '&:hover': { backgroundColor: theme.colors.green[7] },
+          },
+        }),
+      },
+    },
+  });
+
   return (
+    console.warn({theme}),
     <MantineProvider theme={theme}>
-      <Welcome darkMode={darkMode} />
+      <Welcome darkMode={params.darkMode} />
       <Calculator />
-      {mode === 'full' && <Faq01 />}
+      {params.mode === 'full' && <Faq01 />}
       <Hero02 />
       <AuthenticationForm />
     </MantineProvider>
