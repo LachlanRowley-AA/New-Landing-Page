@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react';
 
 // Define the type for the URL parameters state
 type Params = {
-  mode: string;
+  compact: boolean;
   darkMode: boolean;
   backgroundColor: string;
   headerTextColor: string;
@@ -25,7 +25,7 @@ type Params = {
 export default function Main() {
   // State to store URL parameters with type definition
   const [params, setParams] = useState<Params>({
-    mode: 'default',
+    compact: false,
     darkMode: false,
     backgroundColor: '#242424',
     headerTextColor: '#DDDDDD',
@@ -40,7 +40,7 @@ export default function Main() {
     // Utility function to fetch URL parameters with defaults
     function getUrlParams(): Params {
       if (typeof window === 'undefined') {return {
-        mode: 'default',
+        compact: false,
         darkMode: false,
         backgroundColor: '#242424',
         headerTextColor: '#DDDDDD',
@@ -53,14 +53,14 @@ export default function Main() {
 
       const params = new URLSearchParams(window.location.search || {});
       return {
-        mode: params.get('mode') || 'default',
-        darkMode: params.get('darkMode') === 'true',
-        backgroundColor: params.get('bgColor') || '#242424',
-        headerTextColor: params.get('headerColor') || '#DDDDDD',
-        smallTextColor: params.get('smallTextColor') || '#FFFFFF',
-        tertiaryTextColor: params.get('tertiaryTextColor') || '#000000',
-        buttonColor: params.get('buttonColor') || '#FFFFFF',
-        unfilledBarColor: params.get('unfilledBarColor') || '#848484',
+        compact: params.get('aaCompact') === 'true',
+        darkMode: params.get('aaDarkLogo') === 'true',
+        backgroundColor: params.get('aaBackgroundColor') || '#242424',
+        headerTextColor: params.get('aaHeaderColor') || '#c9c9c9',
+        smallTextColor: params.get('aaSecondaryTextColor') || '#828282',
+        tertiaryTextColor: params.get('aaTertiaryTextColor') || '#FFFFFF',
+        buttonColor: params.get('aaButtonColor') || '#01E194',
+        unfilledBarColor: params.get('aaUnfilledBarColor') || '#2E2E2E',
       };
     }
 
@@ -103,7 +103,7 @@ export default function Main() {
     <MantineProvider theme={theme}>
       <Welcome darkMode={params.darkMode} />
       <Calculator />
-      {params.mode === 'full' && <Faq01 />}
+      {params.compact && <Faq01 />}
       <Hero02 />
       <AuthenticationForm />
     </MantineProvider>

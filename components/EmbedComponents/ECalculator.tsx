@@ -41,7 +41,7 @@ const StatCell = ({
             endValue={Math.max(0, endValue)}
             prefix="$"
             startValue={Math.max(0, startValue)}
-            style={{ color: theme.colors.secondary[0] }}
+            style={{ color: theme.colors.header[0] }}
           />
           <Text
             fz="lg"
@@ -117,7 +117,7 @@ export const Calculator = () => {
           onChange={(value) => setBaseValue(Math.max(0, value))}
           styles={(theme) => ({
             label: {
-              color: theme.colors.secondary[0],
+              color: theme.colors.tertiary[0],
               backgroundColor: theme.colors.header[1],
             },
             bar: {

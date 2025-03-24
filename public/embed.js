@@ -4,6 +4,7 @@
   const params = new URLSearchParams(window.assetAlleyConfig || {});
   const referral = params.get('referral');
   iframe.src = 'http://assetalley.vercel.app/embed?'+params;
+  // iframe.src = 'http://localhost:3000/embed?'+params;
   iframe.style.width = "100%";
   if(!!params) {
     iframe.style.height = "200px";
