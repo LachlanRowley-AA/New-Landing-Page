@@ -53,7 +53,7 @@ export function AuthenticationForm({
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setReferral(params.get('ref'));
+    setReferral(params.get('aaReferral'));
   }, []);
 
   const handleSubmit = async () => {
