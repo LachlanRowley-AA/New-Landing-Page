@@ -33,7 +33,7 @@ const Cell = ({ description, ...props }: { description: string; } & HTMLMotionPr
   >
     <Card className={classes.card} h="100%" withBorder>
       <Box mt="xs">
-        <Text>{description}</Text>
+        <Text fw={600} c='var(--mantine-color-white)'>{description}</Text>
       </Box>
     </Card>
   </motion.div>
@@ -61,7 +61,7 @@ export const Hero02 = ({
   ...containerProps
 }: Hero02Props) => {
   return(
-  <Container bg="var(--mantine-color-body)" px={0} style={{ overflow: 'hidden' }} fluid bd={1}>
+  <Container bg="var(--mantine-color-black)" px={0} style={{ overflow: 'hidden' }} fluid bd={1}>
     <Container
       component="section"
       mih={400} // Min height instead of max height
@@ -103,6 +103,10 @@ export const Hero02 = ({
           <Cell description='Business monthly turn over to equate to the invoice amount'/>
         </Stack>
       </Flex>
+      <Text c="#01E194" fw={600} fz='lg' style={{ textWrap: 'balance', textAlign: 'center' }}>
+            If you do not meet these requirements, we may have alternative options for you
+          </Text>
+
     </Container>
   </Container>
 )};

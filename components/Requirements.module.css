@@ -4,10 +4,10 @@
 }
 
 .card {
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-black));
+  background-color: #01E194;
   border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-7));
 }
 
 .card-section {
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-9));
+  background-color: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-2));
 }

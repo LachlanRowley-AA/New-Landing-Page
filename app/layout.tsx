@@ -5,6 +5,7 @@ import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/c
 import { theme } from '../theme';
 import Script from 'next/script';
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: 'Asset Alley',
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider forceColorScheme='dark'>{children}</MantineProvider>
+        <Analytics/>
       </body>
       <GoogleAnalytics gaId='G-LBQ2VF2K5Q'/>
     </html>

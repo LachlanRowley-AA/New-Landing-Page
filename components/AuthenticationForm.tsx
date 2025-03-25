@@ -17,6 +17,7 @@ import { useForm } from '@mantine/form';
 import { JumboTitle } from './JumboTitle';
 import { createClient } from '@supabase/supabase-js';
 import validator from 'validator';
+import NextImage from 'next/image';
 
 const supabase = createClient("https://hfsysehrdshrbtmjsgcx.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhmc3lzZWhyZHNocmJ0bWpzZ2N4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk0MjMyMzIsImV4cCI6MjA1NDk5OTIzMn0.S2q4Oza4s70afQlODHW-G3OUWIGWxOJ2nOxIzZJ8IIk")
 
@@ -191,6 +192,16 @@ export function AuthenticationForm({
           )}
         </Paper>
       </Flex>
+      <Flex justify="center" mt="md">
+        <NextImage
+          src='/bba.png'
+          width={150}
+          height={150}
+          objectPosition='center'        
+          alt='Better Business Awards Icon'
+        />
+      </Flex>
     </Container>
+    
   );
 }

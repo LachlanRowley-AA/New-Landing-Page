@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export" : "next export",
+    "export": "next export",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
@@ -28,6 +28,7 @@
     "@next/third-parties": "^15.2.1",
     "@supabase/supabase-js": "^2.48.1",
     "@tabler/icons-react": "^3.28.1",
+    "@vercel/analytics": "^1.5.0",
     "motion": "^12.4.2",
     "next": "^15.1.5",
     "react": "19.0.0",
