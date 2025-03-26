@@ -26,7 +26,7 @@ export default function Main() {
   // State to store URL parameters with type definition
   const [params, setParams] = useState<Params>({
     compact: false,
-    darkMode: false,
+    darkMode: true,
     backgroundColor: '#242424',
     headerTextColor: '#DDDDDD',
     smallTextColor: '#FFFFFF',
@@ -41,7 +41,7 @@ export default function Main() {
     function getUrlParams(): Params {
       if (typeof window === 'undefined') {return {
         compact: false,
-        darkMode: false,
+        darkMode: true,
         backgroundColor: '#242424',
         headerTextColor: '#DDDDDD',
         smallTextColor: '#FFFFFF',

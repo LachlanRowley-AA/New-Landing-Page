@@ -9,6 +9,7 @@ import { useState } from 'react';
 const INTEREST_RATE = 15.95 / 100; // 15.95% annual interest
 const WEEKS_IN_YEAR = 52;
 const LOAN_TERM_YEARS = 5; // Placeholder loan term in years
+const MONTHS_IN_YEAR = 12;
 
 const calculateWeeklyRepayment = (loanAmount: number) => {
   if (loanAmount <= 0) return 0;
@@ -16,6 +17,13 @@ const calculateWeeklyRepayment = (loanAmount: number) => {
   const weeklyRate = INTEREST_RATE / WEEKS_IN_YEAR;
   return (loanAmount * ((weeklyRate * ((weeklyRate+1) ** totalPayments )) / (((weeklyRate + 1) ** totalPayments) - 1)));
 };
+
+const calculateMonthlyRepayment = (loanAmount: number) => {
+  if (loanAmount <= 0) return 0;
+  const totalPayments = LOAN_TERM_YEARS * MONTHS_IN_YEAR;
+  const monthlyRate = INTEREST_RATE / MONTHS_IN_YEAR;
+  return (loanAmount * ((monthlyRate * ((monthlyRate+1) ** totalPayments )) / (((monthlyRate + 1) ** totalPayments) - 1)));
+}
 
 const StatCell = ({
   startValue,
@@ -66,6 +74,7 @@ export const Calculator = () => {
   const theme = useMantineTheme();
   const [baseValue, setBaseValue] = useState(0);
   const weeklyRepayment = calculateWeeklyRepayment(baseValue);
+  const monthlyRepayment = calculateMonthlyRepayment(baseValue);
   
   return (
     <Container
@@ -134,9 +143,12 @@ export const Calculator = () => {
         />
 
         </Stack>
-        <Grid gutter="calc(var(--mantine-spacing-lg) * 4)" align="center" mx="xl">
-          <Grid.Col span={{ base: 12, md: 12 }}>
+        <Grid align="center" mx="xl">
+          <Grid.Col mt='xs' span={{ base: 6, md: 6 }} style={{borderRight: '4px solid', borderRightColor: theme.colors.header[0]}}>
             <StatCell startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
+          </Grid.Col>
+          <Grid.Col span={{ base: 6, md: 6 }}>
+            <StatCell startValue={baseValue} endValue={monthlyRepayment} title="37 million" description="Monthly repayment" />
           </Grid.Col>
         </Grid>
       </Container>
