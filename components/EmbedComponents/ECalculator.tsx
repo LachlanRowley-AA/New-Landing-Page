@@ -20,10 +20,9 @@ const calculateWeeklyRepayment = (loanAmount: number) => {
 
 const calculateMonthlyRepayment = (loanAmount: number) => {
   if (loanAmount <= 0) return 0;
-  const totalPayments = LOAN_TERM_YEARS * MONTHS_IN_YEAR;
-  const monthlyRate = INTEREST_RATE / MONTHS_IN_YEAR;
-  return (loanAmount * ((monthlyRate * ((monthlyRate+1) ** totalPayments )) / (((monthlyRate + 1) ** totalPayments) - 1)));
-}
+  const totalPayments = LOAN_TERM_YEARS * WEEKS_IN_YEAR;
+  const weeklyRate = INTEREST_RATE / WEEKS_IN_YEAR;
+  return (loanAmount * ((weeklyRate * ((weeklyRate+1) ** totalPayments )) / (((weeklyRate + 1) ** totalPayments) - 1)) * 4.333);}
 
 const StatCell = ({
   startValue,
@@ -68,9 +67,7 @@ const StatCell = ({
     );
   };
 
-
-
-export const Calculator = () => {
+export function Calculator({ showWeekly, showMonthly }: { showWeekly: boolean; showMonthly: boolean }) {
   const theme = useMantineTheme();
   const [baseValue, setBaseValue] = useState(0);
   const weeklyRepayment = calculateWeeklyRepayment(baseValue);
@@ -95,7 +92,7 @@ export const Calculator = () => {
             viewport={{ once: true }}
           >
             <JumboTitle order={2} fz="xs" ta="center" style={{ textWrap: 'balance', color: theme.colors.header[1] }}>
-              Calculate your estimated weekly repayment
+              Calculate your estimated repayment
             </JumboTitle>
           </motion.div>
         </Stack>
@@ -144,15 +141,26 @@ export const Calculator = () => {
 
         </Stack>
         <Grid align="center" mx="xl">
-          <Grid.Col mt='xs' span={{ base: 12, md: 6 }} style={{borderRight: '4px solid', borderRightColor: theme.colors.header[0]}} visibleFrom='md'>
-            <StatCell startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
-          </Grid.Col>
-          <Grid.Col mt='xs' span={{ base: 12, md: 6 }} hiddenFrom='md' style={{borderBottom: '3px solid', borderRightColor: theme.colors.header[0]}}>
-            <StatCell mb='xs' startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, md: 6 }}>
-            <StatCell startValue={baseValue} endValue={monthlyRepayment} title="37 million" description="Monthly repayment" />
-          </Grid.Col>
+          {showWeekly && showMonthly && (
+            <Grid.Col mt='xs' span='auto' style={{ borderRight: '4px solid', borderRightColor: theme.colors.header[0] }} visibleFrom='md'>
+              <StatCell startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
+            </Grid.Col>
+          )}
+          {showWeekly && showMonthly && (
+            <Grid.Col mt='xs' span='auto' hiddenFrom='md' style={{ borderBottom: '3px solid', borderBottomColor: theme.colors.header[0] }}>
+              <StatCell mb='xs' startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
+            </Grid.Col>
+          )}
+          {showWeekly && !showMonthly && (
+            <Grid.Col mt='xs' span='auto'>
+              <StatCell startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
+            </Grid.Col>
+          )}
+          {showMonthly && (
+            <Grid.Col span='auto'>
+              <StatCell startValue={baseValue} endValue={monthlyRepayment} title="37 million" description="Monthly repayment" />
+            </Grid.Col>
+          )}
         </Grid>
       </Container>
     </Container>

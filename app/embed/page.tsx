@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react';
 // Define the type for the URL parameters state
 type Params = {
   compact: boolean;
+  customLogo: boolean;
   darkMode: boolean;
   backgroundColor: string;
   headerTextColor: string;
@@ -20,12 +21,15 @@ type Params = {
   tertiaryTextColor: string;
   buttonColor: string;
   unfilledBarColor: string;
+  calculatorWeekly: boolean;
+  calculatorMonthly: boolean;
 };
 
 export default function Main() {
   // State to store URL parameters with type definition
   const [params, setParams] = useState<Params>({
     compact: false,
+    customLogo: false,
     darkMode: true,
     backgroundColor: '#242424',
     headerTextColor: '#DDDDDD',
@@ -33,6 +37,8 @@ export default function Main() {
     tertiaryTextColor: '#000000',
     buttonColor: '#FFFFFF',
     unfilledBarColor: '#848484',
+    calculatorWeekly: true,
+    calculatorMonthly: false
   });
 
   // useEffect to fetch and update URL parameters when the component mounts
@@ -41,6 +47,7 @@ export default function Main() {
     function getUrlParams(): Params {
       if (typeof window === 'undefined') {return {
         compact: false,
+        customLogo: false,
         darkMode: true,
         backgroundColor: '#242424',
         headerTextColor: '#DDDDDD',
@@ -48,6 +55,8 @@ export default function Main() {
         tertiaryTextColor: '#000000',
         buttonColor: '#FFFFFF',
         unfilledBarColor: '#848484',
+        calculatorWeekly: true,
+        calculatorMonthly: false    
       }; // return default values for SSR
       }
 
@@ -55,12 +64,16 @@ export default function Main() {
       return {
         compact: params.get('aaCompact') === 'true',
         darkMode: params.get('aaDarkLogo') === 'true',
+        customLogo: params.get('aaCustomLogo') === 'true',
         backgroundColor: params.get('aaBackgroundColor') || '#242424',
         headerTextColor: params.get('aaHeaderColor') || '#c9c9c9',
         smallTextColor: params.get('aaSecondaryTextColor') || '#828282',
         tertiaryTextColor: params.get('aaTertiaryTextColor') || '#FFFFFF',
         buttonColor: params.get('aaButtonColor') || '#01E194',
         unfilledBarColor: params.get('aaUnfilledBarColor') || '#2E2E2E',
+        calculatorWeekly: params.get('aaCalculatorWeekly') === 'true',
+        calculatorMonthly: params.get('aaCalculatorMonthly') === 'true'
+    
       };
     }
 
@@ -101,8 +114,8 @@ export default function Main() {
 
   return (
     <MantineProvider theme={theme}>
-      <Welcome darkMode={params.darkMode} />
-      <Calculator />
+      <Welcome darkMode={params.darkMode} customLogo={params.customLogo} />
+      <Calculator showWeekly={params.calculatorWeekly} showMonthly={params.calculatorMonthly}/>
       {params.compact && <Faq01 />}
       <Hero02 />
       <AuthenticationForm />
