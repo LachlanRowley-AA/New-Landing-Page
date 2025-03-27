@@ -144,10 +144,13 @@ export const Calculator = () => {
 
         </Stack>
         <Grid align="center" mx="xl">
-          <Grid.Col mt='xs' span={{ base: 6, md: 6 }} style={{borderRight: '4px solid', borderRightColor: theme.colors.header[0]}}>
+          <Grid.Col mt='xs' span={{ base: 12, md: 6 }} style={{borderRight: '4px solid', borderRightColor: theme.colors.header[0]}} visibleFrom='md'>
             <StatCell startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
           </Grid.Col>
-          <Grid.Col span={{ base: 6, md: 6 }}>
+          <Grid.Col mt='xs' span={{ base: 12, md: 6 }} hiddenFrom='md' style={{borderBottom: '3px solid', borderRightColor: theme.colors.header[0]}}>
+            <StatCell mb='xs' startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, md: 6 }}>
             <StatCell startValue={baseValue} endValue={monthlyRepayment} title="37 million" description="Monthly repayment" />
           </Grid.Col>
         </Grid>
