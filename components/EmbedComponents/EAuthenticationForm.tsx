@@ -46,6 +46,7 @@ export function AuthenticationForm({
       email: '',
       phone: '',
       contact: false,
+      comments: ''
     },
   });
 
@@ -181,7 +182,7 @@ export function AuthenticationForm({
               <TextInput
                 mt="md"
                 required
-                placeholder="Your email"
+                placeholder="Your email address"
                 label="Email"
                 leftSection={<IconAt size={16} stroke={1.5} />}
                 styles = {{
@@ -190,6 +191,19 @@ export function AuthenticationForm({
                   section: { color: theme.colors.secondary[0] },
                 }}
                 {...form.getInputProps('email')}
+              />
+                <TextInput
+                mt="md"
+                required
+                placeholder="Details about your enquiry"
+                label="Comments"
+                leftSection={<IconAt size={16} stroke={1.5} />}
+                styles = {{
+                  input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0] },
+                  label: { color: theme.colors.secondary[0] },
+                  section: { color: theme.colors.secondary[0] },
+                }}
+                {...form.getInputProps('comments')}
               />
               <Checkbox
                 mt="xl"
