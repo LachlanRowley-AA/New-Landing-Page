@@ -12,7 +12,7 @@ export function Welcome({ darkMode }: { darkMode: boolean | null }) {
       <NextImage
           src={darkMode===true ? darkLogo : lightLogo}
           alt="Logo"
-          style={{ height: '100%', width: 'auto', maxWidth: '55vh'}}
+          style={{ height: '100%', width: 'auto', maxWidth: '80vw'}}
         />
       </Flex>
       <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl">
