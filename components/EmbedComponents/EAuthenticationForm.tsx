@@ -10,6 +10,7 @@ import {
   Paper,
   Text,
   TextInput,
+  Textarea,
   Container,
   Flex,
   useMantineTheme
@@ -106,6 +107,7 @@ export function AuthenticationForm({
         phone: form.values.phone,
         email: form.values.email,
         referral: ref,
+        comments: form.values.comments
       });
   }
 
@@ -192,12 +194,10 @@ export function AuthenticationForm({
                 }}
                 {...form.getInputProps('email')}
               />
-                <TextInput
+                <Textarea
                 mt="md"
-                required
                 placeholder="Details about your enquiry"
                 label="Comments"
-                leftSection={<IconAt size={16} stroke={1.5} />}
                 styles = {{
                   input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0] },
                   label: { color: theme.colors.secondary[0] },

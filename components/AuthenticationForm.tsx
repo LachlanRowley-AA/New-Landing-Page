@@ -10,6 +10,7 @@ import {
   Paper,
   Text,
   TextInput,
+  Textarea,
   Container,
   Flex
 } from '@mantine/core';
@@ -45,6 +46,7 @@ export function AuthenticationForm({
       email: '',
       phone: '',
       contact: false,
+      comments: ''
     },
   });
 
@@ -105,6 +107,7 @@ export function AuthenticationForm({
         phone: form.values.phone,
         email: form.values.email,
         referral: ref,
+        comments: form.values.comments  
       });
   }
 
@@ -168,6 +171,15 @@ export function AuthenticationForm({
                 label="Email"
                 leftSection={<IconAt size={16} stroke={1.5} />}
                 {...form.getInputProps('email')}
+              />
+                <Textarea
+                mt="md"
+                placeholder="Details about your enquiry"
+                label="Comments"
+                {...form.getInputProps('comments')}
+                styles={{input : {
+                  height: '80px'
+                }}}
               />
               <Checkbox
                 mt="xl"
