@@ -94,7 +94,10 @@ export const Hero02 = ({
         }}
         style={{ maxWidth: '100%' }}
       >
-        <JumboTitle c="#01E194" order={1} fz="lg" style={{ textWrap: 'balance' }}>
+        <JumboTitle c="#01E194" order={1} fz="md" style={{ textWrap: 'balance' }} hiddenFrom='md'>
+          {title}
+        </JumboTitle>
+        <JumboTitle c="#01E194" order={1} fz="lg" style={{ textWrap: 'balance' }} visibleFrom='lg'>
           {title}
         </JumboTitle>
         <Stack>
