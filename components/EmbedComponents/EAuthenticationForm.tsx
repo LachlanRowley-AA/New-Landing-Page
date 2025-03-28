@@ -161,7 +161,9 @@ export function AuthenticationForm({
                   placeholder="Your last name"
                   label="Last name"
                   styles = {{
-                    input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0] },
+                    input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0],
+                      '::placeholder': { color: theme.colors.tertiary[0]}
+                     },
                     label: { color: theme.colors.secondary[0] },
                     section: { color: theme.colors.secondary[0] },
                   }}
