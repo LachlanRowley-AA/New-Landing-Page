@@ -19,6 +19,7 @@ import { useForm } from '@mantine/form';
 import { JumboTitle } from '../JumboTitle';
 import { createClient } from '@supabase/supabase-js';
 import validator from 'validator';
+import classes from './EAuthenticationForm.module.css'
 
 const supabase = createClient("https://hfsysehrdshrbtmjsgcx.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhmc3lzZWhyZHNocmJ0bWpzZ2N4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk0MjMyMzIsImV4cCI6MjA1NDk5OTIzMn0.S2q4Oza4s70afQlODHW-G3OUWIGWxOJ2nOxIzZJ8IIk");
 
@@ -149,24 +150,25 @@ export function AuthenticationForm({
                   placeholder="Your first name"
                   label="First name"
                   styles = {{
-                    input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0] },
+                    input: { color: theme.colors.tertiary[0], backgroundColor: theme.colors.header[0] },
                     label: { color: theme.colors.secondary[0] },
                     section: { color: theme.colors.secondary[0] },
                   }}
+                  classNames={{ input: classes.textInput}}
                   {...form.getInputProps('firstName')}
                 />
-
                 <TextInput
                   required
                   placeholder="Your last name"
                   label="Last name"
-                  styles = {{
-                    input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0],
-                      '::placeholder': { color: theme.colors.tertiary[0]}
-                     },
+                  styles={{
+                    input: { 
+                      color: theme.colors.secondary[0], 
+                      backgroundColor: theme.colors.header[0],
+                    },
                     label: { color: theme.colors.secondary[0] },
-                    section: { color: theme.colors.secondary[0] },
                   }}
+                  classNames={{ input: classes.textInput}}
                   {...form.getInputProps('lastName')}
                 />
               </Group>
@@ -177,10 +179,11 @@ export function AuthenticationForm({
                 label="Phone"
                 leftSection={<IconHash size={16} stroke={1.5} />}
                 styles = {{
-                  input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0] },
+                  input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.header[0] },
                   label: { color: theme.colors.secondary[0] },
                   section: { color: theme.colors.secondary[0] },
                 }}
+                classNames={{ input: classes.textInput}}
                 {...form.getInputProps('phone')}
               />
               <TextInput
@@ -190,10 +193,11 @@ export function AuthenticationForm({
                 label="Email"
                 leftSection={<IconAt size={16} stroke={1.5} />}
                 styles = {{
-                  input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0] },
+                  input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.header[0] },
                   label: { color: theme.colors.secondary[0] },
                   section: { color: theme.colors.secondary[0] },
                 }}
+                classNames={{ input: classes.textInput}}
                 {...form.getInputProps('email')}
               />
                 <Textarea
@@ -201,10 +205,11 @@ export function AuthenticationForm({
                 placeholder="Details about your enquiry"
                 label="Comments"
                 styles = {{
-                  input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.unfilledBar[0] },
+                  input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.header[0] },
                   label: { color: theme.colors.secondary[0] },
                   section: { color: theme.colors.secondary[0] },
                 }}
+                classNames={{ input: classes.textInput}}
                 {...form.getInputProps('comments')}
               />
               <Checkbox

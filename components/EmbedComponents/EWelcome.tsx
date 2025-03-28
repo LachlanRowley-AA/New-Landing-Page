@@ -19,17 +19,26 @@ export function Welcome({ darkMode, customLogo }: { darkMode: boolean | null; cu
           alt="Logo"
           style={{ height: '100%', width: 'auto', maxWidth: '80vw' }}
         />
-      </Flex>)}
+      </Flex>
+    )}
+      {!customLogo && (
+            <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" pt="xl" lh={1.3}>
+            Finance your websites and apps
+          </JumboTitle>
+      )}
+
+      {customLogo && (
       <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" pt="xl" lh={1.3}>
-        Finance your websites and apps with 
-        {customLogo && (
-          <NextImage
-            src={assetAlleyLogo}
-            alt="Asset Alley Logo"
-            style={{ height: '1em', width: 'auto', maxWidth: '60vw', verticalAlign: 'bottom' }}
-          />
-        )}
-      </JumboTitle>
+      Finance your websites and apps with 
+      {customLogo && (
+        <NextImage
+          src={assetAlleyLogo}
+          alt="Asset Alley Logo"
+          style={{ height: '1em', width: 'auto', maxWidth: '60vw', verticalAlign: 'bottom' }}
+        />
+      )}
+    </JumboTitle>
+      )}
     </div>
   );
 }

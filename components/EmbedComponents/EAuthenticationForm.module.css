@@ -1,0 +1,5 @@
+.textInput {
+    &::placeholder {
+        color: rgba(167, 167, 167, 0.884)
+    }
+}
