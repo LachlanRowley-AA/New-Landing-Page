@@ -22,13 +22,13 @@ export function Welcome({ darkMode, customLogo }: { darkMode: boolean | null; cu
       </Flex>
     )}
       {!customLogo && (
-            <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" pt="xl" lh={1.3}>
+            <JumboTitle c={theme.colors.header[0]} ta="center" fz="xs" maw={580} mx="auto" pt="xl" lh={1.3}>
             Finance your websites and apps
           </JumboTitle>
       )}
 
       {customLogo && (
-      <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" pt="xl" lh={1.3}>
+      <JumboTitle c={theme.colors.header[0]} ta="center" fz="xs" maw={580} mx="auto" pt="xl" lh={1.3}>
       Finance your websites and apps with 
       {customLogo && (
         <NextImage
