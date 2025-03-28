@@ -13,7 +13,7 @@ export function Welcome({ darkMode, customLogo }: { darkMode: boolean | null; cu
   return (
     <div style={{ backgroundColor: theme.colors.background[0] }}>
       {!customLogo && (
-        <Flex justify="center" align="center" direction="row" wrap="nowrap" bg={theme.colors.background[0]}>
+        <Flex justify="center" align="center" direction="row" wrap="nowrap" bg={theme.colors.background[0]} pt="md">
         <NextImage
           src={assetAlleyLogo}
           alt="Logo"

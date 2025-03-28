@@ -7,7 +7,7 @@ import { JumboTitle } from '../JumboTitle';
 export function MatWelcome() {
   return (
     <>
-      <Flex justify="center" align="center" direction="row" wrap="nowrap">
+      <Flex justify="center" align="center" direction="row" wrap="nowrap" pt="md">
         <NextImage
           src={image}
           alt="Logo"
