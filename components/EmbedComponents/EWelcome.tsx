@@ -4,11 +4,23 @@ import lightLogo from '../../public/AA_Light_Logo.svg';
 import NextImage from 'next/image';
 import { JumboTitle } from '../JumboTitle';
 
-export function Welcome({ darkMode, customLogo }: { darkMode: boolean | null; customLogo: boolean | null }) {
+export function Welcome({ darkMode, customLogo, businessType }: { darkMode: boolean | null; customLogo: boolean | null, businessType: string | null }) {
   const theme = useMantineTheme();
+  let text = "Warning Missing Business Type. SET aaBusinessType to website, shopfit or materials"
 
   // Determine which logo to use for the first NextImage
   const assetAlleyLogo = darkMode ? darkLogo : lightLogo;
+  switch (businessType) {
+    case 'website':
+      text = 'websites and apps'
+      break;
+    case 'shopfit':
+      text = 'shop fitout'
+      break;
+    case 'materials':
+      text = 'building materials'
+      break;
+  }
 
   return (
     <div style={{ backgroundColor: theme.colors.background[0] }}>
@@ -23,13 +35,13 @@ export function Welcome({ darkMode, customLogo }: { darkMode: boolean | null; cu
     )}
       {!customLogo && (
             <JumboTitle c={theme.colors.header[0]} ta="center" fz="xs" maw={580} mx="auto" pt="xl" lh={1.3}>
-            Finance your websites and apps
+            Finance your {text}
           </JumboTitle>
       )}
 
       {customLogo && (
       <JumboTitle c={theme.colors.header[0]} ta="center" fz="xs" maw={580} mx="auto" pt="xl" lh={1.3}>
-      Finance your websites and apps with 
+      Finance your {text} with 
       {customLogo && (
         <NextImage
           src={assetAlleyLogo}
