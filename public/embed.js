@@ -19,7 +19,4 @@
     Object.assign(iframe.style, window.assetAlleyConfig.styles);
 }
   document.currentScript.parentNode.insertBefore(iframe, document.currentScript);
-  const label = document.createElement("label");
-  label.innerHTML = params;
-  document.currentScript.parentNode.insertBefore(label, document.currentScript);
 })();
