@@ -52,7 +52,11 @@ export function Faq01({ businessType, customLogo }: { businessType: string | nul
     case 'shopfit':
       text = 'Shop Fitout';
       break;
-    case 'Building Materials':
+    case 'materials':
+      text = 'Building Materials'
+      break;
+    case 'software':
+      text = 'Software'
       break;
     default:
       text = 'ERROR: Missing aaBusinessType';
