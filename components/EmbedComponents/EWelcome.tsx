@@ -6,7 +6,7 @@ import { JumboTitle } from '../JumboTitle';
 
 export function Welcome({ darkMode, customLogo, businessType }: { darkMode: boolean | null; customLogo: boolean | null, businessType: string | null }) {
   const theme = useMantineTheme();
-  let text = "Warning Missing Business Type. SET aaBusinessType to website, shopfit or materials"
+  let text = "Warning Missing Business Type. SET aaBusinessType to website, shopfit, software or materials"
 
   // Determine which logo to use for the first NextImage
   const assetAlleyLogo = darkMode ? darkLogo : lightLogo;
@@ -19,6 +19,9 @@ export function Welcome({ darkMode, customLogo, businessType }: { darkMode: bool
       break;
     case 'materials':
       text = 'building materials'
+      break;
+    case 'software':
+      text = 'Software'
       break;
   }
 
