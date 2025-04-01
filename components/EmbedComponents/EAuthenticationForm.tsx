@@ -220,7 +220,7 @@ export function AuthenticationForm({
                 leftSection={icon} 
                 clearable 
                 mt="md" 
-                label="Optional: Upload your invoice" 
+                label="Optional: Upload your invoice to help us with your application" 
                 placeholder="Choose file"
                 accept=".jpg,.png,.pdf"
                 onChange={setFile} 

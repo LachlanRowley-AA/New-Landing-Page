@@ -153,7 +153,7 @@ export function AuthenticationForm({
               <TextInput mt="md" required placeholder="Your email" label="Email" leftSection={<IconAt size={16} stroke={1.5} />} {...form.getInputProps('email')} />
               <Textarea mt="md" placeholder="Details about your enquiry" label="Comments" {...form.getInputProps('comments')} styles={{input : { height: '80px' }}} />
               
-              <FileInput leftSection={icon} clearable mt="md" label="Optional: Upload your invoice" placeholder="Choose file" accept=".jpg,.png,.pdf" onChange={setFile} />
+              <FileInput leftSection={icon} clearable mt="md" label="Optional: Upload your invoice to help us with your application" placeholder="Choose file" accept=".jpg,.png,.pdf" onChange={setFile} />
               
               <Checkbox mt="xl" label="I agree to be contacted by a member of Asset Alley" {...form.getInputProps('contact', { type: 'checkbox' })} />
 
