@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { IconAt, IconHash, IconCircleCheckFilled } from '@tabler/icons-react';
+import { IconAt, IconHash, IconCircleCheckFilled, IconPaperclip } from '@tabler/icons-react';
 import {
   Button,
   Checkbox,
@@ -12,7 +12,8 @@ import {
   TextInput,
   Textarea,
   Container,
-  Flex
+  Flex,
+  FileInput
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { JumboTitle } from './JumboTitle';
@@ -20,7 +21,8 @@ import { createClient } from '@supabase/supabase-js';
 import validator from 'validator';
 import NextImage from 'next/image';
 
-const supabase = createClient("https://hfsysehrdshrbtmjsgcx.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhmc3lzZWhyZHNocmJ0bWpzZ2N4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk0MjMyMzIsImV4cCI6MjA1NDk5OTIzMn0.S2q4Oza4s70afQlODHW-G3OUWIGWxOJ2nOxIzZJ8IIk")
+
+const supabase = createClient("https://hfsysehrdshrbtmjsgcx.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhmc3lzZWhyZHNocmJ0bWpzZ2N4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk0MjMyMzIsImV4cCI6MjA1NDk5OTIzMn0.S2q4Oza4s70afQlODHW-G3OUWIGWxOJ2nOxIzZJ8IIk");
 
 export interface AuthenticationFormProps {
   noShadow?: boolean;
@@ -38,6 +40,9 @@ export function AuthenticationForm({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+
+  const icon = <IconPaperclip size={18} stroke={1.5} />;
 
   const form = useForm({
     initialValues: {
@@ -55,7 +60,7 @@ export function AuthenticationForm({
   useEffect(() => {
     const windowUrl = window.location.search;
     const params = new URLSearchParams(windowUrl);
-    setReferral(params.get('ref')); // Update state with referral param
+    setReferral(params.get('ref'));
   }, []);
 
   const handleSubmit = async () => {
@@ -107,7 +112,7 @@ export function AuthenticationForm({
         phone: form.values.phone,
         email: form.values.email,
         referral: ref,
-        comments: form.values.comments  
+        comments: form.values.comments
       });
   }
 
@@ -141,63 +146,22 @@ export function AuthenticationForm({
             <form onSubmit={form.onSubmit(handleSubmit)}>
               <LoadingOverlay visible={loading} />
               <Group grow>
-                <TextInput
-                  data-autofocus
-                  required
-                  placeholder="Your first name"
-                  label="First name"
-                  {...form.getInputProps('firstName')}
-                />
-
-                <TextInput
-                  required
-                  placeholder="Your last name"
-                  label="Last name"
-                  {...form.getInputProps('lastName')}
-                />
+                <TextInput required placeholder="Your first name" label="First name" {...form.getInputProps('firstName')} />
+                <TextInput required placeholder="Your last name" label="Last name" {...form.getInputProps('lastName')} />
               </Group>
-              <TextInput
-                mt="md"
-                required
-                placeholder="Your phone Number"
-                label="Phone"
-                leftSection={<IconHash size={16} stroke={1.5} />}
-                {...form.getInputProps('phone')}
-              />
-              <TextInput
-                mt="md"
-                required
-                placeholder="Your email"
-                label="Email"
-                leftSection={<IconAt size={16} stroke={1.5} />}
-                {...form.getInputProps('email')}
-              />
-                <Textarea
-                mt="md"
-                placeholder="Details about your enquiry"
-                label="Comments"
-                {...form.getInputProps('comments')}
-                styles={{input : {
-                  height: '80px'
-                }}}
-              />
-              <Checkbox
-                mt="xl"
-                label="I agree to be contacted by a member of Asset Alley"
-                {...form.getInputProps('contact', { type: 'checkbox' })}
-              />
+              <TextInput mt="md" required placeholder="Your phone Number" label="Phone" leftSection={<IconHash size={16} stroke={1.5} />} {...form.getInputProps('phone')} />
+              <TextInput mt="md" required placeholder="Your email" label="Email" leftSection={<IconAt size={16} stroke={1.5} />} {...form.getInputProps('email')} />
+              <Textarea mt="md" placeholder="Details about your enquiry" label="Comments" {...form.getInputProps('comments')} styles={{input : { height: '80px' }}} />
+              
+              <FileInput leftSection={icon} clearable mt="md" label="Optional: Upload your invoice" placeholder="Choose file" accept=".jpg,.png,.pdf" onChange={setFile} />
+              
+              <Checkbox mt="xl" label="I agree to be contacted by a member of Asset Alley" {...form.getInputProps('contact', { type: 'checkbox' })} />
 
-              {error && (
-                <Text c="red" size="sm" mt="sm">
-                  {error}
-                </Text>
-              )}
+              {error && <Text c="red" size="sm" mt="sm">{error}</Text>}
 
               {!noSubmit && (
                 <Group justify="center" mt="xl">
-                  <Button color="#01E194" type="submit">
-                    Submit
-                  </Button>
+                  <Button color="#01E194" type="submit">Submit</Button>
                 </Group>
               )}
             </form>
@@ -205,15 +169,8 @@ export function AuthenticationForm({
         </Paper>
       </Flex>
       <Flex justify="center" mt="md">
-        <NextImage
-          src='/bba.png'
-          width={150}
-          height={150}
-          objectPosition='center'        
-          alt='Better Business Awards Icon'
-        />
+        <NextImage src='/bba.png' width={150} height={150} objectPosition='center' alt='Better Business Awards Icon' />
       </Flex>
     </Container>
-    
   );
 }
