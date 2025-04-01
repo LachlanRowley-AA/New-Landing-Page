@@ -30,7 +30,7 @@ export default function Main() {
   // State to store URL parameters with type definition
   const [params, setParams] = useState<Params>({
     compact: false,
-    businessType: '',
+    businessType: 'website',
     customLogo: false,
     darkMode: true,
     backgroundColor: '#242424',
@@ -49,7 +49,7 @@ export default function Main() {
     function getUrlParams(): Params {
       if (typeof window === 'undefined') {return {
         compact: false,
-        businessType: '',
+        businessType: 'website',
         customLogo: false,
         darkMode: true,
         backgroundColor: '#242424',
@@ -67,7 +67,7 @@ export default function Main() {
       return {
         compact: params.get('aaCompact') === 'true',
         darkMode: params.get('aaDarkLogo') === 'true',
-        businessType: params.get('aaBusinessType') || '',
+        businessType: params.get('aaBusinessType') || 'website',
         customLogo: params.get('aaCustomLogo') === 'true',
         backgroundColor: params.get('aaBackgroundColor') || '#242424',
         headerTextColor: params.get('aaHeaderColor') || '#c9c9c9',
