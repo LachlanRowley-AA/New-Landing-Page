@@ -1,3 +1,5 @@
+"use client";
+
 import { Logos03 } from '@/components/AnimatedLogos';
 import { Welcome } from '../components/Welcome/Welcome';
 import { Faq01 } from '@/components/Faq';
@@ -7,9 +9,18 @@ import { ColorSchemeButton } from '@/components/ColorScheme';
 import { Hero02 } from '@/components/Requirements';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { useEffect } from 'react';
+import { gtmPageView } from '@/lib/gtm';
 
 
 export default function Shopfit() {
+    useEffect(() => {
+        gtmPageView({
+            page: 'Websites',
+            title: 'Websites',
+            url: window.location.href,
+        });
+    })
+
     return (
     <>
       <ColorSchemeScript forceColorScheme="dark" />
