@@ -13,13 +13,13 @@ import { gtmPageView } from '@/lib/gtm';
 
 
 export default function Shopfit() {
-    useEffect(() => {
-        gtmPageView({
-            page: 'Websites',
-            title: 'Websites',
-            url: window.location.href,
-        });
-    })
+    // useEffect(() => {
+    //     gtmPageView({
+    //         page: 'Websites',
+    //         title: 'Websites',
+    //         url: window.location.href,
+    //     });
+    // })
 
     return (
     <>
