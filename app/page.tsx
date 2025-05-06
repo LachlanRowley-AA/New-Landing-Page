@@ -7,6 +7,8 @@ import { ColorSchemeButton } from '@/components/ColorScheme';
 import { Hero02 } from '@/components/Requirements';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { useEffect } from 'react';
+import { gtmPageView } from '@/lib/gtm';
+import { Footer01 } from '@/components/footer/footer';
 
 
 export default function Shopfit() {
@@ -19,6 +21,7 @@ export default function Shopfit() {
       <Faq01 />
       <Hero02 />
       <AuthenticationForm />
+      <Footer01 />
       </MantineProvider>
     </>
   );
