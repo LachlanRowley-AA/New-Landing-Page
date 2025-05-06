@@ -75,7 +75,7 @@ const StatCell = ({
     payout,
     ...boxProps
   }: BoxProps & { startValue: AnimatedCounterProps['startValue']; endValue: AnimatedCounterProps['endValue']; title: string; 
-    description: string; payout: string; payoutStartValue: AnimatedCounterProps['startValue']; payoutEndValue: AnimatedCounterProps['payoutEndValue'] }) => (
+    description: string; payout: string; payoutStartValue: AnimatedCounterProps['startValue']; payoutEndValue: AnimatedCounterProps['EndValue'] }) => (
     <motion.div
       initial={{ opacity: 0.0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -106,6 +106,7 @@ export const Calculator = () => {
         lg: 'calc(var(--mantine-spacing-lg) * 1)',
       }}
       fluid
+      style={ { margin: '0px', padding: '0px' }}
     >
       <Container size="md">
         <Stack align="center" gap="xs">
@@ -177,7 +178,7 @@ export const Calculator = () => {
         </Grid>
       </Container>
 
-      <Container fluid style = {{ margin: '10px', padding: '0px' }}
+      <Container fluid style = {{ marginBottom: '40px', padding: '0px' }}
         bg="var(--mantine-color-black)">
         <JumboTitle ta="center" fz="xs" order={1}  fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
           Payout Options
