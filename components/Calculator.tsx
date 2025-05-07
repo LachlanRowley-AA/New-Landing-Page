@@ -103,10 +103,10 @@ export const Calculator = () => {
       py={{
         base: 'calc(var(--mantine-spacing-lg) * 3)',
         xs: 'calc(var(--mantine-spacing-lg) * 4)',
-        lg: 'calc(var(--mantine-spacing-lg) * 1)',
+        lg: 'calc(var(--mantine-spacing-lg) * 2)',
       }}
       fluid
-      style={ { margin: '0px', padding: '0px' }}
+      style={ { marginTop: '30px', padding: '0px' }}
     >
       <Container size="md">
         <Stack align="center" gap="xs">
