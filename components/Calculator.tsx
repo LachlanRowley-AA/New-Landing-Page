@@ -83,7 +83,7 @@ const StatCell = ({
       viewport={{ once: true }}
     >
       <Box {...boxProps}>
-        <AnimatedCounter ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
+        <AnimatedCounter c="#01E194" ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
         <Text fz="lg" inline ta="center" c="white">
           {description}
         </Text>
