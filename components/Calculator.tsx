@@ -153,9 +153,13 @@ export const Calculator = () => {
         <Stack>
           <TextInput
             label="Loan Amount"
-            type="number"
-            value={baseValue}
-            onChange={(event) => setBaseValue(Math.max(0, Number(event.currentTarget.value)))}
+            type="text"
+            value={baseValue.toLocaleString()}
+            onChange={(event) => {
+              const rawValue = event.currentTarget.value.replace(/,/g, ''); // remove commas
+              const numericValue = Math.max(0, Number(rawValue));
+              setBaseValue(numericValue);
+            }}
             variant="unstyled"
             leftSection="$"
             size='xl'
