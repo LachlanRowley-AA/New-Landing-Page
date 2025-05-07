@@ -83,10 +83,15 @@ const StatCell = ({
       viewport={{ once: true }}
     >
       <Box {...boxProps}>
-        <AnimatedCounter c="#01E194" ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
-        <Text fz="lg" inline ta="center" c="white">
-          {description}
-        </Text>
+        <AnimatedCounter c="white" ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
+        <Group justify="center" gap={5}>
+          <Text c="#01E194" fz="lg">
+            Total Interest Cost
+          </Text>
+          <Text fz="lg" c="white">
+            {description}
+          </Text>
+        </Group>
       </Box>
     </motion.div>
   );
@@ -194,7 +199,7 @@ export const Calculator = () => {
                 payoutStartValue={baseValue}
                 payoutEndValue={calculateRemainingPrincipal(baseValue, 13)}
                 title="3 Month Balance"
-                description="Total Interest Cost after 3 months if paid out in full"
+                description="after 3 months if paid out in full"
                 payout='Principal Remaining'
               />
             </Grid.Col>
@@ -205,7 +210,7 @@ export const Calculator = () => {
                 payoutStartValue={baseValue}
                 payoutEndValue={calculateRemainingPrincipal(baseValue, 26)}
                 title="6 Month Balance"
-                description="Total Interest Cost after 6 months if paid out in full"
+                description="after 6 months if paid out in full"
                 payout='Principal Remaining'
               />
             </Grid.Col>
@@ -216,7 +221,7 @@ export const Calculator = () => {
                 payoutStartValue={baseValue}
                 payoutEndValue={calculateRemainingPrincipal(baseValue, 52)}
                 title="12 Month Balance"
-                description="Total Interest Cost after 12 months if paid out in full"
+                description="after 12 months if paid out in full"
                 payout='Principal Remaining'
               />
             </Grid.Col>
