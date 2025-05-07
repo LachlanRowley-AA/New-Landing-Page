@@ -178,7 +178,7 @@ export const Calculator = () => {
         </Grid>
       </Container>
 
-      <Container fluid style = {{ marginBottom: '40px', padding: '0px' }}
+      <Container fluid style = {{ marginTop: '20px', paddingBottom: '40px' }}
         bg="var(--mantine-color-black)">
         <JumboTitle ta="center" fz="xs" order={1}  fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
           Payout Options
@@ -186,8 +186,8 @@ export const Calculator = () => {
         <JumboTitle ta="center" fz="xxs" order={3}  fw="bold" c="#01E194" mt="xl" mb="xl" textWrap='balance'>
               Save money with no penalties for early payout 
         </JumboTitle>
-        <Grid gutter="calc(var(--mantine-spacing-lg) * 14)" align="center" mx="xl">
-            <Grid.Col span={{ base: 4, md: 4 }}> {/* 3 month payout */}
+        <Grid gutter="calc(var(--mantine-spacing-lg) * 1)" align="center" mx="xl">
+            <Grid.Col span={{ base: 12, md: 4 }}> {/* 3 month payout */}
               <PayoutCell
                 startValue={baseValue}
                 endValue={calculateInterestCost(baseValue, 13)} // ~13 weeks in 3 months
@@ -198,7 +198,7 @@ export const Calculator = () => {
                 payout='Principal Remaining'
               />
             </Grid.Col>
-            <Grid.Col span={{ base: 4, md: 4 }}> {/* 6 month payout */}
+            <Grid.Col span={{ base: 12, md: 4 }}> {/* 6 month payout */}
               <PayoutCell
                 startValue={baseValue}
                 endValue={calculateInterestCost(baseValue, 26)}
@@ -209,7 +209,7 @@ export const Calculator = () => {
                 payout='Principal Remaining'
               />
             </Grid.Col>
-            <Grid.Col span={{ base: 4, md: 4 }}> {/* 12 month payout */}
+            <Grid.Col span={{ base: 12, md: 4 }}> {/* 12 month payout */}
               <PayoutCell
                 startValue={baseValue}
                 endValue={calculateInterestCost(baseValue, 52)}

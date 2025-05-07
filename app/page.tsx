@@ -6,7 +6,6 @@ import { AuthenticationForm } from '@/components/AuthenticationForm';
 import { ColorSchemeButton } from '@/components/ColorScheme';
 import { Hero02 } from '@/components/Requirements';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import { useEffect } from 'react';
 import { gtmPageView } from '@/lib/gtm';
 import { Footer01 } from '@/components/footer/footer';
 
