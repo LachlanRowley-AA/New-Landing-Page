@@ -37,9 +37,9 @@ const FAQ: Faq[] = [
     question: "Repay Anytime Without Penalty",
     answer:
     <>
-      'Repay anytime without penalties and reuse the
+      Repay anytime without penalties and reuse the
 facility for business costs that traditional lenders won’t
-finance (materials, inventory, software, fit-out, etc.)'</>
+finance (materials, inventory, software, fit-out, etc.)</>
   },
   {
     value: 'charge',
@@ -51,8 +51,8 @@ finance (materials, inventory, software, fit-out, etc.)'</>
     value: 'security',
     question: 'No Additional Security Needed',
     answer:
-    <>  'No additional security required (personal property or
-assets within the business)'</>
+    <>  No additional security required (personal property or
+assets within the business)</>
   },
   {
     value: 'cost',
