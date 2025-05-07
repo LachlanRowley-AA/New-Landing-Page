@@ -5,6 +5,7 @@ import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/c
 import { theme } from '../theme';
 import Script from 'next/script';
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleTagManager } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head data-mantine-color-scheme="dark">
+        <GoogleTagManager gtmId='GTM-NFL2BXL4'/>
         <ColorSchemeScript forceColorScheme='dark'/>
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta

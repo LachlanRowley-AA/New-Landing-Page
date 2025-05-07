@@ -3,3 +3,8 @@
         color: rgba(167, 167, 167, 0.884)
     }
 }
+.InputPlaceholder {
+    &::placeholder{
+        color: rgba(167, 167, 167, 0.884)
+    }
+}

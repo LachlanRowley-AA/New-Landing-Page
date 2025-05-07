@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react';
 // Define the type for the URL parameters state
 type Params = {
   compact: boolean;
+  businessType: string;
   customLogo: boolean;
   darkMode: boolean;
   backgroundColor: string;
@@ -29,6 +30,7 @@ export default function Main() {
   // State to store URL parameters with type definition
   const [params, setParams] = useState<Params>({
     compact: false,
+    businessType: 'website',
     customLogo: false,
     darkMode: true,
     backgroundColor: '#242424',
@@ -47,6 +49,7 @@ export default function Main() {
     function getUrlParams(): Params {
       if (typeof window === 'undefined') {return {
         compact: false,
+        businessType: 'website',
         customLogo: false,
         darkMode: true,
         backgroundColor: '#242424',
@@ -64,6 +67,7 @@ export default function Main() {
       return {
         compact: params.get('aaCompact') === 'true',
         darkMode: params.get('aaDarkLogo') === 'true',
+        businessType: params.get('aaBusinessType') || 'website',
         customLogo: params.get('aaCustomLogo') === 'true',
         backgroundColor: params.get('aaBackgroundColor') || '#242424',
         headerTextColor: params.get('aaHeaderColor') || '#c9c9c9',
@@ -114,9 +118,9 @@ export default function Main() {
 
   return (
     <MantineProvider theme={theme}>
-      <Welcome darkMode={params.darkMode} customLogo={params.customLogo} />
+      <Welcome darkMode={params.darkMode} customLogo={params.customLogo} businessType={params.businessType} />
       <Calculator showWeekly={params.calculatorWeekly} showMonthly={params.calculatorMonthly}/>
-      {params.compact && <Faq01 />}
+      {!params.compact && <Faq01 businessType={params.businessType} customLogo={params.customLogo} />}
       <Hero02 />
       <AuthenticationForm />
     </MantineProvider>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { IconAt, IconHash, IconCircleCheckFilled } from '@tabler/icons-react';
+import { IconAt, IconHash, IconCircleCheckFilled, IconPaperclip } from '@tabler/icons-react';
 import {
   Button,
   Checkbox,
@@ -13,7 +13,8 @@ import {
   Textarea,
   Container,
   Flex,
-  useMantineTheme
+  useMantineTheme,
+  FileInput
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { JumboTitle } from '../JumboTitle';
@@ -40,6 +41,9 @@ export function AuthenticationForm({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+
+  const icon = <IconPaperclip size={18} stroke={1.5} />;
 
   const form = useForm({
     initialValues: {
@@ -212,6 +216,23 @@ export function AuthenticationForm({
                 classNames={{ input: classes.textInput}}
                 {...form.getInputProps('comments')}
               />
+              <FileInput 
+                leftSection={icon} 
+                clearable 
+                mt="md" 
+                label="Optional: Upload your invoice to help us with your application" 
+                placeholder="Choose file"
+                accept=".jpg,.png,.pdf"
+                onChange={setFile} 
+                
+                styles = {{
+                  input: { color: theme.colors.secondary[0], backgroundColor: theme.colors.header[0] },
+                  label: { color: theme.colors.secondary[0] },
+                  section: { color: theme.colors.secondary[0] },
+                  placeholder: { color: "rgba(167, 167, 167, 0.884)" }
+                }}
+                />
+
               <Checkbox
                 mt="xl"
                 label="I agree to be contacted by a member of Asset Alley"
