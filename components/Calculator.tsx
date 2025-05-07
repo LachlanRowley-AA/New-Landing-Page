@@ -129,7 +129,7 @@ export const Calculator = () => {
               <NextImage
                 src={icon}
                 alt=""
-                style={{ height: '100%', maxHeight: '15vh' ,width: 'auto', maxWidth: '15vw' }}
+                style={{ height: '100%', maxHeight: '15vh' ,width: '100%', maxWidth: '15vw' }}
               />
             </Grid.Col>
             <Grid.Col span={8}>
@@ -141,7 +141,7 @@ export const Calculator = () => {
             <NextImage
               src={hand}
               alt=""
-              style={{ height: '100%', maxHeight: '20vh' ,width: 'auto', maxWidth: '15vw' }}
+              style={{ height: '100%', maxHeight: '20vh' ,width: '100%', maxWidth: '15vw' }}
             />
             </Grid.Col>
           </Grid>
