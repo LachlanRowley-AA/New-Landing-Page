@@ -75,7 +75,7 @@ const StatCell = ({
     payout,
     ...boxProps
   }: BoxProps & { startValue: AnimatedCounterProps['startValue']; endValue: AnimatedCounterProps['endValue']; title: string; 
-    description: string; payout: string; payoutStartValue: AnimatedCounterProps['startValue']; payoutEndValue: AnimatedCounterProps['EndValue'] }) => (
+    description: string; payout: string; payoutStartValue: AnimatedCounterProps['startValue']; payoutEndValue: AnimatedCounterProps['endValue'] }) => (
     <motion.div
       initial={{ opacity: 0.0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
