@@ -182,7 +182,7 @@ export const Calculator = () => {
         </motion.div>
         <Grid gutter="calc(var(--mantine-spacing-lg) * 4)" align="center" mx="xl">
           <Grid.Col span={{ base: 12, md: 12 }}>
-            <StatCell startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
+            <StatCell startValue={baseValue} endValue={weeklyRepayment} title="Weekly Repayment" description="Weekly repayment" />
           </Grid.Col>
         </Grid>
       </Container>
