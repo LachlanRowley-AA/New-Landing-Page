@@ -14,8 +14,8 @@ export function ITWelcome() {
           style={{ height: '100%', width: 'auto', maxWidth: '80vw' }}
         />
       </Flex>
-      <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl">
-        Finance your business' IT Hardware
+      <JumboTitle c="#01E194" ta="center" fz="xs" maw={560} mx="auto" mt="xl">
+        Finance your company's IT Hardware
       </JumboTitle>
     </>
   );
