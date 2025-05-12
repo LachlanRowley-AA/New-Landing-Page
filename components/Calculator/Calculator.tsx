@@ -8,6 +8,9 @@ import { useState } from 'react';
 import hand from '../../assets/hand.svg';
 import icon from '../../assets/stair.svg'
 import NextImage  from 'next/image';
+import dynamic from 'next/dynamic';
+import 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 
 const INTEREST_RATE = 15.95 / 100; // 15.95% annual interest
@@ -96,6 +99,86 @@ const StatCell = ({
     </motion.div>
   );
 
+
+const testFunc = () => {
+  return 10;
+}
+
+const Bar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Bar), {
+  ssr: false,
+});
+const LineChart = ({ loanAmount }: { loanAmount: number }) => {
+  const interestCosts = [
+    calculateInterestCost(loanAmount, 13).toFixed(2), // 3 months
+    calculateInterestCost(loanAmount, 26).toFixed(2), // 6 months
+    calculateInterestCost(loanAmount, 39).toFixed(2), // 9 months
+    calculateInterestCost(loanAmount, 52).toFixed(2), // 12 months
+    calculateInterestCost(loanAmount, 78).toFixed(2), // 18 months
+    calculateInterestCost(loanAmount, 104).toFixed(2), // 24 months
+  ];
+
+  const data = {
+    labels: ['1 month', '2 months', '3 months', '4 months', '5 months', '6 months'],
+    datasets: [
+      {
+        label: 'Total Interest Cost',
+        data: interestCosts,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.3)',
+          'rgba(54, 162, 235, 0.3)',
+          'rgba(255, 206, 86, 0.3)',
+          'rgba(75, 192, 192, 0.3)',
+          'rgba(153, 102, 255, 0.3)',
+          'rgba(255, 159, 64, 0.3)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options= {
+    indexAxis: "y", 
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        }, 
+        ticks: { 
+          callback: function(value, index, ticks) {
+            return '$' + value
+          }
+        }
+      },
+    },
+    plugins: {
+      datalabels: {
+        formatter: function(value, context) {
+          return '$' + value;
+        }
+      },
+    }
+  };
+
+  return (
+    <div style={{ width: '700px', height: '700px' }}>
+      <h1 style={{ color: 'black' }}>Total Interest Paid if Paid Out Early</h1>
+      <Bar data={data} plugins={[ChartDataLabels]} options={options} 
+      />
+    </div>
+  );
+};
+
+
+
+
 export const Calculator = () => {
   const [baseValue, setBaseValue] = useState(0);
   const weeklyRepayment = calculateWeeklyRepayment(baseValue);
@@ -111,7 +194,7 @@ export const Calculator = () => {
         lg: 'calc(var(--mantine-spacing-lg) * 2)',
       }}
       fluid
-      style={ { marginTop: '30px', padding: '0px' }}
+      style={ { marginTop: '30px', paddingTop: '20px' }}
     >
       <Container size="md">
         <Stack align="center" gap="xs">
@@ -226,6 +309,7 @@ export const Calculator = () => {
             </Grid.Col>
           </Grid>
         </Container>
+        <LineChart loanAmount={baseValue}/>
     </Container>
   );
 };
