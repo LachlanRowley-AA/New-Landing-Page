@@ -83,10 +83,15 @@ const StatCell = ({
       viewport={{ once: true }}
     >
       <Box {...boxProps}>
-        <AnimatedCounter c="#01E194" ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
-        <Text fz="lg" inline ta="center" c="white">
-          {description}
-        </Text>
+        <AnimatedCounter c="white" ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
+        <Group justify="center" gap={5}>
+          <Text c="#01E194" fz="lg">
+            Total Interest Cost
+          </Text>
+          <Text fz="lg" c="white">
+            {description}
+          </Text>
+        </Group>
       </Box>
     </motion.div>
   );
@@ -141,9 +146,13 @@ export const Calculator = () => {
         <Stack>
           <TextInput
             label="Loan Amount"
-            type="number"
-            value={baseValue}
-            onChange={(event) => setBaseValue(Math.max(0, Number(event.currentTarget.value)))}
+            type="text"
+            value={baseValue.toLocaleString()}
+            onChange={(event) => {
+              const rawValue = event.currentTarget.value.replace(/,/g, ''); // remove commas
+              const numericValue = Math.max(0, Number(rawValue));
+              setBaseValue(numericValue);
+            }}
             variant="unstyled"
             leftSection="$"
             size='xl'
@@ -168,7 +177,7 @@ export const Calculator = () => {
         </motion.div>
         <Grid gutter="calc(var(--mantine-spacing-lg) * 4)" align="center" mx="xl">
           <Grid.Col span={{ base: 12, md: 12 }}>
-            <StatCell startValue={baseValue} endValue={weeklyRepayment} title="37 million" description="Weekly repayment" />
+            <StatCell startValue={baseValue} endValue={weeklyRepayment} title="Weekly Repayment" description="Weekly repayment" />
           </Grid.Col>
         </Grid>
       </Container>
@@ -189,7 +198,7 @@ export const Calculator = () => {
                 payoutStartValue={baseValue}
                 payoutEndValue={calculateRemainingPrincipal(baseValue, 13)}
                 title="3 Month Balance"
-                description="Total Interest Cost after 3 months if paid out in full"
+                description="after 3 months if paid out in full"
                 payout='Principal Remaining'
               />
             </Grid.Col>
@@ -200,7 +209,7 @@ export const Calculator = () => {
                 payoutStartValue={baseValue}
                 payoutEndValue={calculateRemainingPrincipal(baseValue, 26)}
                 title="6 Month Balance"
-                description="Total Interest Cost after 6 months if paid out in full"
+                description="after 6 months if paid out in full"
                 payout='Principal Remaining'
               />
             </Grid.Col>
@@ -211,7 +220,7 @@ export const Calculator = () => {
                 payoutStartValue={baseValue}
                 payoutEndValue={calculateRemainingPrincipal(baseValue, 52)}
                 title="12 Month Balance"
-                description="Total Interest Cost after 12 months if paid out in full"
+                description="after 12 months if paid out in full"
                 payout='Principal Remaining'
               />
             </Grid.Col>
