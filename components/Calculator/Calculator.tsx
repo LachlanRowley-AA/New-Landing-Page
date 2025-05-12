@@ -3,7 +3,7 @@
 import { AnimatedCounter, AnimatedCounterProps } from '../AnimatedCounter/AnimatedCounter';
 import { JumboTitle } from '../JumboTitle/JumboTitle';
 import { Badge, Box, BoxProps, Container, Grid, Stack, Text, rem, TextInput, Slider, Group } from '@mantine/core';
-import { motion } from 'motion/react';
+import { color, motion } from 'motion/react';
 import { useState } from 'react';
 import hand from '../../assets/hand.svg';
 import icon from '../../assets/stair.svg'
@@ -109,12 +109,12 @@ const Bar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Bar), {
 });
 const LineChart = ({ loanAmount }: { loanAmount: number }) => {
   const interestCosts = [
+    calculateInterestCost(loanAmount, 4.3).toFixed(2), // 1 months
+    calculateInterestCost(loanAmount, 8.6).toFixed(2), // 2 months
     calculateInterestCost(loanAmount, 13).toFixed(2), // 3 months
+    calculateInterestCost(loanAmount, 17.3).toFixed(2), // 4 months
+    calculateInterestCost(loanAmount, 21.6).toFixed(2), // 5 months
     calculateInterestCost(loanAmount, 26).toFixed(2), // 6 months
-    calculateInterestCost(loanAmount, 39).toFixed(2), // 9 months
-    calculateInterestCost(loanAmount, 52).toFixed(2), // 12 months
-    calculateInterestCost(loanAmount, 78).toFixed(2), // 18 months
-    calculateInterestCost(loanAmount, 104).toFixed(2), // 24 months
   ];
 
   const data = {
@@ -124,20 +124,20 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
         label: 'Total Interest Cost',
         data: interestCosts,
         backgroundColor: [
-          'rgba(255, 99, 132, 0.3)',
-          'rgba(54, 162, 235, 0.3)',
-          'rgba(255, 206, 86, 0.3)',
-          'rgba(75, 192, 192, 0.3)',
-          'rgba(153, 102, 255, 0.3)',
-          'rgba(255, 159, 64, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
         ],
         borderWidth: 1,
       },
@@ -145,31 +145,48 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
   };
 
   const options= {
-    indexAxis: "y", 
+    indexAxis: "y",
     scales: {
       x: {
         grid: {
           display: false,
-        }, 
+        },
         ticks: { 
+          display: false,
           callback: function(value, index, ticks) {
             return '$' + value
           }
         }
       },
+      y: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: 'white',
+          font: {
+            size: 20,
+          },
+        }
+      }
     },
     plugins: {
       datalabels: {
+        color: 'white',
         formatter: function(value, context) {
-          return '$' + value;
+          return '$' + Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
       },
+      legend: {
+        display: false,
+      },
+  
     }
   };
 
   return (
-    <div style={{ width: '700px', height: '700px' }}>
-      <h1 style={{ color: 'black' }}>Total Interest Paid if Paid Out Early</h1>
+    <div style={{ width: 'auto', height: 'auto', backgroundColor: 'black', paddingLeft: '2vw'}}>
+      <h1 style={{ color: '#01E194', textAlign: 'center' }}>Total Interest Paid if Paid Out Early</h1>
       <Bar data={data} plugins={[ChartDataLabels]} options={options} 
       />
     </div>
