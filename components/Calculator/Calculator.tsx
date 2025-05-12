@@ -153,9 +153,6 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
         },
         ticks: { 
           display: false,
-          callback: function(value, index, ticks) {
-            return '$' + value
-          }
         }
       },
       y: {
@@ -266,8 +263,8 @@ export const Calculator = () => {
           />
           <Slider
             label="Loan Amount"
-            min={0}
-            max={200000}
+            min={5000}
+            max={75000}
             step={1000}
             value={baseValue}
             onChange={(value) => setBaseValue(Math.max(0, value))}
