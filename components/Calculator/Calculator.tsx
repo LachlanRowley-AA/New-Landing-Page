@@ -1,12 +1,12 @@
 'use client';
 
-import { AnimatedCounter, AnimatedCounterProps } from './AnimatedCounter';
-import { JumboTitle } from './JumboTitle';
+import { AnimatedCounter, AnimatedCounterProps } from '../AnimatedCounter/AnimatedCounter';
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 import { Badge, Box, BoxProps, Container, Grid, Stack, Text, rem, TextInput, Slider, Group } from '@mantine/core';
 import { motion } from 'motion/react';
 import { useState } from 'react';
-import hand from '../assets/hand.svg';
-import icon from '../assets/stair.svg'
+import hand from '../../assets/hand.svg';
+import icon from '../../assets/stair.svg'
 import NextImage  from 'next/image';
 
 
@@ -57,8 +57,8 @@ const StatCell = ({
       viewport={{ once: true }}
     >
       <Box {...boxProps}>
-        <AnimatedCounter ta="center" fz={rem(64)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
-        <Text fz="lg" inline ta="center" c="dimmed">
+        <AnimatedCounter ta="center" fz={rem(64)} fw="bold" c="black" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
+        <Text fz="lg" inline ta="center" c="black">
           {description}
         </Text>
       </Box>
@@ -99,7 +99,7 @@ export const Calculator = () => {
 
   return (
     <Container
-      bg="var(--mantine-color-body)"
+      bg="#D2D3D5"
       py={{
         base: 'calc(var(--mantine-spacing-lg) * 3)',
         xs: 'calc(var(--mantine-spacing-lg) * 4)',
@@ -116,28 +116,21 @@ export const Calculator = () => {
             transition={{ duration: 0.8, ease: 'easeInOut' }}
             viewport={{ once: true }}
           >
-          <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg'>
+          <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c="black">
               Calculate your estimated weekly repayment
           </JumboTitle>
           <Grid align="center" visibleFrom='lg'>
             <Grid.Col span={2}>
               <NextImage
-                src={icon}
+                src={hand}
                 alt=""
-                style={{ height: '100%', maxHeight: '15vh' ,width: 'auto', maxWidth: '15vw' }}
+                style={{ height: '100%', maxHeight: '20vh' ,width: 'auto', maxWidth: '15vw' }}
               />
             </Grid.Col>
             <Grid.Col span={8}>
-            <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }}>
-              Calculate your estimated weekly repayment
-            </JumboTitle>
-            </Grid.Col>
-            <Grid.Col span={2}>
-            <NextImage
-              src={hand}
-              alt=""
-              style={{ height: '100%', maxHeight: '20vh' ,width: 'auto', maxWidth: '15vw' }}
-            />
+              <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} c="black">
+                Calculate your estimated weekly repayment
+              </JumboTitle>
             </Grid.Col>
           </Grid>
           </motion.div>
@@ -155,11 +148,12 @@ export const Calculator = () => {
             leftSection="$"
             size='xl'
             styles={{
-              input: { fontSize: rem(40) }, // Adjust font size here
-              label: { fontSize: rem(40)},
-              section:  { fontSize: rem(40)}
+              input: { fontSize: rem(40), color: 'black' }, // Adjust font size here
+              label: { fontSize: rem(40), color: 'black' },
+              section:  { fontSize: rem(40), color: 'black'}
             }}
             ta="center"
+            c="black"
           />
           <Slider
             label="Loan Amount"
@@ -168,6 +162,7 @@ export const Calculator = () => {
             step={1000}
             value={baseValue}
             onChange={(value) => setBaseValue(Math.max(0, value))}
+            c="black"
           />
         </Stack>
         </motion.div>

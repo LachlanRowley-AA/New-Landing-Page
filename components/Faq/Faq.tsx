@@ -1,12 +1,11 @@
 'use client';
 
-import { JumboTitle } from '../JumboTitle'
+import { JumboTitle } from '../JumboTitle/JumboTitle'
 //import { InlineCodeHighlight } from '@mantine/code-highlight';
 import { Anchor, BackgroundImage, Box, Container, Flex, Stack, Text, Image } from '@mantine/core';
 import { ReactNode } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import NextImage from 'next/image'
-import image from "../../assets/Asset Alley Brandmark_ColourScreenUse.svg"
 
 type Faq = {
   value: string;
@@ -37,9 +36,9 @@ const FAQ: Faq[] = [
     question: "Repay Anytime Without Penalty",
     answer:
     <>
-      'Repay anytime without penalties and reuse the
+      Repay anytime without penalties and reuse the
 facility for business costs that traditional lenders won’t
-finance (materials, inventory, software, fit-out, etc.)'</>
+finance (materials, inventory, software, fit-out, etc.)</>
   },
   {
     value: 'charge',
@@ -51,8 +50,8 @@ finance (materials, inventory, software, fit-out, etc.)'</>
     value: 'security',
     question: 'No Additional Security Needed',
     answer:
-    <>  'No additional security required (personal property or
-assets within the business)'</>
+    <>  No additional security required (personal property or
+assets within the business)</>
   },
   {
     value: 'cost',
@@ -81,10 +80,11 @@ const FaqCell = ({ question, answer }: Faq) => (
   >
     <Flex justify="left" align="left" direction="row" wrap="nowrap">
         <Image
-        component={NextImage}
-        src={image}
+        src='./AssetAlleyBrandmark_ColourScreenUse.svg'
         alt="Logo"
-        style={{ width: '2em', height: '2em', marginRight: '0.5em' }}
+        w='2em'
+        fit="contain"
+        style={{height: '2em', marginRight: '0.5em' }}
           />
       <Text fz="xl" fw="bold" component="blockquote" mb={4} c="#01E194">
         {question}
@@ -96,7 +96,7 @@ const FaqCell = ({ question, answer }: Faq) => (
   </Box>
 );
 
-export const MatFaq = () => {
+export const Faq01 = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
@@ -118,12 +118,12 @@ export const MatFaq = () => {
         lg: 'calc(var(--mantine-spacing-lg))',
       }}
       fluid
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', borderRadius: '8px' }}
+      style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', borderRadius: '8px' }} // Optional: Adds contrast for readability
     >
       <Container size="md" style={{zIndex:1}}>
         <Stack gap="xs" align="center">
           <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm" c="#01E194">
-            Why Get a Loan For Your Building Materials?
+            Why Get a Loan For Your Website or App?
           </JumboTitle>
         </Stack>
       </Container>
