@@ -9,20 +9,21 @@ export const Footer01 = () => (
     <Container
       size="xl"
       px={0}
-      py={{
-        base: 'xs',
-        sm: 'calc(var(--mantine-spacing-xl))',
-      }}
+      pt={5}
+      mt={0}
     >
       <Flex justify={{ sm: 'space-between' }} wrap="wrap" gap="xl">
         <Box maw={{ sm: 300 }}>
-          <Text mt="xs" size="md" c="{var(--mantine-colors-dark)}">
+          <Text mt="md" size="md" c="{var(--mantine-colors-dark)}">
             ABN: 84 636 666 709
           </Text>
           <Text mt="xs" size="md" c="{var(--mantine-colors-dark)}">
             © 2025 Asset Alley. All rights reserved.
           </Text>
         </Box>
+        <Flex justify="center">
+          <NextImage src='/bba.png' width={90} height={90} alt='Better Business Awards Icon' />
+        </Flex>
       </Flex>
     </Container>
   </Container>

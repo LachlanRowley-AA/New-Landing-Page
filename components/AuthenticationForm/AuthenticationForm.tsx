@@ -16,7 +16,7 @@ import {
   FileInput
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { JumboTitle } from './JumboTitle';
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 import { createClient } from '@supabase/supabase-js';
 import validator from 'validator';
 import NextImage from 'next/image';
@@ -117,7 +117,7 @@ export function AuthenticationForm({
   }
 
   return (
-    <Container size="xs" px="md" style={{ height: 'vh:100px' }} mt="calc(var(--mantine-spacing-xl) * 1)">
+    <Container size="xs" px="md" mb="xl" style={{ height: 'vh:100px' }} mt="calc(var(--mantine-spacing-xl) * 1)">
       <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm">
         Contact Us Now
       </JumboTitle>
@@ -167,9 +167,6 @@ export function AuthenticationForm({
             </form>
           )}
         </Paper>
-      </Flex>
-      <Flex justify="center" mt="md">
-        <NextImage src='/bba.png' width={150} height={150} objectPosition='center' alt='Better Business Awards Icon' />
       </Flex>
     </Container>
   );

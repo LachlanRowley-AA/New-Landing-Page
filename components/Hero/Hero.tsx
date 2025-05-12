@@ -1,4 +1,4 @@
-import { JumboTitle } from './JumboTitle';
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 import { Badge, Button, Container, Image, Stack, Text } from '@mantine/core';
 import { motion } from 'motion/react';
 import classes from './Hero.module.css';

@@ -4,7 +4,7 @@ import { Text, Title, Image, Flex } from '@mantine/core';
 import classes from './Welcome.module.css';
 import image from '../../public/AA_Dark_Logo.svg';
 import NextImage from 'next/image';
-import { JumboTitle } from '../JumboTitle';
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 import { motion } from 'motion/react'
 
 export function Welcome() {
@@ -19,7 +19,7 @@ export function Welcome() {
         />
       </Flex>
       <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl">
-        Finance your websites and apps
+        Finance your websites and software
       </JumboTitle>
       </motion.div>
     </>

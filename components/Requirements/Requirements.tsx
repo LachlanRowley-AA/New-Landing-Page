@@ -1,6 +1,6 @@
 'use client';
 
-import { JumboTitle } from '../JumboTitle';
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 import {
   Avatar,
   AvatarGroup,
@@ -17,7 +17,6 @@ import {
   Rating,
   Stack,
   Text,
-  useMantineTheme
 } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
 import { HTMLMotionProps, motion } from 'motion/react';
@@ -25,23 +24,20 @@ import NextImage from 'next/image';
 import NextLink from 'next/link';
 import classes from './Requirements.module.css';
 
-const Cell = ({ description, ...props }: { description: string; } & HTMLMotionProps<'div'>) => {
-  const theme = useMantineTheme();
-  return (
-    <motion.div
+const Cell = ({ description, ...props }: { description: string; } & HTMLMotionProps<'div'>) => (
+  <motion.div
     whileHover={{ scale: 1.05, boxShadow: 'var(--mantine-shadow-xl)' }}
     transition={{ type: 'spring' }}
     {...props}
     style={{ borderRadius: 'var(--mantine-radius-lg)', ...props.style }}
   >
-    <Card className={classes.card} h="100%" withBorder style={{ backgroundColor: theme.colors.header[0] }}>
+    <Card className={classes.card} h="100%" withBorder>
       <Box mt="xs">
-        <Text c={theme.colors.tertiary[0]}>{description}</Text>
+        <Text fw={600} c='var(--mantine-color-white)'>{description}</Text>
       </Box>
     </Card>
   </motion.div>
-  );
-}
+);
 
 
 type Hero02Props = ContainerProps & {
@@ -64,9 +60,8 @@ export const Hero02 = ({
   title = 'Customer Requirements',
   ...containerProps
 }: Hero02Props) => {
-  const theme = useMantineTheme();
   return(
-  <Container bg={theme.colors.background[0]} px={0} style={{ overflow: 'hidden' }} fluid bd={1}>
+  <Container bg="var(--mantine-color-black)" px={0} style={{ overflow: 'hidden' }} fluid bd={1}>
     <Container
       component="section"
       mih={400} // Min height instead of max height
@@ -82,7 +77,8 @@ export const Hero02 = ({
         bottom={0}
         w="100%"
         h="100%"
-        style={{ zIndex: -1, opacity: 0.0, backgroundColor: theme.colors.header[0] }} // Push it back so it doesn't cover content
+        bg="var(--mantine-color-body)"
+        style={{ zIndex: -1, opacity: 0.0 }} // Push it back so it doesn't cover content
         hiddenFrom="md"
       />
       <Flex         
@@ -98,10 +94,10 @@ export const Hero02 = ({
         }}
         style={{ maxWidth: '100%' }}
       >
-        <JumboTitle order={1} fz="md" style={{ textWrap: 'balance', color: theme.colors.header[1]}} hiddenFrom="md">
+        <JumboTitle c="#01E194" order={1} fz="md" style={{ textWrap: 'balance' }} hiddenFrom='md'>
           {title}
         </JumboTitle>
-        <JumboTitle order={1} fz="lg" style={{ textWrap: 'balance', color: theme.colors.header[1]}} visibleFrom="md">
+        <JumboTitle c="#01E194" order={1} fz="lg" style={{ textWrap: 'balance' }} visibleFrom='lg'>
           {title}
         </JumboTitle>
         <Stack>
@@ -110,6 +106,10 @@ export const Hero02 = ({
           <Cell description='Business monthly turn over to equate to the invoice amount'/>
         </Stack>
       </Flex>
+      <Text c="#01E194" fw={600} fz='lg' style={{ textWrap: 'balance', textAlign: 'center' }}>
+            If you do not meet these requirements, we may have alternative options for you
+          </Text>
+
     </Container>
   </Container>
 )};
