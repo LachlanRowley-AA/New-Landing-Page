@@ -7,7 +7,6 @@ import { Calculator } from '@/components/Calculator/Calculator';
 import { AuthenticationForm } from '@/components/AuthenticationForm/AuthenticationForm';
 import { Hero02 } from '@/components/Requirements/Requirements';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import { gtmPageView } from '@/lib/gtm';
 import { Footer01 } from '@/components/footer/footer';
 import { IntroSection } from '@/components/Intro/intro';
 import { Header } from '@/components/Header/header';
@@ -15,14 +14,6 @@ import { Container } from '@mantine/core';
 
 
 export default function Shopfit() {
-    // useEffect(() => {
-    //     gtmPageView({
-    //         page: 'Websites',
-    //         title: 'Websites',
-    //         url: window.location.href,
-    //     });
-    // })
-
     return (
     <>
       <Container p={0} m={0} size="100%" bg="black">
