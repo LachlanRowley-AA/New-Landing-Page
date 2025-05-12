@@ -1,6 +1,6 @@
 'use client';
 
-import { Marquee } from './Marquee';
+import { Marquee } from '../Marquee/Marquee';
 import { Container, ContainerProps, GridProps, Group, Text, TextProps } from '@mantine/core';
 import {
   IconBrandGithub,
@@ -11,7 +11,7 @@ import {
   IconBrandVercelFilled,
 } from '@tabler/icons-react';
 import { ReactNode } from 'react';
-import { JumboTitle } from './JumboTitle';
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 
 const ITEMS = [
   <Group key="mantine" wrap="nowrap">
