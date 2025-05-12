@@ -1,12 +1,10 @@
 "use client";
 
 import { Header01 } from '@/components/Header01/header-01';
-import { Logos03 } from '@/components/AnimatedLogos';
 import { Welcome } from '../components/Welcome/Welcome';
 import { Faq01 } from '@/components/Faq/Faq';
 import { Calculator } from '@/components/Calculator/Calculator';
 import { AuthenticationForm } from '@/components/AuthenticationForm/AuthenticationForm';
-import { ColorSchemeButton } from '@/components/ColorScheme';
 import { Hero02 } from '@/components/Requirements/Requirements';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { gtmPageView } from '@/lib/gtm';
