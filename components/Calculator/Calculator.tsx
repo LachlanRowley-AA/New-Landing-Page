@@ -3,11 +3,14 @@
 import { AnimatedCounter, AnimatedCounterProps } from '../AnimatedCounter/AnimatedCounter';
 import { JumboTitle } from '../JumboTitle/JumboTitle';
 import { Badge, Box, BoxProps, Container, Grid, Stack, Text, rem, TextInput, Slider, Group } from '@mantine/core';
-import { motion } from 'motion/react';
+import { color, motion } from 'motion/react';
 import { useState } from 'react';
 import hand from '../../assets/hand.svg';
 import icon from '../../assets/stair.svg'
 import NextImage  from 'next/image';
+import dynamic from 'next/dynamic';
+import 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 
 const INTEREST_RATE = 15.95 / 100; // 15.95% annual interest
@@ -96,6 +99,103 @@ const StatCell = ({
     </motion.div>
   );
 
+
+const testFunc = () => {
+  return 10;
+}
+
+const Bar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Bar), {
+  ssr: false,
+});
+const LineChart = ({ loanAmount }: { loanAmount: number }) => {
+  const interestCosts = [
+    calculateInterestCost(loanAmount, 4.3).toFixed(2), // 1 months
+    calculateInterestCost(loanAmount, 8.6).toFixed(2), // 2 months
+    calculateInterestCost(loanAmount, 13).toFixed(2), // 3 months
+    calculateInterestCost(loanAmount, 17.3).toFixed(2), // 4 months
+    calculateInterestCost(loanAmount, 21.6).toFixed(2), // 5 months
+    calculateInterestCost(loanAmount, 26).toFixed(2), // 6 months
+  ];
+
+  const data = {
+    labels: ['1 month', '2 months', '3 months', '4 months', '5 months', '6 months'],
+    datasets: [
+      {
+        label: 'Total Interest Cost',
+        data: interestCosts,
+        backgroundColor: [
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+        ],
+        borderColor: [
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options= {
+    indexAxis: "y",
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: { 
+          display: false,
+          callback: function(value, index, ticks) {
+            return '$' + value
+          }
+        }
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: 'white',
+          font: {
+            size: 20,
+          },
+        }
+      }
+    },
+    plugins: {
+      datalabels: {
+        color: 'white',
+        formatter: function(value, context) {
+          return '$' + Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+      },
+      legend: {
+        display: false,
+      },
+  
+    }
+  };
+
+  return (
+    <div style={{ width: 'auto', height: 'auto', backgroundColor: 'black', paddingLeft: '2vw'}}>
+      <h1 style={{ color: '#01E194', textAlign: 'center' }}>Total Interest Paid if Paid Out Early</h1>
+      <Bar data={data} plugins={[ChartDataLabels]} options={options} 
+      />
+    </div>
+  );
+};
+
+
+
+
 export const Calculator = () => {
   const [baseValue, setBaseValue] = useState(0);
   const weeklyRepayment = calculateWeeklyRepayment(baseValue);
@@ -111,7 +211,7 @@ export const Calculator = () => {
         lg: 'calc(var(--mantine-spacing-lg) * 2)',
       }}
       fluid
-      style={ { marginTop: '30px', padding: '0px' }}
+      style={ { marginTop: '30px', paddingTop: '20px' }}
     >
       <Container size="md">
         <Stack align="center" gap="xs">
@@ -226,6 +326,7 @@ export const Calculator = () => {
             </Grid.Col>
           </Grid>
         </Container>
+        <LineChart loanAmount={baseValue}/>
     </Container>
   );
 };

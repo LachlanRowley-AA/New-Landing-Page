@@ -11,7 +11,7 @@ import { Footer01 } from '@/components/footer/footer';
 import { IntroSection } from '@/components/Intro/intro';
 import { Header } from '@/components/Header/header';
 import { Container } from '@mantine/core';
-
+import LineChart from '@/components/Chart/Chart';
 
 export default function Shopfit() {
     return (
@@ -25,6 +25,7 @@ export default function Shopfit() {
         <Hero02 />
         <AuthenticationForm />
         <Footer01 />
+        <LineChart />
         </MantineProvider>
       </Container>
     </>

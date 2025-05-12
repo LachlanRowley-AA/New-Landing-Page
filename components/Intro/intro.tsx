@@ -24,8 +24,8 @@ export const IntroSection = () => {
         </Grid.Col>
 
         {/* Right Side - Calculator */}
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <Calculator />
+        <Grid.Col span={{ base: 12, md: 6 }} py="xl">
+          <Calculator/>
         </Grid.Col>
       </Grid>
   );
