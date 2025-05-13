@@ -164,6 +164,8 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
   };
 
   const options= {
+    maintainAspectRatio: false,
+    responsive: true,
     indexAxis: 'y' as const,
     scales: {
       x: {
@@ -201,13 +203,34 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
   };
 
   return (
-    <div style={{ width: 'auto', height: 'auto', backgroundColor: 'black', paddingLeft: '2vw'}}>
-        <JumboTitle ta="center" fz="xs" order={1}  fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
+    <>
+      <style>
+        {`
+          .chart-container {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            padding-left: 2vw;
+            min-height: 300px;
+          }
+  
+          @media (max-width: 768px) {
+            .chart-container {
+              min-height: 500px;
+            }
+          }
+        `}
+      </style>
+  
+      <div className="chart-container">
+        <JumboTitle ta="center" fz="xs" order={1} fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
           Total Interest Cost if Paid Out Early
         </JumboTitle>
-      <Bar data={data} plugins={[ChartDataLabels]} options={options} 
-      />
-    </div>
+        <div style={{ width: '100%', height: '100%', maxHeight: '50vh' }}>
+        <Bar data={data} plugins={[ChartDataLabels]} options={options} />
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -235,7 +258,7 @@ export const Calculator = () => {
       <Grid.Col span={{ base: 12, md: 6 }} bg="black">
         <IntroSection />
       </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 6 }} bg="#d3d4d5">
+      <Grid.Col span={{ base: 12, md: 6 }} bg="#d3d4d5" pt="md" pb="xl">
         <Stack align="center" gap="xs">
           <motion.div
             initial={{ opacity: 0.0, y: 40 }}

@@ -12,6 +12,7 @@ import { IntroSection } from '@/components/Intro/intro';
 import { Header } from '@/components/Header/header';
 import { Container } from '@mantine/core';
 import LineChart from '@/components/Chart/Chart';
+import { Why } from '@/components/Why/Why';
 
 export default function Shopfit() {
     return (
@@ -21,6 +22,7 @@ export default function Shopfit() {
         <Header01 />
         <Header />
         <Calculator />
+        <Why />
         <Faq01 />
         <Hero02 />
         <AuthenticationForm />
