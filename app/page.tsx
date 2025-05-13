@@ -27,7 +27,6 @@ export default function Shopfit() {
         <Hero02 />
         <AuthenticationForm />
         <Footer01 />
-        <LineChart />
         </MantineProvider>
       </Container>
     </>
