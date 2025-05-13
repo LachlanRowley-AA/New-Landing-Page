@@ -188,7 +188,7 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
     plugins: {
       datalabels: {
         color: 'white',
-        formatter: function(value, context) {
+        formatter: function(value : Number, context: Any) {
           return '$' + Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
       },
