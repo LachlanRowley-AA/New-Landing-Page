@@ -10,8 +10,9 @@ import icon from '../../assets/stair.svg'
 import NextImage  from 'next/image';
 import dynamic from 'next/dynamic';
 import 'chart.js/auto';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
 import { IntroSection } from '../Intro/intro';
+
 
 
 const INTEREST_RATE = 15.95 / 100; // 15.95% annual interest
@@ -188,7 +189,7 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
     plugins: {
       datalabels: {
         color: 'white',
-        formatter: function(value : Number, context: Any) {
+        formatter: function(value : number, context: Context) {
           return '$' + Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
       },
