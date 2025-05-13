@@ -11,6 +11,7 @@ import NextImage  from 'next/image';
 import dynamic from 'next/dynamic';
 import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { IntroSection } from '../Intro/intro';
 
 
 const INTEREST_RATE = 15.95 / 100; // 15.95% annual interest
@@ -100,10 +101,6 @@ const StatCell = ({
   );
 
 
-const testFunc = () => {
-  return 10;
-}
-
 const Bar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Bar), {
   ssr: false,
 });
@@ -115,15 +112,29 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
     calculateInterestCost(loanAmount, 17.3).toFixed(2), // 4 months
     calculateInterestCost(loanAmount, 21.6).toFixed(2), // 5 months
     calculateInterestCost(loanAmount, 26).toFixed(2), // 6 months
+    calculateInterestCost(loanAmount, 30.3).toFixed(2), // 7 months
+    calculateInterestCost(loanAmount, 34.6).toFixed(2), // 8 months
+    calculateInterestCost(loanAmount, 39).toFixed(2), // 9 months
+    calculateInterestCost(loanAmount, 43.3).toFixed(2), // 10 months
+    calculateInterestCost(loanAmount, 47.6).toFixed(2), // 11 months
+    calculateInterestCost(loanAmount, 52).toFixed(2), // 12 months    
   ];
 
   const data = {
-    labels: ['1 month', '2 months', '3 months', '4 months', '5 months', '6 months'],
+    labels: ['1 month', '2 months', '3 months', '4 months', '5 months', '6 months',
+      '7 months', '8 months', '9 months', '10 months', '11 months', '12 months'
+    ],
     datasets: [
       {
         label: 'Total Interest Cost',
         data: interestCosts,
         backgroundColor: [
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.3)',
           'rgba(1, 255, 148, 0.3)',
           'rgba(1, 255, 148, 0.3)',
           'rgba(1, 255, 148, 0.3)',
@@ -138,6 +149,13 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
           'rgba(1, 255, 148, 1)',
           'rgba(1, 255, 148, 1)',
           'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+          'rgba(1, 255, 148, 1)',
+
         ],
         borderWidth: 1,
       },
@@ -183,7 +201,9 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
 
   return (
     <div style={{ width: 'auto', height: 'auto', backgroundColor: 'black', paddingLeft: '2vw'}}>
-      <h1 style={{ color: '#01E194', textAlign: 'center' }}>Total Interest Paid if Paid Out Early</h1>
+        <JumboTitle ta="center" fz="xs" order={1}  fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
+          Total Interest Cost if Paid Out Early
+        </JumboTitle>
       <Bar data={data} plugins={[ChartDataLabels]} options={options} 
       />
     </div>
@@ -194,23 +214,27 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
 
 
 export const Calculator = () => {
-  const [baseValue, setBaseValue] = useState(0);
+  const [baseValue, setBaseValue] = useState(5000);
   const weeklyRepayment = calculateWeeklyRepayment(baseValue);
   
   const [Payout, setWeeklyPayout] = useState(0);
 
   return (
-    <Container
-      bg="#D2D3D5"
+    <Grid
       py={{
         base: 'calc(var(--mantine-spacing-lg) * 3)',
         xs: 'calc(var(--mantine-spacing-lg) * 4)',
         lg: 'calc(var(--mantine-spacing-lg) * 2)',
       }}
-      fluid
+      px={{
+        base: 'calc(var(--mantine-spacing-lg) * 2)',
+      }}
       style={ { marginTop: '30px', paddingTop: '20px' }}
     >
-      <Container size="md">
+      <Grid.Col span={{ base: 12, md: 6 }} bg="black">
+        <IntroSection />
+      </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 6 }} bg="#d3d4d5">
         <Stack align="center" gap="xs">
           <motion.div
             initial={{ opacity: 0.0, y: 40 }}
@@ -237,7 +261,6 @@ export const Calculator = () => {
           </Grid>
           </motion.div>
         </Stack>
-      </Container>
       <Container size="lg" mt="calc(var(--mantine-spacing-md) * 1)" ta="center" style={{paddingLeft: '5vw', paddingRight: '5vw'}}>
       <motion.div initial={{ opacity: 0.0, y: 0 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <Stack>
@@ -278,9 +301,8 @@ export const Calculator = () => {
           </Grid.Col>
         </Grid>
       </Container>
-
-      <Container fluid style = {{ marginTop: '20px', paddingBottom: '40px' }}
-        bg="var(--mantine-color-black)">
+      </Grid.Col>
+      <Grid.Col span={{ base:12, md: 6 }} bg="black">
         <JumboTitle ta="center" fz="xs" order={1}  fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
           Payout Options
         </JumboTitle>
@@ -322,8 +344,10 @@ export const Calculator = () => {
               />
             </Grid.Col>
           </Grid>
-        </Container>
-        <LineChart loanAmount={baseValue}/>
-    </Container>
+        </Grid.Col>
+        <Grid.Col span={{ base: 12, md: 6 }}>
+          <LineChart loanAmount={baseValue}/>
+        </Grid.Col>
+    </Grid>
   );
 };
