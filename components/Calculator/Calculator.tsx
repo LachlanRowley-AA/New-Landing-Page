@@ -59,10 +59,9 @@ const StatCell = ({
       initial={{ opacity: 0.0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
-      viewport={{ once: true }}
     >
       <Box {...boxProps}>
-        <AnimatedCounter ta="center" fz={rem(64)} fw="bold" c="black" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
+        <AnimatedCounter ta="center" fz={rem(64)} fw="bold" c="black" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)}  />
         <Text fz="lg" inline ta="center" c="black">
           {description}
         </Text>
@@ -85,7 +84,6 @@ const StatCell = ({
       initial={{ opacity: 0.0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
-      viewport={{ once: true }}
     >
       <Box {...boxProps}>
         <AnimatedCounter c="white" ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
@@ -250,8 +248,11 @@ export const Calculator = () => {
         xs: 'calc(var(--mantine-spacing-lg) * 4)',
         lg: 'calc(var(--mantine-spacing-lg) * 2)',
       }}
+      mx={{
+        base: 'calc(var(--mantine-spacing-lg) * 1)',
+      }}
       px={{
-        base: 'calc(var(--mantine-spacing-lg) * 2)',
+        base: 'calc(var(--mantine-spacing-lg) * 0)'
       }}
       style={ { marginTop: '30px', paddingTop: '20px' }}
     >
@@ -264,7 +265,6 @@ export const Calculator = () => {
             initial={{ opacity: 0.0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
-            viewport={{ once: true }}
           >
           <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c="black">
               Calculate your estimated weekly repayment
@@ -319,20 +319,26 @@ export const Calculator = () => {
           />
         </Stack>
         </motion.div>
-        <Grid gutter="calc(var(--mantine-spacing-lg) * 4)" align="center" mx="xl">
-          <Grid.Col span={{ base: 12, md: 12 }}>
+        <Grid gutter="calc(var(--mantine-spacing-lg) * 4)" align="center">
+          <Grid.Col span={{ base: 12, md: 12 }} mx={0} px={0}>
             <StatCell startValue={baseValue} endValue={weeklyRepayment} title="Weekly Repayment" description="Weekly repayment" />
           </Grid.Col>
         </Grid>
       </Container>
       </Grid.Col>
       <Grid.Col span={{ base:12, md: 6 }} bg="black">
+          <motion.div
+              initial={{ opacity: 0.0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: 'easeInOut' }}
+        >  
         <JumboTitle ta="center" fz="xs" order={1}  fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
           Payout Options
         </JumboTitle>
         <JumboTitle ta="center" fz="xxs" order={3}  fw="bold" c="#01E194" mt="xl" mb="xl" textWrap='balance'>
               Save money with no penalties for early payout 
         </JumboTitle>
+        </motion.div>
         <Grid gutter="calc(var(--mantine-spacing-lg) * 1)" align="center" mx="xl">
             <Grid.Col span={{ base: 12, md: 4 }}> {/* 3 month payout */}
               <PayoutCell

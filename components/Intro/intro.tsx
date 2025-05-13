@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Grid, Title, Text } from "@mantine/core";
 import { Calculator } from "../Calculator/Calculator";
+import { motion} from 'motion/react';
 
 // export const IntroSection = () => {
 //   return (
@@ -34,6 +35,7 @@ import { Calculator } from "../Calculator/Calculator";
 export const IntroSection = () => {
   return (
     <Container size="xl" py="xl">
+        <motion.div initial={{ opacity: 0.0, y: 0 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         {/* Left Side - Text */}
           <Title order={1} mb="md">
             Flexible Website Financing for Your Business
@@ -49,6 +51,7 @@ export const IntroSection = () => {
             Whether you're a startup or an established business, our financing
             options are designed to be simple, affordable, and effective.
           </Text>
+      </motion.div>
     </Container>
   );
 };

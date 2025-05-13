@@ -113,7 +113,7 @@ export const Faq01 = () => {
   >
     <Container
       py={{
-        base: 'calc(var(--mantine-spacing-lg))',
+        base: 'calc(var(--mantine-spacing-lg)*2)',
         xs: 'calc(var(--mantine-spacing-lg))',
         lg: 'calc(var(--mantine-spacing-lg))',
       }}
@@ -122,13 +122,17 @@ export const Faq01 = () => {
     >
       <Container size="md" style={{zIndex:1}}>
         <Stack gap="xs" align="center">
-          <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="sm" c="#01E194">
+          <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="xs" c="#01E194">
             Why Get a Loan For Your Website or App?
           </JumboTitle>
         </Stack>
       </Container>
-      <Container size="xl">
-        <Flex mt="calc(var(--mantine-spacing-lg) * 3)" wrap="wrap" justify="center">
+      <Container size="xl" 
+        mt={{
+          base: 'calc(var(--mantine-spacing-lg) * 0)',
+          lg: "calc(var(--mantine-spacing-lg) * 3)"
+        }}>
+        <Flex wrap="wrap" justify="center">
           {FAQ.map((faq) => (
             <FaqCell key={faq.value} {...faq} />
           ))}
