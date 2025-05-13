@@ -164,7 +164,7 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
   };
 
   const options= {
-    indexAxis: "y",
+    indexAxis: 'y' as const,
     scales: {
       x: {
         grid: {
