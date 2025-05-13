@@ -20,7 +20,7 @@ export default function Shopfit() {
         <MantineProvider forceColorScheme="dark">
         <Header01 />
         <Header />
-        <IntroSection />
+        <Calculator />
         <Faq01 />
         <Hero02 />
         <AuthenticationForm />

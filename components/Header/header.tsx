@@ -8,7 +8,7 @@ export const Header = () => {
         <Grid.Col span={{ base: 12, md: 8 }}>
             <Welcome />
         </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 4 }}>
+        <Grid.Col span={{ base: 12, md: 4 }} visibleFrom="md">
           <Image
             src="./AssetAlleyBrandmark_Transparent.svg"
             h="100%"
