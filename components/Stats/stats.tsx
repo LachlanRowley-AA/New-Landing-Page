@@ -1,6 +1,6 @@
 'use client';
 
-import { JumboTitle } from '@/components/ui/components/jumbo-title';
+import { JumboTitle } from "../JumboTitle/JumboTitle";
 import { Box, BoxProps, Container, Grid, Text } from '@mantine/core';
 
 const StatCard = ({
