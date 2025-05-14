@@ -11,14 +11,14 @@ export function Welcome() {
   return (
     <>
       <motion.div initial={{ opacity: 0.0, y: 0 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-      <Flex justify="center" align="center" direction="row" wrap="nowrap" pt="md">
+      <Flex justify="center" align="center" direction="row" wrap="nowrap" pt="xs">
         <NextImage
           src={image}
           alt="Logo"
-          style={{ height: '100%', width: 'auto', maxWidth: '80vw' }}
+          style={{ height: '100%', width: 'auto', maxWidth: '40vw' }}
         />
       </Flex>
-      <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl">
+      <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl" fw={700}>
         Finance your websites and software
       </JumboTitle>
       </motion.div>

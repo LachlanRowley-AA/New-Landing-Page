@@ -37,10 +37,12 @@ export const IntroSection = () => {
     <Container size="xl" py="xl">
         <motion.div initial={{ opacity: 0.0, y: 0 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         {/* Left Side - Text */}
-          <Title order={1} mb="md">
-            Flexible Website Financing for Your Business
-          </Title>
-          <Text size="lg" c="white">
+        <Title order={1} mb="md">
+          <span style={{ color: '#01E194' }}>Flexible Website Financing </span>
+          <span style={{ color: 'black' }}>for Your Business</span>
+        </Title>
+
+          <Text size="lg" c="Black">
             /CHATGPT LOREM IPSUM NOT REAL TEXT
             At [Your Company Name], we specialize in providing tailored financing
             solutions to help businesses build and launch their websites without

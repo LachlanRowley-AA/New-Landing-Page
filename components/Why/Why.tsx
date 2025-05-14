@@ -2,6 +2,7 @@ import { Box, Container, Text, Image, Accordion, Grid } from '@mantine/core';
 import { JumboTitle } from '../JumboTitle/JumboTitle';
 import { motion } from 'motion/react';
 import { useState } from 'react';
+import { IconChevronDown } from '@tabler/icons-react';
 
 const args = [
   {
@@ -23,23 +24,16 @@ const args = [
 
 export const Why = () => {
   const sectionHeight = '300px';
-  const [opened, setOpened] = useState<string | null>(null);
 
   const reasons = args.map((r) => (
     <Accordion.Item value={r.value} key={r.value}>
-    <motion.div
-      initial={{ opacity: 0.0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, ease: 'easeInOut' }}
-    >
       <Accordion.Control
-        onClick={() => setOpened((prev) => (prev === r.value ? null : r.value))}
+        icon={<Image src="./AssetAlleyBrandmark_ColourScreenUse.svg" w={40}/>}
       >
         <Box>
           {r.value}
         </Box>
       </Accordion.Control>
-      </motion.div>
       <Accordion.Panel>{r.answer}</Accordion.Panel>
     </Accordion.Item>
   ));
@@ -77,30 +71,51 @@ export const Why = () => {
 
       <Container size="sm" />
 
-      <Grid>
+      <Grid mx="xl">
         <Grid.Col span={{ base: 6 }} visibleFrom="md">
           <Image src="./guy_at_desk.jpg" />
         </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 6 }}>
+        <Grid.Col span={{ base: 12, md: 6 }} mt="xl" >
+        <motion.div
+      initial={{ opacity: 0.0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, ease: 'easeInOut' }}
+    >
           <Accordion
-            value={opened}
-            onChange={setOpened}
+            multiple
+            variant="separated"
+            chevron={<IconChevronDown size={36} />}
+            chevronSize={36}
             styles={{
               control: {
                 minHeight: '70px',
                 fontSize: '1.2rem',
                 position: 'relative',
+                color: '#d3d4d5',
+                backgroundColor: '#F4F5FA',
+                border: '0px',
               },
               panel: {
                 fontSize: '1rem',
+                backgroundColor: '#FFFAFA',
               },
               label: {
                 color: 'black',
+                fontWeight: 600
               },
+              item: {
+                border: '0px',
+                color: 'black',
+              },
+              chevron: {
+                color: '#01E194'
+              }
             }}
+            c="white"
           >
             {reasons}
           </Accordion>
+          </motion.div>
         </Grid.Col>
       </Grid>
     </Box>
