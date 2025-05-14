@@ -243,44 +243,50 @@ export const Calculator = () => {
 
   return (
     <Grid
+      gutter='xl'
       py={{
         base: 'calc(var(--mantine-spacing-lg) * 3)',
         xs: 'calc(var(--mantine-spacing-lg) * 4)',
         lg: 'calc(var(--mantine-spacing-lg) * 2)',
       }}
-      mx={{
-        base: 'calc(var(--mantine-spacing-lg) * 1)',
-      }}
-      px={{
-        base: 'calc(var(--mantine-spacing-lg) * 0)'
-      }}
       style={ { marginTop: '30px', paddingTop: '20px' }}
+      bg="black"
     >
-      <Grid.Col span={{ base: 12, md: 6 }} bg="black">
+      <Grid.Col span={{ base: 12, md: 6 }} bg="White">
         <IntroSection />
       </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 6 }} bg="#d3d4d5" pt="md" pb="xl">
+      <Grid.Col span={{ base: 12, md: 6 }} bg="#FFFFFF" pt="md" pb="xl">
         <Stack align="center" gap="xs">
           <motion.div
             initial={{ opacity: 0.0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
           >
-          <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c="black">
-              Calculate your estimated weekly repayment
+            <span>
+            <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c="#01E194">
+              Calculate your estimated
           </JumboTitle>
-          <Grid align="center" visibleFrom='lg'>
-            <Grid.Col span={2}>
+          <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c="#01E194">
+              weekly repayment
+          </JumboTitle>
+            </span>
+          <Grid align="center" visibleFrom='lg' gutter="xl">
+            {/* <Grid.Col span={1}>
               <NextImage
                 src={hand}
                 alt=""
                 style={{ height: '100%', maxHeight: '20vh' ,width: 'auto', maxWidth: '15vw' }}
               />
-            </Grid.Col>
-            <Grid.Col span={8}>
-              <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} c="black">
-                Calculate your estimated weekly repayment
+            </Grid.Col> */}
+            <Grid.Col span={12}>
+              <span>
+              <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} c="black" fw={600}>
+                Calculate your
               </JumboTitle>
+              <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} c="#01E194" fw={600}>
+                weekly repayment
+              </JumboTitle>
+              </span>
             </Grid.Col>
           </Grid>
           </motion.div>
