@@ -128,18 +128,18 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
         label: 'Total Interest Cost',
         data: interestCosts,
         backgroundColor: [
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
-          'rgba(1, 255, 148, 0.3)',
+          'rgba(1, 255, 148, 0.4)',
+          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.4)',
+          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.4)',
+          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.4)',
+          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.4)',
+          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.4)',
+          'rgba(1, 255, 148, 0.8)',
         ],
         borderColor: [
           'rgba(1, 255, 148, 1)',
@@ -219,14 +219,29 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
           }
         `}
       </style>
-  
       <div className="chart-container">
-        <JumboTitle ta="center" fz="xs" order={1} fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
-          Total Interest Cost if Paid Out Early
-        </JumboTitle>
+        <motion.div
+          initial={{ opacity: 0.0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+        >
+          <JumboTitle ta="center" fz="xs" order={1} fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
+            Total Interest Cost if Paid Out Early
+          </JumboTitle>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0.0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          style={{
+            width: '100%',
+            height: '100%'
+          }}
+        >
         <div style={{ width: '100%', height: '100%', maxHeight: '50vh' }}>
-        <Bar data={data} plugins={[ChartDataLabels]} options={options} />
+          <Bar data={data} plugins={[ChartDataLabels]} options={options} />
         </div>
+        </motion.div>
       </div>
     </>
   );
@@ -244,19 +259,22 @@ export const Calculator = () => {
   return (
     <Grid
       gutter='xl'
-      py={{
+      my={{
         base: 'calc(var(--mantine-spacing-lg) * 3)',
         xs: 'calc(var(--mantine-spacing-lg) * 4)',
-        lg: 'calc(var(--mantine-spacing-lg) * 2)',
+        lg: 'calc(var(--mantine-spacing-lg) * 4)',
+      }}
+      px={{
+        base: "xl"
       }}
       style={ { marginTop: '30px', paddingTop: '20px' }}
       bg="black"
     >
       <Grid.Col span={{ base: 12, md: 6 }} bg="White">
-        <IntroSection />
+        <IntroSection/>
       </Grid.Col>
       <Grid.Col span={{ base: 12, md: 6 }} bg="#FFFFFF" pt="md" pb="xl">
-        <Stack align="center" gap="xs">
+        <Stack align="center" gap="xs" my="xl">
           <motion.div
             initial={{ opacity: 0.0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

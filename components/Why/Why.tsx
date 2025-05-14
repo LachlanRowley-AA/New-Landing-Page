@@ -16,9 +16,9 @@ const args = [
     It’s a smarter way to get a better end product without a large upfront investment.`
   },
   {
-    value: 'Ongoing Support Included',
-    answer: `Website financing plans often come with built-in services like hosting, updates, security, and technical support.
-     This means you’re not just getting a website—you’re getting peace of mind, knowing that your site stays up-to-date, secure, and performing at its best.`
+    value: 'Start Earning Sooner',
+    answer: `Financing lets you launch your website now rather than waiting to save up the full cost. That means you can start attracting customers, generating leads, and making sales right away. 
+    The earlier your site goes live, the sooner it can start paying for itself—often covering the cost of financing and then some.`
   }
 ];
 
@@ -52,7 +52,7 @@ export const Why = () => {
           left={0}
           w="100%"
           h="100%"
-          bg="rgba(0, 0, 0, 0.75)"
+          bg="rgba(3, 3, 3, 0.6)"
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -77,9 +77,9 @@ export const Why = () => {
         </Grid.Col>
         <Grid.Col span={{ base: 12, md: 6 }} mt="xl" >
         <motion.div
-      initial={{ opacity: 0.0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, ease: 'easeInOut' }}
+          initial={{ opacity: 0, x: 500 }} // Start off to the right
+          whileInView={{ opacity: 1, x: 0 }} // Slide into place
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
     >
           <Accordion
             multiple
