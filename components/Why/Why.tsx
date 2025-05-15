@@ -1,7 +1,7 @@
 import { Box, Container, Text, Image, Accordion, Grid, useMantineTheme } from '@mantine/core';
 import { JumboTitle } from '../JumboTitle/JumboTitle';
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { IconChevronDown } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -29,16 +29,22 @@ const args = [
 
 export const Why = () => {
   const sectionHeight = '250px';
-  let animVariants = {};
   const theme = useMantineTheme();
-  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
-  if(!isMobile) {
-    animVariants = {
-        initial:{ opacity: 0, x: 500 },
-        whileInView:{ opacity: 1, x: 0 },
-        transition:{ duration: 0.6, ease: 'easeInOut' }  
-    }
-  }
+  const isDesktop = useMediaQuery(`(min-width:1024px)`);
+  const [hydrated, setHydrated] = useState(false);
+
+
+
+  // Prevent mismatch between server and client render
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) {return null};
+
+  const desktopValues = ['1','2','3'];
+  const mobileValues = ['1','2'];
+
 
   const reasons = args.map((r) => (
     <Accordion.Item value={r.id} key={r.id}>
@@ -91,18 +97,12 @@ export const Why = () => {
           <Image src="./guy_at_desk.jpg" />
         </Grid.Col>
         <Grid.Col span={{ base: 12, md: 6 }} mt="xl" >
-        <motion.div
-          initial={!isMobile ? { opacity: 0, x: 500 } : false}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={!isMobile ? { duration: 0.6, ease: 'easeInOut' } : {}}
-          >
-
             <Accordion
               multiple
               variant="separated"
               chevron={<IconChevronDown size={36} />}
               chevronSize={36}
-              defaultValue={['1','2','3']}
+              defaultValue={isDesktop ? desktopValues : mobileValues}
               styles={{
                 control: {
                   minHeight: '70px',
@@ -133,7 +133,6 @@ export const Why = () => {
             >
               {reasons}
             </Accordion>
-          </motion.div>
         </Grid.Col>
       </Grid>
     </Box>

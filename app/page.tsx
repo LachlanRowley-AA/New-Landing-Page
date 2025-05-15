@@ -17,8 +17,7 @@ import { Why } from '@/components/Why/Why';
 export default function Shopfit() {
     return (
     <>
-      <Container p={0} m={0} size="100%" bg="black">
-        <MantineProvider forceColorScheme="dark">
+      <Container px={0} mx={0} size="100%" bg="black">
         <Header01 />
         <Header />
         <Calculator />
@@ -27,7 +26,6 @@ export default function Shopfit() {
         <Hero02 />
         <AuthenticationForm />
         <Footer01 />
-        </MantineProvider>
       </Container>
     </>
   );

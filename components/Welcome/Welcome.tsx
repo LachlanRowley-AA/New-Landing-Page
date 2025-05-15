@@ -11,7 +11,7 @@ export function Welcome() {
   return (
     <>
       <motion.div initial={{ opacity: 0.0, y: 0 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-      <Flex justify="center" align="center" direction="row" wrap="nowrap" pt="xs">
+      <Flex justify="center" align="center" direction="row" wrap="nowrap" pt="xs" px={0} mx={0}>
         <NextImage
           src={image}
           alt="Logo"

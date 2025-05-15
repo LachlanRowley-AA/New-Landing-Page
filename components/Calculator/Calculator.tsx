@@ -209,7 +209,7 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
           return `$${  Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         },
         font: {
-          size: 22
+          size: 18
         }
       },
       legend: {
