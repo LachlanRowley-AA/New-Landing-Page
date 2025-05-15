@@ -49,14 +49,14 @@ export const Stats = () => (
     fluid
   >
     <Grid gutter="xl">
-      <Grid.Col span={{ base: 4, sm: 4, md: 4 }}>
-        <StatCard title="10" description="Businesses Supported" prefix="" />
+      <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+        <StatCard title="564" description="Businesses Supported" prefix="" />
       </Grid.Col>
-      <Grid.Col span={{ base: 4, sm: 4, md: 4 }}>
-        <StatCard title="4,000,000" description="Loans Approved" prefix=""/>
+      <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+        <StatCard title="1,395" description="Loans Approved" prefix=""/>
       </Grid.Col>
-      <Grid.Col span={{ base: 4, sm: 4, md: 4 }}>
-        <StatCard title="$50" description="Financed" prefix="$"/>
+      <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+        <StatCard title="$108,811,919" description="Financed" prefix="$"/>
       </Grid.Col>
     </Grid>
   </Container>
