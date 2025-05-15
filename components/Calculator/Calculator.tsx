@@ -16,30 +16,43 @@ import { IntroSection } from '../Intro/intro';
 
 
 const INTEREST_RATE = 15.95 / 100; // 15.95% annual interest
+const DAYS_IN_YEAR = 365;
 const WEEKS_IN_YEAR = 52;
-const LOAN_TERM_YEARS = 5; // Placeholder loan term in years
+const DAYS_IN_WEEK = 7;
+const LOAN_TERM_YEARS = 5;
 
 const calculateWeeklyRepayment = (loanAmount: number) => {
-  if (loanAmount <= 0) return 0;
+  if (loanAmount <= 0) {return 0};
+
   const totalPayments = LOAN_TERM_YEARS * WEEKS_IN_YEAR;
-  const weeklyRate = INTEREST_RATE / WEEKS_IN_YEAR;
-  return (loanAmount * ((weeklyRate * ((weeklyRate+1) ** totalPayments )) / (((weeklyRate + 1) ** totalPayments) - 1)));
+  const dailyRate = INTEREST_RATE / DAYS_IN_YEAR;
+  const daysBetweenPayments = DAYS_IN_WEEK;
+
+  // Effective weekly rate with daily compounding
+  const effectiveWeeklyRate = (1 + dailyRate)**daysBetweenPayments - 1;
+
+  return (
+    loanAmount *
+    ((effectiveWeeklyRate * (1 + effectiveWeeklyRate)**totalPayments) /
+      ((1 + effectiveWeeklyRate)**totalPayments - 1))
+  );
 };
 
 const calculateRemainingPrincipal = (loanAmount: number, weeksElapsed: number) => {
-  const weeklyRate = INTEREST_RATE / WEEKS_IN_YEAR;
-
   if (loanAmount <= 0 || weeksElapsed <= 0) return loanAmount;
+
+  const dailyRate = INTEREST_RATE / DAYS_IN_YEAR;
+  const daysBetweenPayments = DAYS_IN_WEEK;
+  const effectiveWeeklyRate = (1 + dailyRate)**daysBetweenPayments - 1;
 
   const weeklyRepayment = calculateWeeklyRepayment(loanAmount);
 
   const remainingBalance =
-    loanAmount * Math.pow(1 + weeklyRate, weeksElapsed) -
-    weeklyRepayment * ((Math.pow(1 + weeklyRate, weeksElapsed) - 1) / weeklyRate);
+    loanAmount * (1 + effectiveWeeklyRate)**weeksElapsed -
+    weeklyRepayment * (((1 + effectiveWeeklyRate)**weeksElapsed - 1) / effectiveWeeklyRate);
 
   return Math.max(0, remainingBalance);
 };
-
 
 const calculateInterestCost = (loanAmount: number, weeksElapsed: number) => {
   const totalPaid = calculateWeeklyRepayment(loanAmount) * weeksElapsed;
@@ -61,7 +74,7 @@ const StatCell = ({
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       <Box {...boxProps}>
-        <AnimatedCounter ta="center" fz={rem(64)} fw="bold" c="black" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)}  />
+        <AnimatedCounter ta="center" fz={rem(64)} fw="bold" c="black" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} decimals={2}  />
         <Text fz="lg" inline ta="center" c="black">
           {description}
         </Text>
@@ -129,17 +142,17 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
         data: interestCosts,
         backgroundColor: [
           'rgba(1, 255, 148, 0.4)',
-          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.65)',
           'rgba(1, 255, 148, 0.4)',
-          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.65)',
           'rgba(1, 255, 148, 0.4)',
-          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.65)',
           'rgba(1, 255, 148, 0.4)',
-          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.65)',
           'rgba(1, 255, 148, 0.4)',
-          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.65)',
           'rgba(1, 255, 148, 0.4)',
-          'rgba(1, 255, 148, 0.8)',
+          'rgba(1, 255, 148, 0.65)',
         ],
         borderColor: [
           'rgba(1, 255, 148, 1)',
