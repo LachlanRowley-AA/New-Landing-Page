@@ -13,7 +13,7 @@ const StatCard = ({
 }: BoxProps & { title: string; description: string, prefix: string }) => (
   <Box {...boxProps} w="100%">
     <Card withBorder bg="rgb(0, 0, 0)" h="100%" radius="md">
-      <Container>
+      <Container p={0}>
         <Box
           style={{
             display: 'flex',
