@@ -1,42 +1,62 @@
 'use client';
 
 import { JumboTitle } from "../JumboTitle/JumboTitle";
-import { Box, BoxProps, Container, Grid, Text } from '@mantine/core';
+import { Box, BoxProps, Container, Grid, Text, Card, rem } from '@mantine/core';
+import { AnimatedCounter } from "../AnimatedCounter2/AnimatedCounter2";
+import SlotCounter from 'react-slot-counter'
 
 const StatCard = ({
   title,
   description,
+  prefix,
   ...boxProps
-}: BoxProps & { title: string; description: string }) => (
-  <Box {...boxProps}>
-    <JumboTitle order={5} ta="center" fz="md" style={{ textWrap: 'balance' }} mb="sm">
-      {title}
-    </JumboTitle>
-    <Text fz="xl" ta="center" c="dimmed">
-      {description}
-    </Text>
+}: BoxProps & { title: string; description: string, prefix: string }) => (
+  <Box {...boxProps} w="100%">
+    <Card withBorder bg="rgb(0, 0, 0)" h="100%" radius="md">
+      <Container>
+        <Box
+          style={{
+            display: 'flex',
+            alignItems: 'bottom',
+            justifyContent: 'center',
+            gap: '0.25rem',
+            fontSize: '2rem', // adjust as needed
+            color: '#01E194',
+            fontWeight: 700,
+          }}
+        >
+          <SlotCounter
+            value={title}
+            charClassName="slot-char"
+            containerClassName="slot-counter"
+          />
+        </Box>
+      </Container>
+      <Text fz="xl" ta="center" c="#01E194">
+        {description}
+      </Text>
+    </Card>
   </Box>
 );
 
 export const Stats = () => (
   <Container
-    bg="var(--mantine-color-body)"
     py={{
-      base: 'calc(var(--mantine-spacing-lg) * 4)',
-      xs: 'calc(var(--mantine-spacing-lg) * 5)',
-      lg: 'calc(var(--mantine-spacing-lg) * 6)',
+      base: 'calc(var(--mantine-spacing-lg) * 2)',
+      xs: 'calc(var(--mantine-spacing-lg) * 1)',
+      lg: 'calc(var(--mantine-spacing-lg) * 2)',
     }}
     fluid
   >
-    <Grid gutter="calc(var(--mantine-spacing-lg) * 4)" align="center" mx="xl">
-      <Grid.Col span={{ base: 12, lg: 4 }}>
-        <StatCard title="37 million" description="Daily active sessions" />
+    <Grid gutter="xl">
+      <Grid.Col span={{ base: 4, sm: 4, md: 4 }}>
+        <StatCard title="10" description="Businesses Supported" prefix="" />
       </Grid.Col>
-      <Grid.Col span={{ base: 12, lg: 4 }}>
-        <StatCard title="$98 trillion" description="Total market value" />
+      <Grid.Col span={{ base: 4, sm: 4, md: 4 }}>
+        <StatCard title="4,000,000" description="Loans Approved" prefix=""/>
       </Grid.Col>
-      <Grid.Col span={{ base: 12, lg: 4 }}>
-        <StatCard title="52,000" description="Enterprise clients onboarded" />
+      <Grid.Col span={{ base: 4, sm: 4, md: 4 }}>
+        <StatCard title="$50" description="Financed" prefix="$"/>
       </Grid.Col>
     </Grid>
   </Container>

@@ -10,6 +10,7 @@ export type AnimatedCounterProps = Omit<TextProps, 'children'> & {
   slowdownStepCount?: number;
   prefix?: string;
   suffix?: string;
+  decimals?: number;
 };
 
 export const AnimatedCounter = ({
@@ -17,20 +18,21 @@ export const AnimatedCounter = ({
   endValue: rawEndValue,
   prefix,
   suffix,
+  decimals,
   ...textProps
 }: AnimatedCounterProps) => {
-  const startValue = 0.00; // Fixed start value as per your original code
+  const startValue = 0.00;
   const [currentValue, setCurrentValue] = useState(startValue);
 
   // Immediately calculate the final value
   useEffect(() => {
     setCurrentValue(rawEndValue);
-  }, [rawEndValue]); // Only update the value when endValue changes
+  }, [rawEndValue]);
 
   return (
     <Text {...textProps}>
       {prefix}
-      {Number(currentValue).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+      {Number(currentValue).toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
       {suffix}
     </Text>  
   );
