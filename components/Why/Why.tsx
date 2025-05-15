@@ -43,7 +43,7 @@ export const Why = () => {
   if (!hydrated) {return null};
 
   const desktopValues = ['1','2','3'];
-  const mobileValues = ['1','2'];
+  const mobileValues = ['1'];
 
 
   const reasons = args.map((r) => (
