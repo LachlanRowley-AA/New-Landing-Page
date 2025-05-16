@@ -75,8 +75,8 @@ const StatCell = ({
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       <Box {...boxProps}>
-        <AnimatedCounter ta="center" fz={rem(64)} fw="bold" c={{base: "white",md:"black"}} endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} decimals={2}  />
-        <Text fz="lg" inline ta="center" c={{base: "white",md:"black"}}>
+        <AnimatedCounter ta="center" fz={rem(64)} fw="bold" c={{base: "white",md:"#01E194"}} endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} decimals={2}  />
+        <Text fz="lg" inline ta="center" c={{base: "white",md:"white"}}>
           {description}
         </Text>
       </Box>
@@ -105,7 +105,7 @@ const StatCell = ({
           <Text c="#01E194" fz="lg">
             Total Interest Cost
           </Text>
-          <Text fz="lg" c="white">
+          <Text fz="lg" c="white" fw="500">
             {description}
           </Text>
         </Group>
@@ -119,8 +119,8 @@ const Bar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Bar), {
 });
 const LineChart = ({ loanAmount }: { loanAmount: number }) => {
   const interestCosts = [
-    calculateInterestCost(loanAmount, 4.3).toFixed(2), // 1 months
-    calculateInterestCost(loanAmount, 8.6).toFixed(2), // 2 months
+    // calculateInterestCost(loanAmount, 4.3).toFixed(2), // 1 months
+    // calculateInterestCost(loanAmount, 8.6).toFixed(2), // 2 months
     calculateInterestCost(loanAmount, 13).toFixed(2), // 3 months
     calculateInterestCost(loanAmount, 17.3).toFixed(2), // 4 months
     calculateInterestCost(loanAmount, 21.6).toFixed(2), // 5 months
@@ -134,8 +134,8 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
   ];
 
   const data = {
-    labels: ['1 month', '2 months', '3 months', '4 months', '5 months', '6 months',
-      '7 months', '8 months', '9 months', '10 months', '11 months', '12 months'
+    labels: ['3', '4', '5', '6',
+      '7', '8', '9', '10', '11', '12'
     ],
     datasets: [
       {
@@ -199,6 +199,15 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
           font: {
             size: 24,
           },
+        },
+        title: {
+          text: 'Months',
+          display: true,
+          color: 'white',
+          font: {
+            size: 24,
+
+          }
         }
       }
     },
@@ -228,7 +237,7 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
             height: 100%;
             background-color: black;
             padding-left: 2vw;
-            min-height: 300px;
+            min-height: 200px;
           }
   
           @media (max-width: 768px) {
@@ -290,10 +299,10 @@ export const Calculator = () => {
       style={ { marginTop: '30px', paddingTop: '20px' }}
       bg="black"
     >
-      <Grid.Col span={{ base: 12, md: 6 }} bg="White">
+      <Grid.Col span={{ base: 12, md: 12 }} bg="White">
         <IntroSection/>
       </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 6 }} bg={{base:"#black", md: "white"}} pt="md" pb="xl">
+      <Grid.Col span={{ base: 12, md: 6}} bg="black">
         <Stack align="center" gap="xs" my="xl">
           <motion.div
             initial={{ opacity: 0.0, y: 40 }}
@@ -301,28 +310,28 @@ export const Calculator = () => {
             transition={{ duration: 0.8, ease: 'easeInOut' }}
           >
             <span>
-            <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c={{base: "white",md:"#01E194"}}>
-              Calculate your estimated
-          </JumboTitle>
-          <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c={{base: "#01E194",md:"#01E194"}}>
-              weekly repayment
-          </JumboTitle>
-            </span>
-          <Grid align="center" visibleFrom='lg' gutter="xl">
-            <Grid.Col span={12}>
-              <span>
-              <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} c={{base: "white",md:"black"}} fw={600}>
-                Calculate your
+              <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c={{base: "white",md:"#01E194"}}>
+                Calculate your estimated
               </JumboTitle>
-              <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} c={{base: "01E194",md:"#01E194"}} fw={600}>
+              <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} hiddenFrom='lg' c={{base: "#01E194",md:"#01E194"}}>
                 weekly repayment
               </JumboTitle>
-              </span>
+            </span>
+            <Grid align="center" visibleFrom='lg' gutter="xl">
+              <Grid.Col span={12}>
+                <span>
+                  <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} c={{base: "white",md:"white"}} fw={600}>
+                    Calculate your
+                  </JumboTitle>
+                  <JumboTitle order={3} fz="xs" ta="center" style={{ textWrap: 'balance' }} c={{base: "01E194",md:"#01E194"}} fw={600}>
+                  weekly repayment
+                  </JumboTitle>
+                </span>
             </Grid.Col>
           </Grid>
           </motion.div>
         </Stack>
-      <Container size="lg" mt="calc(var(--mantine-spacing-md) * 1)" ta="center" style={{paddingLeft: '5vw', paddingRight: '5vw'}}>
+              <Container size="lg" mt="calc(var(--mantine-spacing-md) * 1)" ta="center" style={{paddingLeft: '5vw', paddingRight: '5vw'}}>
       <motion.div initial={{ opacity: 0.0, y: 0 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <Stack>
           <TextInput
@@ -338,9 +347,9 @@ export const Calculator = () => {
             leftSection="$"
             size='xl'
             styles={{
-              input: { fontSize: rem(40), color: isMobile? 'white': 'black'},
-              label: { fontSize: rem(40), color: isMobile? 'white': 'black'},
-              section:  { fontSize: rem(40), color: isMobile? 'white': 'black'} 
+              input: { fontSize: rem(40), color: isMobile? 'white': 'white'},
+              label: { fontSize: rem(40), color: isMobile? 'white': 'white'},
+              section:  { fontSize: rem(40), color: isMobile? 'white': 'white'} 
             }}
             ta="center"
             c={{base: "white", md:"#01E194"}}
@@ -361,22 +370,20 @@ export const Calculator = () => {
             <StatCell startValue={baseValue} endValue={weeklyRepayment} title="Weekly Repayment" description="Weekly repayment" />
           </Grid.Col>
         </Grid>
-      </Container>
-      </Grid.Col>
-      <Grid.Col span={{ base:12, md: 6 }} bg="black">
+        <Box>
           <motion.div
-              initial={{ opacity: 0.0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: 'easeInOut' }}
-        >  
-        <JumboTitle ta="center" fz="xs" order={1}  fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
-          Payout Options
-        </JumboTitle>
-        <JumboTitle ta="center" fz="xxs" order={3}  fw="bold" c="#01E194" mt="xl" mb="xl" textWrap='balance'>
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+          >  
+            <JumboTitle ta="center" fz="xs" order={1}  fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl">
+              Payout Options
+            </JumboTitle>
+            <JumboTitle ta="center" fz="xxs" order={3}  fw="bold" c="#01E194" mt="xl" mb="xl" textWrap='balance'>
               Save money with no penalties for early payout 
-        </JumboTitle>
-        </motion.div>
-        <Grid gutter="calc(var(--mantine-spacing-lg) * 1)" align="center" mx="xl">
+            </JumboTitle>
+          </motion.div>
+          <Grid gutter="calc(var(--mantine-spacing-lg) * 1)" align="center" mx="xl">
             <Grid.Col span={{ base: 12, md: 4 }}> {/* 3 month payout */}
               <PayoutCell
                 startValue={baseValue}
@@ -402,19 +409,21 @@ export const Calculator = () => {
             <Grid.Col span={{ base: 12, md: 4 }}> {/* 12 month payout */}
               <PayoutCell
                 startValue={baseValue}
-                endValue={calculateInterestCost(baseValue, 52)}
-                payoutStartValue={baseValue}
-                payoutEndValue={calculateRemainingPrincipal(baseValue, 52)}
-                title="12 Month Balance"
-                description="after 12 months if paid out in full"
-                payout='Principal Remaining'
+               endValue={calculateInterestCost(baseValue, 52)}
+               payoutStartValue={baseValue}
+               payoutEndValue={calculateRemainingPrincipal(baseValue, 52)}
+               title="12 Month Balance"
+               description="after 12 months if paid out in full"
+               payout='Principal Remaining'
               />
             </Grid.Col>
           </Grid>
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 6 }} visibleFrom='md'>
-          <LineChart loanAmount={baseValue}/>
-        </Grid.Col>
+        </Box>
+      </Container>
+      </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 6 }} visibleFrom='md'>
+        <LineChart loanAmount={baseValue}/>
+      </Grid.Col>
     </Grid>
   );
 };

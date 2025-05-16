@@ -17,14 +17,15 @@ import { Why } from '@/components/Why/Why';
 export default function Shopfit() {
     return (
     <>
+      <meta name="google-site-verification" content="al92wOwp3aihPg_ETzB1Hp_EKOFbUlLV0ksliylL_Po" />
       <Container px={0} mx={0} size="100%" bg="black">
         <Header01 />
         <Header />
-        <Calculator />
-        <Why />
+        <section id="benefits"><Calculator /></section>
+        <section id="finance"><Why /></section>
         <Faq01 />
-        <Hero02 />
-        <AuthenticationForm />
+        <section id="requirements"><Hero02 /></section>
+        <section id="contact"><AuthenticationForm /></section>
         <Footer01 />
       </Container>
     </>
