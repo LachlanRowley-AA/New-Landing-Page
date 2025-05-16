@@ -6,11 +6,10 @@ import { Faq01 } from '@/components/Faq/Faq';
 import { Calculator } from '@/components/Calculator/Calculator';
 import { AuthenticationForm } from '@/components/AuthenticationForm/AuthenticationForm';
 import { Hero02 } from '@/components/Requirements/Requirements';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { MantineProvider, ColorSchemeScript, Container } from '@mantine/core';
 import { Footer01 } from '@/components/footer/footer';
 import { IntroSection } from '@/components/Intro/intro';
 import { Header } from '@/components/Header/header';
-import { Container } from '@mantine/core';
 import LineChart from '@/components/Chart/Chart';
 import { Why } from '@/components/Why/Why';
 

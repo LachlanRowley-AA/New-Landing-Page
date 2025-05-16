@@ -100,7 +100,7 @@ const StatCell = ({
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       <Box {...boxProps}>
-        <AnimatedCounter c="white" ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} />
+        <AnimatedCounter c="white" ta="center" fz={rem(32)} fw="bold" endValue={Math.max(0, endValue)} prefix="$" startValue={Math.max(0, startValue)} decimals={2} />
         <Group justify="center" gap={5}>
           <Text c="#01E194" fz="lg">
             Total Interest Cost
