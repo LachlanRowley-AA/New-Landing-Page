@@ -20,11 +20,11 @@ export default function Shopfit() {
       <Container px={0} mx={0} size="100%" bg="black">
         <Header01 />
         <Header />
-        <Calculator />
-        <Why />
+        <section id="benefits"><Calculator /></section>
+        <section id="finance"><Why /></section>
         <Faq01 />
-        <Hero02 />
-        <AuthenticationForm />
+        <section id="requirements"><Hero02 /></section>
+        <section id="contact"><AuthenticationForm /></section>
         <Footer01 />
       </Container>
     </>

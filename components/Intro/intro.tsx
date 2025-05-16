@@ -29,7 +29,7 @@ export const IntroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.7 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
       >
         <Text size="lg" c="black" mb="lg">
           Building on our strong foundation in traditional asset finance, we’re now expanding into the website and software finance market—empowering businesses to invest in the digital tools they need to succeed in a competitive marketplace.
@@ -41,7 +41,7 @@ export const IntroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 1.4 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
       >
         <Text size="lg" c="black" mb="lg">
           We work hand-in-hand with clients to make sure high-quality websites, custom software, and digital infrastructure are more accessible—through flexible, affordable finance options that preserve cash flow and support long-term scalability.
@@ -53,7 +53,7 @@ export const IntroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 2.1 }}
+        transition={{ duration: 0.8, delay: 1.8 }}
       >
         <Text size="lg" c="black">
           Whether you're a startup launching your first site or an established business upgrading your digital presence, Asset Alley is here to help you move forward with confidence.

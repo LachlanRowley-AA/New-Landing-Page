@@ -32,7 +32,7 @@ const StatCard = ({
           />
         </Box>
       </Container>
-      <Text fz="xl" ta="center" c="#01E194">
+      <Text fz="xl" ta="center" c="white">
         {description}
       </Text>
     </Card>

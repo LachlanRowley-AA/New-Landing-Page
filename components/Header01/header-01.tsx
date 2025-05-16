@@ -25,8 +25,10 @@ export type HeaderLink = {
 }
 
 const HEADER_LINKS: HeaderLink[] = [
-  { label: 'Benefits', href: 'benefits' },
-  { label: 'Testimonials', href: 'testimonials' },
+  { label: 'About Us', href: 'benefits' },
+  { label: 'Why Finance', href: 'finance' },
+  { label: 'Requirements', href: 'requirements' },
+
 ];
 
 type Header01Props = ContainerProps & {

@@ -15,10 +15,10 @@ export function Welcome() {
         <NextImage
           src={image}
           alt="Logo"
-          style={{ height: '100%', width: 'auto', maxWidth: '40vw' }}
+          style={{ height: '100%', width: 'auto', maxWidth: '80vw' }}
         />
       </Flex>
-      <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl" fw={700}>
+      <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx={5} mt="xl" fw={700}>
         Finance your websites and software
       </JumboTitle>
       </motion.div>
