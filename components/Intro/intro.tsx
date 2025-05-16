@@ -6,7 +6,7 @@ import { Stats } from "../Stats/stats";
 
 export const IntroSection = () => {
   return (
-    <Container size="xl" py="xl">
+    <Container size="xl" py="xl" id="finance">
       <Title order={1} mb="md">
         <span style={{ color: '#01E194' }}>Flexible Website Financing </span>
         <span style={{ color: 'black' }}>for Your Business</span>

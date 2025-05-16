@@ -21,7 +21,7 @@ export default function Shopfit() {
         <Header01 />
         <Header />
         <section id="benefits"><Calculator /></section>
-        <section id="finance"><Why /></section>
+        <section><Why /></section>
         <Faq01 />
         <section id="requirements"><Hero02 /></section>
         <section id="contact"><AuthenticationForm /></section>

@@ -29,6 +29,7 @@ const StatCard = ({
             value={title}
             charClassName="slot-char"
             containerClassName="slot-counter"
+            animateOnVisible={{ triggerOnce: true, rootMargin: '0px 0px -100px 0px' }}
           />
         </Box>
       </Container>

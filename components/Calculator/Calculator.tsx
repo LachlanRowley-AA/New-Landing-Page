@@ -253,7 +253,7 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
         >
-          <JumboTitle ta="center" fz="xs" order={1} fw="bold" c="#01E194" mt="xl" mb="xl" pt="xl" visibleFrom='md'>
+          <JumboTitle ta="center" fz="xs" order={1} fw="bold" c="#01E194" mt="xl" mb="xl" pt={0} visibleFrom='md'>
             Total Interest Cost if Paid Out Early
           </JumboTitle>
         </motion.div>
@@ -266,7 +266,7 @@ const LineChart = ({ loanAmount }: { loanAmount: number }) => {
             height: '100%'
           }}
         >
-        <Container style={{ width: '100%', height: '100%', maxHeight: '50vh' }} p={0} visibleFrom='md'>
+        <Container style={{ width: '100%', height: '100%', maxHeight: '400px' }} p={0} visibleFrom='md'>
           <Bar data={data} plugins={[ChartDataLabels]} options={options} />
         </Container>
         </motion.div>
@@ -289,9 +289,9 @@ export const Calculator = () => {
     <Grid
       gutter='xl'
       my={{
-        base: 'calc(var(--mantine-spacing-lg) * 3)',
-        xs: 'calc(var(--mantine-spacing-lg) * 4)',
-        lg: 'calc(var(--mantine-spacing-lg) * 4)',
+        base: 'calc(var(--mantine-spacing-lg) * 0)',
+        xs: 'calc(var(--mantine-spacing-lg) * 0)',
+        lg: 'calc(var(--mantine-spacing-lg) * 0)',
       }}
       px={{
         base: "xl"
@@ -299,10 +299,7 @@ export const Calculator = () => {
       style={ { marginTop: '30px', paddingTop: '20px' }}
       bg="black"
     >
-      <Grid.Col span={{ base: 12, md: 12 }} bg="White">
-        <IntroSection/>
-      </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 6}} bg="black">
+      <Grid.Col span={{ base: 12, md: 6}} bg="black" mb="md">
         <Stack align="center" gap="xs" my="xl">
           <motion.div
             initial={{ opacity: 0.0, y: 40 }}
@@ -423,6 +420,9 @@ export const Calculator = () => {
       </Grid.Col>
       <Grid.Col span={{ base: 12, md: 6 }} visibleFrom='md'>
         <LineChart loanAmount={baseValue}/>
+      </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 12 }} bg="White">
+        <IntroSection/>
       </Grid.Col>
     </Grid>
   );
