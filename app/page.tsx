@@ -16,7 +16,7 @@ import { Why } from '@/components/Why/Why';
 export default function Shopfit() {
     return (
     <>
-      <meta name="google-site-verification" content="al92wOwp3aihPg_ETzB1Hp_EKOFbUlLV0ksliylL_Po" />
+      <meta name="google-site-verification" content="yaIg2xfvwkvjSSLDlih1AlITPuAABOkunRNMeFn0evU" />
       <Container px={0} mx={0} size="100%" bg="black">
         <Header01 />
         <Header />
