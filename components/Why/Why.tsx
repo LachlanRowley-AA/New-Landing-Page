@@ -60,7 +60,7 @@ export const Why = () => {
   ));
 
   return (
-    <Box bg="white" mb="xl" pb="xl">
+    <Box bg="white" pb="xl">
       <Box w="100%" h="100%" mah={sectionHeight} pos="relative" style={{ overflow: 'hidden' }}>
         <Image
           src="./code2.jpg"

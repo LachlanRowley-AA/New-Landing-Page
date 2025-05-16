@@ -127,7 +127,7 @@ export const Faq01 = () => {
           </JumboTitle>
         </Stack>
       </Container>
-      <Container size="xl" 
+      <Container size="xl" mb={0}
         mt={{
           base: 'calc(var(--mantine-spacing-lg) * 0)',
           lg: "calc(var(--mantine-spacing-lg) * 3)"
