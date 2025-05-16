@@ -18,7 +18,7 @@ export function Welcome() {
           style={{ height: '100%', width: 'auto', maxWidth: '80vw' }}
         />
       </Flex>
-      <JumboTitle c="#01E194" ta="center" fz="xs" maw={580} mx="auto" mt="xl" fw={700}>
+      <JumboTitle c="#01E194" ta="center" fz="lg" maw={580} mx="auto" mt="xl" fw={700}>
         Finance your websites and software
       </JumboTitle>
       </motion.div>
