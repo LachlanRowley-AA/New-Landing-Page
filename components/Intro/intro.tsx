@@ -1,8 +1,8 @@
-import React from "react";
-import { Container, Grid, Title, Text } from "@mantine/core";
-import { Calculator } from "../Calculator/Calculator";
-import { motion} from 'motion/react';
-import { Stats } from "../Stats/stats";
+import React from 'react';
+import { motion } from 'motion/react';
+import { Container, Grid, Text, Title } from '@mantine/core';
+import { Calculator } from '../Calculator/Calculator';
+import { Stats } from '../Stats/stats';
 
 export const IntroSection = () => {
   return (
@@ -20,7 +20,8 @@ export const IntroSection = () => {
         transition={{ duration: 0.8, delay: 0 }}
       >
         <Text size="lg" c="black" mb="lg">
-          At Asset Alley, we're full-service asset finance specialists committed to helping businesses grow with tailored, strategic funding solutions.
+          At Asset Alley, we're full-service asset finance specialists committed to helping
+          businesses grow with tailored, strategic funding solutions.
         </Text>
       </motion.div>
 
@@ -32,7 +33,9 @@ export const IntroSection = () => {
         transition={{ duration: 0.8, delay: 0.6 }}
       >
         <Text size="lg" c="black" mb="lg">
-          Building on our strong foundation in traditional asset finance, we’re now expanding into the website and software finance market—empowering businesses to invest in the digital tools they need to succeed in a competitive marketplace.
+          Building on our strong foundation in traditional asset finance, we’re now expanding into
+          the website and software finance market—empowering businesses to invest in the digital
+          tools they need to succeed in a competitive marketplace.
         </Text>
       </motion.div>
 
@@ -44,7 +47,9 @@ export const IntroSection = () => {
         transition={{ duration: 0.8, delay: 1.2 }}
       >
         <Text size="lg" c="black" mb="lg">
-          We work hand-in-hand with clients to make sure high-quality websites, custom software, and digital infrastructure are more accessible—through flexible, affordable finance options that preserve cash flow and support long-term scalability.
+          We work hand-in-hand with clients to make sure high-quality websites, custom software, and
+          digital infrastructure are more accessible—through flexible, affordable finance options
+          that preserve cash flow and support long-term scalability.
         </Text>
       </motion.div>
 
@@ -56,10 +61,11 @@ export const IntroSection = () => {
         transition={{ duration: 0.8, delay: 1.8 }}
       >
         <Text size="lg" c="black">
-          Whether you're a startup launching your first site or an established business upgrading your digital presence, Asset Alley is here to help you move forward with confidence.
+          Whether you're a startup launching your first site or an established business upgrading
+          your digital presence, Asset Alley is here to help you move forward with confidence.
         </Text>
       </motion.div>
-      <Stats/>
+      <Stats />
     </Container>
   );
 };

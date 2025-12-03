@@ -1,7 +1,7 @@
 'use client';
 
-import { Text, type TextProps } from '@mantine/core';
 import { useEffect, useState } from 'react';
+import { Text, type TextProps } from '@mantine/core';
 
 export type AnimatedCounterProps = Omit<TextProps, 'children'> & {
   startValue: number;
@@ -21,7 +21,7 @@ export const AnimatedCounter = ({
   decimals,
   ...textProps
 }: AnimatedCounterProps) => {
-  const startValue = 0.00;
+  const startValue = 0.0;
   const [currentValue, setCurrentValue] = useState(startValue);
 
   // Immediately calculate the final value
@@ -32,8 +32,11 @@ export const AnimatedCounter = ({
   return (
     <Text {...textProps}>
       {prefix}
-      {Number(currentValue).toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
+      {Number(currentValue).toLocaleString(undefined, {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      })}
       {suffix}
-    </Text>  
+    </Text>
   );
 };

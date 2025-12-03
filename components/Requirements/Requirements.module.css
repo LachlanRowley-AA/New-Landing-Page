@@ -4,7 +4,7 @@
 }
 
 .card {
-  background-color: #01E194;
+  background-color: #01e194;
   border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-7));
 }
 

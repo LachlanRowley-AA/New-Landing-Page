@@ -1,11 +1,11 @@
 'use client';
 
-import { JumboTitle } from '../JumboTitle/JumboTitle'
-//import { InlineCodeHighlight } from '@mantine/code-highlight';
-import { Anchor, BackgroundImage, Box, Container, Flex, Stack, Text, Image } from '@mantine/core';
 import { ReactNode } from 'react';
+import NextImage from 'next/image';
+//import { InlineCodeHighlight } from '@mantine/code-highlight';
+import { Anchor, BackgroundImage, Box, Container, Flex, Image, Stack, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import NextImage from 'next/image'
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 
 type Faq = {
   value: string;
@@ -17,53 +17,47 @@ const FAQ: Faq[] = [
   {
     value: 'outlay',
     question: 'No Outlay',
-    answer:
-      'No need to outlay the total amount upfront',
+    answer: 'No need to outlay the total amount upfront',
   },
   {
     value: 'repayment-time',
     question: 'Repayment TIme',
-    answer: 'Repayments are calculated over 5 years'
+    answer: 'Repayments are calculated over 5 years',
   },
   {
     value: 'extra-repayment',
     question: 'Optional Extra Repayments',
-    answer:
-      'Make extra repayments towards facility to lower monthly repayments',
+    answer: 'Make extra repayments towards facility to lower monthly repayments',
   },
   {
     value: 'penalty',
-    question: "Repay Anytime Without Penalty",
-    answer:
-    <>
-      Repay anytime without penalties and reuse the
-facility for business costs that traditional lenders won’t
-finance (materials, inventory, software, fit-out, etc.)</>
+    question: 'Repay Anytime Without Penalty',
+    answer: (
+      <>
+        Repay anytime without penalties and reuse the facility for business costs that traditional
+        lenders won’t finance (materials, inventory, software, fit-out, etc.)
+      </>
+    ),
   },
   {
     value: 'charge',
     question: 'Only Charge on Use',
-    answer:
-      'No charge if setup but not used',
+    answer: 'No charge if setup but not used',
   },
   {
     value: 'security',
     question: 'No Additional Security Needed',
-    answer:
-    <>  No additional security required (personal property or
-assets within the business)</>
+    answer: <> No additional security required (personal property or assets within the business)</>,
   },
   {
     value: 'cost',
     question: 'Cost',
-    answer:
-      'Only pay 1.1 - 1.5% interest per month',
+    answer: 'Only pay 1.1 - 1.5% interest per month',
   },
   {
     value: 'setup',
     question: 'No Setup Cost',
-    answer:
-      'No setup cost or ongoing fees',
+    answer: 'No setup cost or ongoing fees',
   },
 ];
 
@@ -79,13 +73,13 @@ const FaqCell = ({ question, answer }: Faq) => (
     }}
   >
     <Flex justify="left" align="left" direction="row" wrap="nowrap">
-        <Image
-        src='./AssetAlleyBrandmark_ColourScreenUse.svg'
+      <Image
+        src="./AssetAlleyBrandmark_ColourScreenUse.svg"
         alt="Logo"
-        w='2em'
+        w="2em"
         fit="contain"
-        style={{height: '2em', marginRight: '0.5em' }}
-          />
+        style={{ height: '2em', marginRight: '0.5em' }}
+      />
       <Text fz="xl" fw="bold" component="blockquote" mb={4} c="#01E194">
         {question}
       </Text>
@@ -100,45 +94,54 @@ export const Faq01 = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
-  <BackgroundImage
-  src={isDesktop ? "/meeting.jpg" : ""} // Load image only on desktop
-  style={{
-    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Always keep the dark overlay
-    backgroundImage: isDesktop
-      ? 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/meeting.jpg)'
-      : 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8))',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  }}
-  >
-    <Container
-      py={{
-        base: 'calc(var(--mantine-spacing-lg)*2)',
-        xs: 'calc(var(--mantine-spacing-lg))',
-        lg: 'calc(var(--mantine-spacing-lg))',
+    <BackgroundImage
+      src={isDesktop ? '/meeting.jpg' : ''} // Load image only on desktop
+      style={{
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Always keep the dark overlay
+        backgroundImage: isDesktop
+          ? 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/meeting.jpg)'
+          : 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8))',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
-      fluid
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', borderRadius: '8px' }} // Optional: Adds contrast for readability
     >
-      <Container size="md" style={{zIndex:1}}>
-        <Stack gap="xs" align="center">
-          <JumboTitle order={2} fz="sm" ta="center" style={{ textWrap: 'balance' }} mb="xs" c="#01E194">
-            What Makes Our Financing Different?
-          </JumboTitle>
-        </Stack>
+      <Container
+        py={{
+          base: 'calc(var(--mantine-spacing-lg)*2)',
+          xs: 'calc(var(--mantine-spacing-lg))',
+          lg: 'calc(var(--mantine-spacing-lg))',
+        }}
+        fluid
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', borderRadius: '8px' }} // Optional: Adds contrast for readability
+      >
+        <Container size="md" style={{ zIndex: 1 }}>
+          <Stack gap="xs" align="center">
+            <JumboTitle
+              order={2}
+              fz="sm"
+              ta="center"
+              style={{ textWrap: 'balance' }}
+              mb="xs"
+              c="#01E194"
+            >
+              What Makes Our Financing Different?
+            </JumboTitle>
+          </Stack>
+        </Container>
+        <Container
+          size="xl"
+          mt={{
+            base: 'calc(var(--mantine-spacing-lg) * 0)',
+            lg: 'calc(var(--mantine-spacing-lg) * 3)',
+          }}
+        >
+          <Flex wrap="wrap" justify="center">
+            {FAQ.map((faq) => (
+              <FaqCell key={faq.value} {...faq} />
+            ))}
+          </Flex>
+        </Container>
       </Container>
-      <Container size="xl" 
-        mt={{
-          base: 'calc(var(--mantine-spacing-lg) * 0)',
-          lg: "calc(var(--mantine-spacing-lg) * 3)"
-        }}>
-        <Flex wrap="wrap" justify="center">
-          {FAQ.map((faq) => (
-            <FaqCell key={faq.value} {...faq} />
-          ))}
-        </Flex>
-      </Container>
-    </Container>
-  </BackgroundImage>
+    </BackgroundImage>
   );
 };

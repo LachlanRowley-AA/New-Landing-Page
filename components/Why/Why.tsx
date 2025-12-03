@@ -1,30 +1,30 @@
-import { Box, Container, Text, Image, Accordion, Grid, useMantineTheme } from '@mantine/core';
-import { JumboTitle } from '../JumboTitle/JumboTitle';
-import { motion } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { IconChevronDown } from '@tabler/icons-react';
+import { motion } from 'motion/react';
+import { Accordion, Box, Container, Grid, Image, Text, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 
 const args = [
   {
     id: '1',
     value: 'Improved Cash Flow',
     answer: `Financing your website allows you to spread the cost over manageable weekly payments, helping preserve cash for other important areas of your business like operations, marketing, or staffing. 
-    This makes it easier to invest in your online presence without straining your budget.`
+    This makes it easier to invest in your online presence without straining your budget.`,
   },
   {
     id: '2',
     value: 'Get More for Your Money',
     answer: `Instead of settling for a basic website due to budget limitations, financing gives you access to a higher-quality, custom-built site with the features and functionality you really need. 
-    It’s a smarter way to get a better end product without a large upfront investment.`
+    It’s a smarter way to get a better end product without a large upfront investment.`,
   },
   {
     id: '3',
     value: 'Start Earning Sooner',
     answer: `Financing lets you launch your website now rather than waiting to save up the full cost. That means you can start attracting customers, generating leads, and making sales right away. 
     The earlier your site goes live, the sooner it can start paying for itself. With no-fee early payout options, an early launch of your website
-    could cover the entire interest and then some before you would have launched your website without financing.`
-  }
+    could cover the entire interest and then some before you would have launched your website without financing.`,
+  },
 ];
 
 export const Why = () => {
@@ -33,27 +33,22 @@ export const Why = () => {
   const isDesktop = useMediaQuery(`(min-width:1024px)`);
   const [hydrated, setHydrated] = useState(false);
 
-
-
   // Prevent mismatch between server and client render
   useEffect(() => {
     setHydrated(true);
   }, []);
 
-  if (!hydrated) {return null};
+  if (!hydrated) {
+    return null;
+  }
 
-  const desktopValues = ['1','2','3'];
+  const desktopValues = ['1', '2', '3'];
   const mobileValues = ['1'];
-
 
   const reasons = args.map((r) => (
     <Accordion.Item value={r.id} key={r.id}>
-      <Accordion.Control
-        icon={<Image src="./AssetAlleyBrandmark_ColourScreenUse.svg" w={40}/>}
-      >
-        <Box>
-          {r.value}
-        </Box>
+      <Accordion.Control icon={<Image src="./AssetAlleyBrandmark_ColourScreenUse.svg" w={40} />}>
+        <Box>{r.value}</Box>
       </Accordion.Control>
       <Accordion.Panel>{r.answer}</Accordion.Panel>
     </Accordion.Item>
@@ -62,11 +57,7 @@ export const Why = () => {
   return (
     <Box bg="white" pb="xl">
       <Box w="100%" h="100%" mah={sectionHeight} pos="relative" style={{ overflow: 'hidden' }}>
-        <Image
-          src="./code2.jpg"
-          alt="Code Background"
-          style={{ objectFit: 'cover' }}
-        />
+        <Image src="./code2.jpg" alt="Code Background" style={{ objectFit: 'cover' }} />
         <Box
           pos="absolute"
           top={0}
@@ -96,43 +87,43 @@ export const Why = () => {
         <Grid.Col span={{ base: 6 }} visibleFrom="md">
           <Image src="./guy_at_desk.jpg" />
         </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 6 }} mt="xl" >
-            <Accordion
-              multiple
-              variant="separated"
-              chevron={<IconChevronDown size={36} />}
-              chevronSize={36}
-              defaultValue={isDesktop ? desktopValues : mobileValues}
-              styles={{
-                control: {
-                  minHeight: '70px',
-                  fontSize: '1.2rem',
-                  position: 'relative',
-                  color: '#d3d4d5',
-                  backgroundColor: '#F4F5FA',
-                  border: '0px',
-                },
-                panel: {
-                  fontSize: '1.1rem',
-                  backgroundColor: '#FFFAFA',
-                },
-                label: {
-                  color: 'black',
-                  fontWeight: 600
-                },
-                item: {
-                  border: '0px',
-                  color: 'black',
-                  fontSize: '24px'
-                },
-                chevron: {
-                  color: '#01E194'
-                }
-              }}
-              c="white"
-            >
-              {reasons}
-            </Accordion>
+        <Grid.Col span={{ base: 12, md: 6 }} mt="xl">
+          <Accordion
+            multiple
+            variant="separated"
+            chevron={<IconChevronDown size={36} />}
+            chevronSize={36}
+            defaultValue={isDesktop ? desktopValues : mobileValues}
+            styles={{
+              control: {
+                minHeight: '70px',
+                fontSize: '1.2rem',
+                position: 'relative',
+                color: '#d3d4d5',
+                backgroundColor: '#F4F5FA',
+                border: '0px',
+              },
+              panel: {
+                fontSize: '1.1rem',
+                backgroundColor: '#FFFAFA',
+              },
+              label: {
+                color: 'black',
+                fontWeight: 600,
+              },
+              item: {
+                border: '0px',
+                color: 'black',
+                fontSize: '24px',
+              },
+              chevron: {
+                color: '#01E194',
+              },
+            }}
+            c="white"
+          >
+            {reasons}
+          </Accordion>
         </Grid.Col>
       </Grid>
     </Box>
