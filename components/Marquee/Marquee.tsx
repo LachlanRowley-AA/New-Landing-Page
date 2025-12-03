@@ -1,7 +1,6 @@
-import { Box, type BoxProps, Flex, type FlexProps } from '@mantine/core';
-import { motion } from 'motion/react';
-
 import type { ReactNode } from 'react';
+import { motion } from 'motion/react';
+import { Box, Flex, type BoxProps, type FlexProps } from '@mantine/core';
 
 export type MarqueeProps = BoxProps & {
   /**
@@ -76,18 +75,8 @@ export const Marquee = ({
           : undefined,
       }}
     >
-      <MarqueeFrame
-        items={items}
-        reverse={reverse}
-        duration={duration}
-        gap={gap}
-      />
-      <MarqueeFrame
-        items={items}
-        reverse={reverse}
-        duration={duration}
-        gap={gap}
-      />
+      <MarqueeFrame items={items} reverse={reverse} duration={duration} gap={gap} />
+      <MarqueeFrame items={items} reverse={reverse} duration={duration} gap={gap} />
     </Flex>
   </Box>
 );

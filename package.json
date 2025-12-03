@@ -38,7 +38,7 @@
     "react-dom": "^19.1.0",
     "react-ga4": "^2.1.0",
     "react-slot-counter": "^3.3.1",
-    "validator": "^13.12.0"
+    "validator": "^13.15.23"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

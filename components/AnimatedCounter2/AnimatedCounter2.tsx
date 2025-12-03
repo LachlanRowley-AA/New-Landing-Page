@@ -1,8 +1,8 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Text, type TextProps } from '@mantine/core';
 import { useInViewport } from '@mantine/hooks';
-import { useEffect, useState } from 'react';
 
 export type AnimatedCounterProps = Omit<TextProps, 'children'> & {
   value: number;
@@ -47,7 +47,7 @@ export const AnimatedCounter = ({
         setCurrentValue((prev) => prev + 1);
         if (currentValue === endValue) clearInterval(timer);
       },
-      2 ** (currentValue - slowdownStartValue) * 15,
+      2 ** (currentValue - slowdownStartValue) * 15
     );
 
     return () => clearInterval(timer);

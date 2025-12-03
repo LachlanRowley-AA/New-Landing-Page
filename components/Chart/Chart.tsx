@@ -1,15 +1,18 @@
 // page.js this is the entry point of application
 
-"use client";
+'use client';
+
 import dynamic from 'next/dynamic';
+
 import 'chart.js/auto';
+
 const Bar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Bar), {
   ssr: false,
 });
 const data = {
   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   options: {
-    indexAxis: 'y'
+    indexAxis: 'y',
   },
   datasets: [
     {
@@ -39,7 +42,7 @@ const LineChart = () => {
   return (
     <div style={{ width: '700px', height: '700px' }}>
       <h1>Total Interest Paid in Paid Out Early</h1>
-      <Bar data={data} options={{'indexAxis': 'y'}} />
+      <Bar data={data} options={{ indexAxis: 'y' }} />
     </div>
   );
 };

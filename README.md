@@ -2,11 +2,11 @@
 
 ## Version History
 
-| Version | Date       | Comment                 |
-|---------|-----------|-------------------------|
-| 03      | 01/04/2025 | Added industry type    |
-| 02      | 27/03/2025 | Improved clarity       |
-| 01      | 24/03/2025 | Release Version        |
+| Version | Date       | Comment             |
+| ------- | ---------- | ------------------- |
+| 03      | 01/04/2025 | Added industry type |
+| 02      | 27/03/2025 | Improved clarity    |
+| 01      | 24/03/2025 | Release Version     |
 
 ### Overview
 
@@ -43,7 +43,7 @@ This code creates the widget as an iframe where the script is placed:
     aaButtonColor: '#801f1f',
     aaUnfilledBarColor: '#2E2E2E',
     aaCalculatorWeekly: 'true',
-    aaCalculatorMonthly: 'true'
+    aaCalculatorMonthly: 'true',
   };
 </script>
 
@@ -74,20 +74,20 @@ If you cannot find your referral code, please contact:
 
 ### Variable List
 
-| **Variable Name**       | **Use**                                      | **Default Value** |
-|-------------------------|---------------------------------------------|------------------|
-| `aaReferral`           | Used by Asset Alley to track customer source. **MUST BE SET TO BE ASSOCIATED WITH A REFERRAL** | `null` |
-| `aaCompact`            | Includes an optional page about the benefits of financing through a loan. | `'false'` |
-| `aaDarkLogo`          | Controls if Asset Alley's logo text color is optimized for dark backgrounds. | `'true'` |
-| `aaCustomLogo`        | Controls if Asset Alley's logo appears at the top of the landing page. **Requires manual implementation if set to true**. | `'false'` |
-| `aaBackgroundColor`   | Sets the landing page’s background color. | `'#242424'` |
-| `aaHeaderColor`      | Sets the color of titles and primary UI components. | `'#01E194'` |
-| `aaSecondaryTextColor` | Sets the color of non-title text appearing directly on the background. | `'#828282'` |
-| `aaTertiaryTextColor` | Sets the color of text appearing on colored elements. | `'#FFFFFF'` |
-| `aaButtonColor`       | Sets the submit button color. | `'#801F1F'` |
-| `aaUnfilledBarColor`  | Sets the color of unfilled portions of the repayment slider and text input background. | `'#2E2E2E'` |
-| `aaCalculatorWeekly`  | Displays the calculated repayment in weekly amounts. | `'true'` |
-| `aaCalculatorMonthly` | Displays the calculated repayment in monthly amounts. | `'false'` |
+| **Variable Name**      | **Use**                                                                                                                   | **Default Value** |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `aaReferral`           | Used by Asset Alley to track customer source. **MUST BE SET TO BE ASSOCIATED WITH A REFERRAL**                            | `null`            |
+| `aaCompact`            | Includes an optional page about the benefits of financing through a loan.                                                 | `'false'`         |
+| `aaDarkLogo`           | Controls if Asset Alley's logo text color is optimized for dark backgrounds.                                              | `'true'`          |
+| `aaCustomLogo`         | Controls if Asset Alley's logo appears at the top of the landing page. **Requires manual implementation if set to true**. | `'false'`         |
+| `aaBackgroundColor`    | Sets the landing page’s background color.                                                                                 | `'#242424'`       |
+| `aaHeaderColor`        | Sets the color of titles and primary UI components.                                                                       | `'#01E194'`       |
+| `aaSecondaryTextColor` | Sets the color of non-title text appearing directly on the background.                                                    | `'#828282'`       |
+| `aaTertiaryTextColor`  | Sets the color of text appearing on colored elements.                                                                     | `'#FFFFFF'`       |
+| `aaButtonColor`        | Sets the submit button color.                                                                                             | `'#801F1F'`       |
+| `aaUnfilledBarColor`   | Sets the color of unfilled portions of the repayment slider and text input background.                                    | `'#2E2E2E'`       |
+| `aaCalculatorWeekly`   | Displays the calculated repayment in weekly amounts.                                                                      | `'true'`          |
+| `aaCalculatorMonthly`  | Displays the calculated repayment in monthly amounts.                                                                     | `'false'`         |
 
 ### Optional Page
 
@@ -119,8 +119,13 @@ To use your own logo, set `aaCustomLogo` to `'false'` and insert your logo code 
 Example:
 
 ```html
-<div style="background-color:#242424; display: flex; justify-content: center; align-items: center; width: 100%;">
-  <img src="https://www.assetalley.com.au/wp-content/uploads/2024/05/icon.png" style="height: 10vh"/>
+<div
+  style="background-color:#242424; display: flex; justify-content: center; align-items: center; width: 100%;"
+>
+  <img
+    src="https://www.assetalley.com.au/wp-content/uploads/2024/05/icon.png"
+    style="height: 10vh"
+  />
 </div>
 
 <script>
@@ -130,4 +135,3 @@ Example:
   };
 </script>
 ```
-

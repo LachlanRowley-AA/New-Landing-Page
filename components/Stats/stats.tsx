@@ -1,16 +1,16 @@
 'use client';
 
-import { JumboTitle } from "../JumboTitle/JumboTitle";
-import { Box, BoxProps, Container, Grid, Text, Card, rem } from '@mantine/core';
-import { AnimatedCounter } from "../AnimatedCounter2/AnimatedCounter2";
-import SlotCounter from 'react-slot-counter'
+import SlotCounter from 'react-slot-counter';
+import { Box, BoxProps, Card, Container, Grid, rem, Text } from '@mantine/core';
+import { AnimatedCounter } from '../AnimatedCounter2/AnimatedCounter2';
+import { JumboTitle } from '../JumboTitle/JumboTitle';
 
 const StatCard = ({
   title,
   description,
   prefix,
   ...boxProps
-}: BoxProps & { title: string; description: string, prefix: string }) => (
+}: BoxProps & { title: string; description: string; prefix: string }) => (
   <Box {...boxProps} w="100%">
     <Card withBorder bg="rgb(0, 0, 0)" h="100%" radius="md">
       <Container p={0}>
@@ -54,10 +54,10 @@ export const Stats = () => (
         <StatCard title="564" description="Businesses Supported" prefix="" />
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
-        <StatCard title="1,395" description="Loans Approved" prefix=""/>
+        <StatCard title="1,395" description="Loans Approved" prefix="" />
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
-        <StatCard title="$108,811,919" description="Financed" prefix="$"/>
+        <StatCard title="$108,811,919" description="Financed" prefix="$" />
       </Grid.Col>
     </Grid>
   </Container>

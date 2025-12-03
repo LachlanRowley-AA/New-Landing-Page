@@ -1,7 +1,6 @@
 'use client';
 
-import { Marquee } from '../Marquee/Marquee';
-import { Container, ContainerProps, GridProps, Group, Text, TextProps } from '@mantine/core';
+import { ReactNode } from 'react';
 import {
   IconBrandGithub,
   IconBrandMantine,
@@ -10,8 +9,9 @@ import {
   IconBrandReact,
   IconBrandVercelFilled,
 } from '@tabler/icons-react';
-import { ReactNode } from 'react';
+import { Container, ContainerProps, GridProps, Group, Text, TextProps } from '@mantine/core';
 import { JumboTitle } from '../JumboTitle/JumboTitle';
+import { Marquee } from '../Marquee/Marquee';
 
 const ITEMS = [
   <Group key="mantine" wrap="nowrap">
@@ -76,9 +76,8 @@ export const Logos03 = ({
     size="xl"
     {...containerProps}
   >
-
     <JumboTitle order={2} fz="xs" ta="center" style={{ textWrap: 'balance' }} mb="sm">
-    Helping finance SOME CLIENTS
+      Helping finance SOME CLIENTS
     </JumboTitle>
     <Marquee items={items} gap="calc(var(--mantine-spacing-lg) * 2)" duration={15} />
   </Container>

@@ -1,1 +1,13 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[735],{66735:e=>{e.exports=function(){throw Error("ws does not work in the browser. Browser clients must use the native WebSocket object")}}}]);
+'use strict';
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [735],
+  {
+    66735: (e) => {
+      e.exports = function () {
+        throw Error(
+          'ws does not work in the browser. Browser clients must use the native WebSocket object'
+        );
+      };
+    },
+  },
+]);
